@@ -149,7 +149,10 @@ activemq-data/
 
 # Environments
 .env
+<<<<<<< HEAD
 
+=======
+>>>>>>> efca14d569a6f3a88f0fb825ab79f362b65b44f8
 .envrc
 .venv
 env/
