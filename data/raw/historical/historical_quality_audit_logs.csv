@@ -1,0 +1,1501 @@
+audit_id,batch_id,audit_date,audit_outcome,audit_notes
+QA3000,B101227,2024-01-13,Pass,"Batch within spec, no deviations."
+QA3001,B102196,2024-07-12,Pass,"QA passed, standard fat content."
+QA3002,B102103,2024-04-23,Pass,"Batch within spec, no deviations."
+QA3003,B102716,2023-06-13,Watch,"Slight temperature deviation, monitored."
+QA3004,B100473,2024-09-17,Pass,"QA passed, standard fat content."
+QA3005,B101484,2024-11-21,Fail,Fill volume below tolerance.
+QA3006,B100462,2025-04-01,Pass,"Batch within spec, no deviations."
+QA3007,B101066,2024-12-28,Pass,All parameters nominal.
+QA3008,B101967,2023-12-04,Pass,All parameters nominal.
+QA3009,B101902,2023-10-23,Pass,"Batch within spec, no deviations."
+QA3010,B100480,2023-09-02,Watch,"Slight temperature deviation, monitored."
+QA3011,B101483,2024-11-19,Pass,"QA passed, standard fat content."
+QA3012,B100813,2024-10-22,Watch,"Slight temperature deviation, monitored."
+QA3013,B100268,2024-06-17,Watch,"Slight temperature deviation, monitored."
+QA3014,B101633,2025-03-24,Pass,"QA passed, standard fat content."
+QA3015,B102957,2024-04-26,Pass,"QA passed, standard fat content."
+QA3016,B102434,2025-03-19,Pass,"Batch within spec, no deviations."
+QA3017,B100863,2024-03-10,Watch,"Minor visual defect, within limit."
+QA3018,B102665,2024-09-01,Pass,"Batch within spec, no deviations."
+QA3019,B102402,2023-06-21,Pass,"Batch within spec, no deviations."
+QA3020,B102690,2023-12-24,Pass,"Batch within spec, no deviations."
+QA3021,B102227,2024-05-12,Fail,Packaging seal defect detected.
+QA3022,B101805,2023-11-01,Pass,"Batch within spec, no deviations."
+QA3023,B101133,2024-08-29,Pass,"QA passed, standard fat content."
+QA3024,B102412,2025-03-29,Pass,All parameters nominal.
+QA3025,B101999,2025-03-08,Pass,All parameters nominal.
+QA3026,B100293,2024-01-05,Watch,"Slight temperature deviation, monitored."
+QA3027,B100209,2024-02-06,Pass,"Batch within spec, no deviations."
+QA3028,B102884,2024-12-07,Pass,All parameters nominal.
+QA3029,B100090,2024-05-30,Pass,"QA passed, standard fat content."
+QA3030,B101174,2024-03-23,Pass,All parameters nominal.
+QA3031,B101881,2024-01-05,Pass,"QA passed, standard fat content."
+QA3032,B100010,2024-03-15,Pass,"QA passed, standard fat content."
+QA3033,B100842,2024-02-07,Pass,"QA passed, standard fat content."
+QA3034,B101271,2023-10-02,Pass,"Batch within spec, no deviations."
+QA3035,B102387,2024-03-12,Pass,"QA passed, standard fat content."
+QA3036,B101287,2024-11-06,Watch,"Slight temperature deviation, monitored."
+QA3037,B101817,2024-08-25,Pass,All parameters nominal.
+QA3038,B100669,2023-09-19,Pass,"Batch within spec, no deviations."
+QA3039,B100313,2024-10-13,Pass,"QA passed, standard fat content."
+QA3040,B101273,2024-07-01,Watch,"Borderline pH, passed with note."
+QA3041,B100294,2023-09-23,Pass,"Batch within spec, no deviations."
+QA3042,B100177,2025-02-24,Pass,All parameters nominal.
+QA3043,B102487,2024-04-28,Watch,"Slight temperature deviation, monitored."
+QA3044,B102721,2024-04-10,Pass,"Batch within spec, no deviations."
+QA3045,B100663,2024-04-18,Watch,"Minor visual defect, within limit."
+QA3046,B102493,2024-12-20,Watch,"Borderline pH, passed with note."
+QA3047,B100670,2024-04-29,Pass,"Batch within spec, no deviations."
+QA3048,B102582,2024-06-27,Pass,All parameters nominal.
+QA3049,B100222,2023-09-10,Pass,All parameters nominal.
+QA3050,B101948,2024-08-19,Pass,"Batch within spec, no deviations."
+QA3051,B102762,2024-09-22,Pass,"Batch within spec, no deviations."
+QA3052,B100520,2024-04-07,Pass,All parameters nominal.
+QA3053,B102366,2024-09-23,Pass,"QA passed, standard fat content."
+QA3054,B102550,2024-12-29,Pass,All parameters nominal.
+QA3055,B100494,2025-03-30,Pass,"QA passed, standard fat content."
+QA3056,B100507,2024-06-09,Fail,Packaging seal defect detected.
+QA3057,B100238,2025-04-18,Pass,"Batch within spec, no deviations."
+QA3058,B101005,2024-06-29,Pass,"Batch within spec, no deviations."
+QA3059,B100641,2023-11-14,Pass,"Batch within spec, no deviations."
+QA3060,B102417,2025-01-17,Pass,"QA passed, standard fat content."
+QA3061,B101758,2023-09-24,Pass,All parameters nominal.
+QA3062,B102896,2024-07-12,Pass,"Batch within spec, no deviations."
+QA3063,B100881,2023-08-27,Pass,"QA passed, standard fat content."
+QA3064,B101480,2024-04-25,Watch,"Slight temperature deviation, monitored."
+QA3065,B100504,2024-02-29,Pass,"Batch within spec, no deviations."
+QA3066,B101435,2024-04-28,Pass,"QA passed, standard fat content."
+QA3067,B101141,2025-04-26,Pass,All parameters nominal.
+QA3068,B100091,2024-01-24,Pass,All parameters nominal.
+QA3069,B102540,2023-12-08,Pass,All parameters nominal.
+QA3070,B100050,2024-02-02,Pass,All parameters nominal.
+QA3071,B100840,2024-08-29,Pass,All parameters nominal.
+QA3072,B100864,2024-08-08,Pass,All parameters nominal.
+QA3073,B100375,2024-08-02,Pass,"QA passed, standard fat content."
+QA3074,B101323,2025-04-21,Pass,"QA passed, standard fat content."
+QA3075,B101348,2023-08-01,Pass,"QA passed, standard fat content."
+QA3076,B102925,2024-04-07,Pass,"QA passed, standard fat content."
+QA3077,B101625,2023-06-13,Pass,All parameters nominal.
+QA3078,B100541,2024-06-13,Pass,All parameters nominal.
+QA3079,B102674,2024-08-16,Fail,Packaging seal defect detected.
+QA3080,B101075,2023-10-23,Pass,"Batch within spec, no deviations."
+QA3081,B102341,2023-12-07,Pass,"QA passed, standard fat content."
+QA3082,B101782,2025-04-27,Pass,"Batch within spec, no deviations."
+QA3083,B100800,2023-06-07,Pass,All parameters nominal.
+QA3084,B101363,2025-01-04,Watch,"Slight temperature deviation, monitored."
+QA3085,B102823,2023-08-16,Pass,"Batch within spec, no deviations."
+QA3086,B102912,2023-10-19,Pass,"QA passed, standard fat content."
+QA3087,B101356,2024-02-02,Fail,Microbial count exceeded limit.
+QA3088,B100807,2024-05-28,Pass,All parameters nominal.
+QA3089,B102150,2024-08-04,Pass,"QA passed, standard fat content."
+QA3090,B101660,2024-11-11,Pass,"Batch within spec, no deviations."
+QA3091,B102537,2023-06-15,Pass,"QA passed, standard fat content."
+QA3092,B100162,2024-03-06,Pass,All parameters nominal.
+QA3093,B101237,2024-04-24,Pass,"QA passed, standard fat content."
+QA3094,B100470,2024-03-24,Pass,"Batch within spec, no deviations."
+QA3095,B102185,2023-07-16,Watch,"Slight temperature deviation, monitored."
+QA3096,B100742,2024-10-27,Fail,Packaging seal defect detected.
+QA3097,B101063,2024-10-29,Pass,All parameters nominal.
+QA3098,B100210,2024-03-12,Pass,"Batch within spec, no deviations."
+QA3099,B102745,2023-09-17,Pass,All parameters nominal.
+QA3100,B100943,2023-07-07,Pass,"Batch within spec, no deviations."
+QA3101,B101166,2025-03-13,Pass,"Batch within spec, no deviations."
+QA3102,B102082,2025-04-15,Pass,"Batch within spec, no deviations."
+QA3103,B102372,2024-10-25,Fail,Microbial count exceeded limit.
+QA3104,B102474,2024-05-19,Pass,"QA passed, standard fat content."
+QA3105,B102198,2025-03-27,Pass,All parameters nominal.
+QA3106,B102995,2023-10-25,Pass,"QA passed, standard fat content."
+QA3107,B101479,2024-02-06,Pass,All parameters nominal.
+QA3108,B101329,2024-07-21,Pass,All parameters nominal.
+QA3109,B101747,2024-10-29,Pass,All parameters nominal.
+QA3110,B102026,2024-04-09,Pass,"QA passed, standard fat content."
+QA3111,B101377,2024-10-24,Pass,"QA passed, standard fat content."
+QA3112,B102444,2023-10-08,Pass,All parameters nominal.
+QA3113,B101726,2024-05-24,Fail,Microbial count exceeded limit.
+QA3114,B101981,2024-03-10,Pass,"Batch within spec, no deviations."
+QA3115,B100426,2023-12-08,Pass,All parameters nominal.
+QA3116,B100926,2024-10-18,Fail,Fill volume below tolerance.
+QA3117,B102885,2024-01-27,Fail,Packaging seal defect detected.
+QA3118,B100880,2023-06-20,Pass,"Batch within spec, no deviations."
+QA3119,B100604,2024-06-07,Pass,"QA passed, standard fat content."
+QA3120,B102385,2024-02-13,Pass,All parameters nominal.
+QA3121,B101639,2024-10-15,Pass,"QA passed, standard fat content."
+QA3122,B100913,2024-07-30,Pass,"Batch within spec, no deviations."
+QA3123,B100657,2024-11-15,Pass,All parameters nominal.
+QA3124,B102611,2025-03-07,Pass,"QA passed, standard fat content."
+QA3125,B101518,2024-05-14,Watch,"Slight temperature deviation, monitored."
+QA3126,B100770,2023-07-31,Watch,"Minor visual defect, within limit."
+QA3127,B101334,2023-10-09,Fail,Packaging seal defect detected.
+QA3128,B100903,2025-03-15,Fail,Packaging seal defect detected.
+QA3129,B101962,2024-11-11,Watch,"Minor visual defect, within limit."
+QA3130,B102883,2024-01-19,Pass,All parameters nominal.
+QA3131,B102954,2023-09-19,Pass,"Batch within spec, no deviations."
+QA3132,B101223,2023-08-22,Pass,All parameters nominal.
+QA3133,B100376,2024-08-11,Pass,"QA passed, standard fat content."
+QA3134,B101317,2025-03-30,Pass,All parameters nominal.
+QA3135,B102777,2025-04-17,Fail,Packaging seal defect detected.
+QA3136,B100020,2024-09-12,Pass,All parameters nominal.
+QA3137,B101939,2024-10-29,Pass,All parameters nominal.
+QA3138,B101834,2025-02-17,Watch,"Slight temperature deviation, monitored."
+QA3139,B102721,2024-11-12,Pass,All parameters nominal.
+QA3140,B102004,2024-06-28,Watch,"Borderline pH, passed with note."
+QA3141,B101175,2025-03-04,Pass,All parameters nominal.
+QA3142,B100716,2025-01-23,Pass,"Batch within spec, no deviations."
+QA3143,B100819,2025-01-26,Watch,"Slight temperature deviation, monitored."
+QA3144,B100447,2024-06-19,Pass,"QA passed, standard fat content."
+QA3145,B102081,2024-07-13,Fail,Fill volume below tolerance.
+QA3146,B101060,2025-03-19,Pass,"Batch within spec, no deviations."
+QA3147,B100375,2024-10-09,Pass,All parameters nominal.
+QA3148,B100274,2025-03-02,Pass,"Batch within spec, no deviations."
+QA3149,B102321,2024-12-13,Pass,All parameters nominal.
+QA3150,B100012,2024-09-06,Pass,All parameters nominal.
+QA3151,B100781,2024-01-25,Watch,"Slight temperature deviation, monitored."
+QA3152,B100121,2023-11-29,Pass,All parameters nominal.
+QA3153,B102548,2024-12-11,Pass,"Batch within spec, no deviations."
+QA3154,B101788,2024-08-04,Pass,"QA passed, standard fat content."
+QA3155,B101491,2024-02-18,Pass,"QA passed, standard fat content."
+QA3156,B101583,2024-10-28,Pass,"Batch within spec, no deviations."
+QA3157,B102159,2024-03-08,Pass,"QA passed, standard fat content."
+QA3158,B100108,2024-06-19,Pass,"Batch within spec, no deviations."
+QA3159,B101486,2024-01-20,Fail,Packaging seal defect detected.
+QA3160,B102945,2023-09-23,Pass,"Batch within spec, no deviations."
+QA3161,B101701,2024-02-19,Pass,"Batch within spec, no deviations."
+QA3162,B101943,2023-12-26,Pass,"Batch within spec, no deviations."
+QA3163,B102874,2023-09-28,Pass,"Batch within spec, no deviations."
+QA3164,B102726,2023-07-29,Pass,"Batch within spec, no deviations."
+QA3165,B102370,2025-04-12,Pass,"Batch within spec, no deviations."
+QA3166,B102679,2023-07-06,Pass,"QA passed, standard fat content."
+QA3167,B101880,2024-11-26,Pass,"Batch within spec, no deviations."
+QA3168,B102200,2024-06-11,Pass,All parameters nominal.
+QA3169,B101319,2024-09-07,Pass,All parameters nominal.
+QA3170,B101954,2024-04-22,Pass,"Batch within spec, no deviations."
+QA3171,B102645,2025-01-30,Pass,"Batch within spec, no deviations."
+QA3172,B102818,2025-02-15,Pass,"QA passed, standard fat content."
+QA3173,B102337,2024-09-02,Fail,Fill volume below tolerance.
+QA3174,B101076,2024-01-02,Pass,All parameters nominal.
+QA3175,B102459,2025-04-05,Watch,"Slight temperature deviation, monitored."
+QA3176,B102469,2024-03-02,Pass,All parameters nominal.
+QA3177,B101436,2025-04-14,Pass,All parameters nominal.
+QA3178,B100156,2024-06-13,Pass,All parameters nominal.
+QA3179,B100343,2023-10-04,Pass,"Batch within spec, no deviations."
+QA3180,B101255,2024-09-26,Pass,All parameters nominal.
+QA3181,B100786,2024-02-11,Pass,"QA passed, standard fat content."
+QA3182,B100791,2024-08-27,Pass,"Batch within spec, no deviations."
+QA3183,B100502,2025-02-03,Pass,"QA passed, standard fat content."
+QA3184,B100689,2023-08-12,Watch,"Minor visual defect, within limit."
+QA3185,B101798,2023-06-29,Pass,"QA passed, standard fat content."
+QA3186,B102363,2023-10-23,Pass,"QA passed, standard fat content."
+QA3187,B100468,2025-02-06,Pass,"QA passed, standard fat content."
+QA3188,B101164,2023-11-24,Fail,Microbial count exceeded limit.
+QA3189,B100039,2024-02-02,Fail,Microbial count exceeded limit.
+QA3190,B102421,2024-11-26,Pass,"QA passed, standard fat content."
+QA3191,B101632,2024-07-17,Pass,All parameters nominal.
+QA3192,B100721,2024-02-23,Pass,All parameters nominal.
+QA3193,B101995,2024-06-25,Pass,All parameters nominal.
+QA3194,B102045,2025-03-11,Pass,All parameters nominal.
+QA3195,B100001,2024-11-02,Pass,"QA passed, standard fat content."
+QA3196,B100415,2024-07-05,Watch,"Borderline pH, passed with note."
+QA3197,B101517,2023-06-27,Pass,All parameters nominal.
+QA3198,B100015,2025-03-28,Pass,"Batch within spec, no deviations."
+QA3199,B102673,2024-01-14,Pass,"QA passed, standard fat content."
+QA3200,B100930,2024-08-16,Pass,All parameters nominal.
+QA3201,B102838,2025-01-27,Pass,"Batch within spec, no deviations."
+QA3202,B100401,2025-01-03,Pass,"Batch within spec, no deviations."
+QA3203,B102628,2023-10-19,Watch,"Minor visual defect, within limit."
+QA3204,B101636,2024-04-25,Fail,Fill volume below tolerance.
+QA3205,B102850,2024-09-26,Pass,"Batch within spec, no deviations."
+QA3206,B100960,2025-04-23,Pass,"QA passed, standard fat content."
+QA3207,B100742,2024-12-21,Pass,"Batch within spec, no deviations."
+QA3208,B102888,2024-05-31,Pass,"QA passed, standard fat content."
+QA3209,B100800,2023-12-22,Pass,"QA passed, standard fat content."
+QA3210,B100144,2024-10-18,Pass,"Batch within spec, no deviations."
+QA3211,B101871,2025-04-05,Pass,All parameters nominal.
+QA3212,B102733,2024-08-02,Pass,"QA passed, standard fat content."
+QA3213,B100277,2023-08-09,Pass,All parameters nominal.
+QA3214,B101819,2024-11-11,Pass,"QA passed, standard fat content."
+QA3215,B100618,2024-01-01,Pass,All parameters nominal.
+QA3216,B100240,2024-02-16,Pass,All parameters nominal.
+QA3217,B101958,2024-09-08,Pass,"Batch within spec, no deviations."
+QA3218,B100719,2024-12-27,Pass,All parameters nominal.
+QA3219,B100977,2024-07-20,Pass,All parameters nominal.
+QA3220,B101081,2024-11-04,Pass,All parameters nominal.
+QA3221,B102778,2023-09-16,Pass,All parameters nominal.
+QA3222,B102281,2024-04-06,Pass,All parameters nominal.
+QA3223,B102094,2025-01-01,Pass,All parameters nominal.
+QA3224,B102145,2025-04-10,Pass,"Batch within spec, no deviations."
+QA3225,B100682,2024-12-05,Pass,All parameters nominal.
+QA3226,B102953,2025-04-01,Pass,All parameters nominal.
+QA3227,B101009,2024-07-11,Pass,"QA passed, standard fat content."
+QA3228,B101102,2023-11-14,Pass,"QA passed, standard fat content."
+QA3229,B101670,2024-06-05,Pass,All parameters nominal.
+QA3230,B102110,2025-04-19,Pass,"Batch within spec, no deviations."
+QA3231,B102588,2024-08-25,Pass,"QA passed, standard fat content."
+QA3232,B100221,2025-03-30,Fail,Microbial count exceeded limit.
+QA3233,B101652,2023-09-03,Pass,"Batch within spec, no deviations."
+QA3234,B102425,2024-09-24,Pass,"QA passed, standard fat content."
+QA3235,B102883,2024-05-04,Pass,"Batch within spec, no deviations."
+QA3236,B101070,2023-09-22,Pass,"QA passed, standard fat content."
+QA3237,B102444,2025-03-04,Pass,"QA passed, standard fat content."
+QA3238,B101255,2023-08-17,Pass,"QA passed, standard fat content."
+QA3239,B100223,2024-05-01,Pass,"QA passed, standard fat content."
+QA3240,B101169,2024-01-15,Watch,"Minor visual defect, within limit."
+QA3241,B102902,2024-10-20,Pass,"QA passed, standard fat content."
+QA3242,B100501,2024-09-25,Pass,All parameters nominal.
+QA3243,B102564,2024-03-31,Pass,"Batch within spec, no deviations."
+QA3244,B100883,2023-08-11,Pass,"Batch within spec, no deviations."
+QA3245,B100862,2023-06-20,Pass,All parameters nominal.
+QA3246,B100901,2024-09-09,Pass,All parameters nominal.
+QA3247,B100231,2024-04-11,Pass,All parameters nominal.
+QA3248,B101319,2023-12-14,Pass,All parameters nominal.
+QA3249,B101747,2024-10-16,Pass,"QA passed, standard fat content."
+QA3250,B100892,2023-08-30,Pass,"Batch within spec, no deviations."
+QA3251,B100645,2024-01-26,Pass,"Batch within spec, no deviations."
+QA3252,B102739,2024-03-18,Pass,"QA passed, standard fat content."
+QA3253,B100140,2024-03-16,Pass,"QA passed, standard fat content."
+QA3254,B100117,2024-08-08,Pass,"QA passed, standard fat content."
+QA3255,B101389,2024-10-21,Pass,All parameters nominal.
+QA3256,B100579,2025-03-04,Pass,All parameters nominal.
+QA3257,B102130,2023-08-28,Pass,All parameters nominal.
+QA3258,B102121,2024-10-31,Pass,"QA passed, standard fat content."
+QA3259,B100134,2024-12-02,Pass,"QA passed, standard fat content."
+QA3260,B101738,2024-12-18,Pass,All parameters nominal.
+QA3261,B100592,2024-10-08,Pass,All parameters nominal.
+QA3262,B100744,2023-12-08,Pass,"Batch within spec, no deviations."
+QA3263,B102676,2024-12-20,Pass,"Batch within spec, no deviations."
+QA3264,B100864,2023-06-11,Pass,All parameters nominal.
+QA3265,B102920,2023-08-03,Pass,All parameters nominal.
+QA3266,B101063,2024-05-29,Pass,"QA passed, standard fat content."
+QA3267,B100494,2023-12-30,Pass,"Batch within spec, no deviations."
+QA3268,B101870,2024-06-29,Pass,"QA passed, standard fat content."
+QA3269,B100752,2024-10-11,Pass,All parameters nominal.
+QA3270,B100479,2023-07-10,Fail,Microbial count exceeded limit.
+QA3271,B100415,2023-12-24,Pass,"Batch within spec, no deviations."
+QA3272,B101492,2024-05-14,Pass,"QA passed, standard fat content."
+QA3273,B100860,2023-06-15,Fail,Fill volume below tolerance.
+QA3274,B102835,2024-01-24,Pass,All parameters nominal.
+QA3275,B101077,2024-01-10,Pass,All parameters nominal.
+QA3276,B101083,2025-02-01,Pass,"Batch within spec, no deviations."
+QA3277,B102366,2024-07-17,Pass,"QA passed, standard fat content."
+QA3278,B100281,2024-05-15,Pass,"Batch within spec, no deviations."
+QA3279,B101639,2024-07-08,Pass,"Batch within spec, no deviations."
+QA3280,B102212,2024-12-20,Fail,Fill volume below tolerance.
+QA3281,B102344,2025-04-13,Watch,"Minor visual defect, within limit."
+QA3282,B100815,2023-10-08,Pass,All parameters nominal.
+QA3283,B100547,2024-05-19,Pass,All parameters nominal.
+QA3284,B102091,2024-06-26,Pass,"QA passed, standard fat content."
+QA3285,B102919,2024-10-21,Fail,Microbial count exceeded limit.
+QA3286,B102169,2023-09-26,Pass,"QA passed, standard fat content."
+QA3287,B101711,2025-01-10,Pass,"QA passed, standard fat content."
+QA3288,B100267,2024-07-26,Pass,All parameters nominal.
+QA3289,B100116,2024-01-14,Pass,"Batch within spec, no deviations."
+QA3290,B100529,2024-05-10,Pass,"QA passed, standard fat content."
+QA3291,B100548,2024-05-26,Pass,"Batch within spec, no deviations."
+QA3292,B102218,2024-11-26,Pass,"QA passed, standard fat content."
+QA3293,B100425,2023-07-11,Pass,"QA passed, standard fat content."
+QA3294,B101644,2024-07-06,Pass,"Batch within spec, no deviations."
+QA3295,B101058,2024-10-16,Pass,"Batch within spec, no deviations."
+QA3296,B100247,2024-01-15,Pass,All parameters nominal.
+QA3297,B100773,2024-10-30,Pass,"QA passed, standard fat content."
+QA3298,B100974,2023-08-31,Pass,All parameters nominal.
+QA3299,B100081,2024-06-18,Pass,All parameters nominal.
+QA3300,B100325,2024-03-22,Pass,All parameters nominal.
+QA3301,B100266,2024-07-28,Pass,"Batch within spec, no deviations."
+QA3302,B102171,2024-11-19,Pass,All parameters nominal.
+QA3303,B101760,2024-10-16,Pass,"Batch within spec, no deviations."
+QA3304,B101326,2024-01-27,Pass,"QA passed, standard fat content."
+QA3305,B100309,2025-03-13,Fail,Fill volume below tolerance.
+QA3306,B102463,2024-04-05,Pass,"Batch within spec, no deviations."
+QA3307,B100743,2024-03-26,Pass,"Batch within spec, no deviations."
+QA3308,B101301,2023-06-11,Pass,"Batch within spec, no deviations."
+QA3309,B101991,2025-04-04,Pass,All parameters nominal.
+QA3310,B102886,2024-12-19,Fail,Fill volume below tolerance.
+QA3311,B100198,2024-06-06,Fail,Microbial count exceeded limit.
+QA3312,B100487,2023-12-19,Pass,All parameters nominal.
+QA3313,B102711,2024-04-02,Watch,"Minor visual defect, within limit."
+QA3314,B101587,2024-07-17,Pass,All parameters nominal.
+QA3315,B102974,2024-03-24,Pass,"QA passed, standard fat content."
+QA3316,B102392,2023-12-06,Watch,"Minor visual defect, within limit."
+QA3317,B101630,2024-08-25,Pass,All parameters nominal.
+QA3318,B102905,2023-10-23,Pass,"Batch within spec, no deviations."
+QA3319,B102488,2025-03-09,Pass,"QA passed, standard fat content."
+QA3320,B102854,2025-03-06,Watch,"Slight temperature deviation, monitored."
+QA3321,B102270,2025-02-25,Pass,All parameters nominal.
+QA3322,B100365,2024-02-19,Pass,"Batch within spec, no deviations."
+QA3323,B100371,2024-09-27,Pass,"Batch within spec, no deviations."
+QA3324,B101483,2023-09-12,Pass,"QA passed, standard fat content."
+QA3325,B101805,2023-08-26,Pass,"QA passed, standard fat content."
+QA3326,B100399,2024-12-09,Fail,Packaging seal defect detected.
+QA3327,B102056,2024-12-01,Pass,"Batch within spec, no deviations."
+QA3328,B101487,2024-05-17,Pass,"QA passed, standard fat content."
+QA3329,B101654,2024-10-31,Pass,All parameters nominal.
+QA3330,B102131,2025-04-24,Pass,"Batch within spec, no deviations."
+QA3331,B101481,2024-12-12,Pass,"QA passed, standard fat content."
+QA3332,B102156,2024-04-13,Pass,All parameters nominal.
+QA3333,B100287,2024-05-24,Pass,"QA passed, standard fat content."
+QA3334,B101724,2024-06-20,Pass,"Batch within spec, no deviations."
+QA3335,B100543,2024-07-02,Pass,"Batch within spec, no deviations."
+QA3336,B101870,2023-07-03,Pass,"QA passed, standard fat content."
+QA3337,B102504,2024-11-25,Pass,"QA passed, standard fat content."
+QA3338,B102789,2025-01-28,Pass,"Batch within spec, no deviations."
+QA3339,B101588,2024-08-21,Pass,All parameters nominal.
+QA3340,B101385,2024-06-26,Pass,"QA passed, standard fat content."
+QA3341,B101090,2024-12-04,Pass,All parameters nominal.
+QA3342,B100731,2024-10-09,Pass,"Batch within spec, no deviations."
+QA3343,B100881,2023-06-19,Pass,"Batch within spec, no deviations."
+QA3344,B100293,2023-06-23,Pass,"QA passed, standard fat content."
+QA3345,B101646,2024-04-25,Pass,All parameters nominal.
+QA3346,B102278,2023-10-17,Pass,"QA passed, standard fat content."
+QA3347,B102199,2024-09-15,Pass,"QA passed, standard fat content."
+QA3348,B101681,2023-08-13,Watch,"Slight temperature deviation, monitored."
+QA3349,B100192,2024-09-17,Pass,"QA passed, standard fat content."
+QA3350,B101465,2023-12-16,Pass,"QA passed, standard fat content."
+QA3351,B102306,2024-09-17,Pass,All parameters nominal.
+QA3352,B102309,2024-07-11,Pass,"Batch within spec, no deviations."
+QA3353,B102098,2025-02-03,Watch,"Minor visual defect, within limit."
+QA3354,B100803,2024-08-15,Watch,"Borderline pH, passed with note."
+QA3355,B100277,2024-02-17,Pass,"QA passed, standard fat content."
+QA3356,B100936,2025-02-05,Pass,"QA passed, standard fat content."
+QA3357,B101658,2025-03-30,Watch,"Borderline pH, passed with note."
+QA3358,B100836,2025-02-27,Pass,"Batch within spec, no deviations."
+QA3359,B100379,2025-01-09,Fail,Microbial count exceeded limit.
+QA3360,B100386,2025-01-25,Fail,Packaging seal defect detected.
+QA3361,B101951,2024-07-28,Pass,All parameters nominal.
+QA3362,B100792,2025-03-14,Pass,All parameters nominal.
+QA3363,B102196,2024-06-26,Pass,All parameters nominal.
+QA3364,B100323,2024-07-26,Pass,"Batch within spec, no deviations."
+QA3365,B100368,2024-08-17,Pass,All parameters nominal.
+QA3366,B101061,2025-04-03,Fail,Packaging seal defect detected.
+QA3367,B101848,2025-02-02,Pass,"Batch within spec, no deviations."
+QA3368,B100567,2025-03-05,Pass,"QA passed, standard fat content."
+QA3369,B100534,2024-04-23,Pass,"Batch within spec, no deviations."
+QA3370,B101599,2024-02-10,Pass,"QA passed, standard fat content."
+QA3371,B102022,2023-12-31,Pass,All parameters nominal.
+QA3372,B102563,2024-01-29,Pass,"QA passed, standard fat content."
+QA3373,B102906,2024-09-03,Pass,"QA passed, standard fat content."
+QA3374,B101674,2024-01-31,Pass,All parameters nominal.
+QA3375,B100585,2025-04-19,Pass,"QA passed, standard fat content."
+QA3376,B101568,2023-06-10,Pass,"Batch within spec, no deviations."
+QA3377,B101337,2024-04-08,Fail,Packaging seal defect detected.
+QA3378,B101141,2024-12-06,Pass,"QA passed, standard fat content."
+QA3379,B101503,2024-05-10,Pass,All parameters nominal.
+QA3380,B100934,2023-10-11,Fail,Microbial count exceeded limit.
+QA3381,B100611,2024-12-18,Pass,"QA passed, standard fat content."
+QA3382,B100695,2024-07-16,Pass,"Batch within spec, no deviations."
+QA3383,B102675,2024-01-13,Pass,All parameters nominal.
+QA3384,B101147,2024-11-07,Pass,All parameters nominal.
+QA3385,B100274,2024-02-07,Pass,"QA passed, standard fat content."
+QA3386,B101833,2024-11-10,Watch,"Borderline pH, passed with note."
+QA3387,B100041,2024-03-09,Pass,All parameters nominal.
+QA3388,B101947,2024-01-05,Watch,"Slight temperature deviation, monitored."
+QA3389,B102619,2024-03-17,Watch,"Borderline pH, passed with note."
+QA3390,B102916,2024-09-23,Pass,"Batch within spec, no deviations."
+QA3391,B101557,2023-11-18,Pass,All parameters nominal.
+QA3392,B101653,2024-11-27,Fail,Fill volume below tolerance.
+QA3393,B100171,2024-03-19,Pass,"QA passed, standard fat content."
+QA3394,B100026,2024-12-08,Pass,"QA passed, standard fat content."
+QA3395,B100705,2025-02-02,Pass,"QA passed, standard fat content."
+QA3396,B102394,2024-12-12,Watch,"Slight temperature deviation, monitored."
+QA3397,B100111,2024-07-11,Pass,All parameters nominal.
+QA3398,B101971,2024-02-26,Pass,"QA passed, standard fat content."
+QA3399,B101639,2024-06-02,Pass,All parameters nominal.
+QA3400,B101385,2025-02-14,Pass,"Batch within spec, no deviations."
+QA3401,B101909,2023-11-25,Watch,"Minor visual defect, within limit."
+QA3402,B101531,2024-02-03,Pass,"Batch within spec, no deviations."
+QA3403,B100516,2024-05-17,Pass,All parameters nominal.
+QA3404,B101605,2023-09-10,Pass,"Batch within spec, no deviations."
+QA3405,B101584,2023-07-10,Pass,"QA passed, standard fat content."
+QA3406,B102900,2024-12-07,Pass,"Batch within spec, no deviations."
+QA3407,B100462,2024-04-01,Watch,"Slight temperature deviation, monitored."
+QA3408,B102718,2023-06-29,Pass,"Batch within spec, no deviations."
+QA3409,B101263,2024-01-24,Watch,"Slight temperature deviation, monitored."
+QA3410,B101810,2025-01-08,Pass,"Batch within spec, no deviations."
+QA3411,B101423,2025-04-01,Pass,All parameters nominal.
+QA3412,B101627,2024-10-12,Pass,All parameters nominal.
+QA3413,B102764,2024-11-12,Fail,Microbial count exceeded limit.
+QA3414,B102545,2023-07-04,Watch,"Borderline pH, passed with note."
+QA3415,B100376,2023-06-14,Pass,"QA passed, standard fat content."
+QA3416,B101048,2024-05-28,Pass,"QA passed, standard fat content."
+QA3417,B100557,2024-11-14,Fail,Packaging seal defect detected.
+QA3418,B102951,2023-09-24,Pass,"QA passed, standard fat content."
+QA3419,B100160,2024-12-09,Pass,"Batch within spec, no deviations."
+QA3420,B100559,2023-07-20,Pass,"Batch within spec, no deviations."
+QA3421,B100707,2025-03-31,Pass,"QA passed, standard fat content."
+QA3422,B100629,2023-07-23,Pass,"QA passed, standard fat content."
+QA3423,B102267,2024-05-16,Pass,"Batch within spec, no deviations."
+QA3424,B100475,2024-07-03,Pass,All parameters nominal.
+QA3425,B101102,2024-12-12,Pass,All parameters nominal.
+QA3426,B100909,2024-04-16,Watch,"Minor visual defect, within limit."
+QA3427,B100954,2023-10-18,Pass,"QA passed, standard fat content."
+QA3428,B102107,2024-05-14,Pass,"QA passed, standard fat content."
+QA3429,B102070,2024-07-08,Pass,All parameters nominal.
+QA3430,B100212,2023-10-21,Pass,"QA passed, standard fat content."
+QA3431,B102112,2023-09-27,Pass,"QA passed, standard fat content."
+QA3432,B102209,2025-01-28,Pass,All parameters nominal.
+QA3433,B102366,2024-02-22,Pass,"QA passed, standard fat content."
+QA3434,B100537,2023-11-02,Pass,All parameters nominal.
+QA3435,B101554,2023-12-03,Pass,"Batch within spec, no deviations."
+QA3436,B102283,2025-04-25,Pass,All parameters nominal.
+QA3437,B102597,2025-01-14,Pass,"Batch within spec, no deviations."
+QA3438,B101849,2023-09-18,Pass,"Batch within spec, no deviations."
+QA3439,B101775,2023-11-01,Pass,All parameters nominal.
+QA3440,B100266,2025-02-10,Pass,All parameters nominal.
+QA3441,B102013,2025-02-18,Pass,All parameters nominal.
+QA3442,B101814,2024-01-26,Pass,"Batch within spec, no deviations."
+QA3443,B102965,2024-10-05,Pass,"QA passed, standard fat content."
+QA3444,B102424,2025-03-09,Pass,"QA passed, standard fat content."
+QA3445,B100066,2023-12-01,Pass,"Batch within spec, no deviations."
+QA3446,B100455,2023-08-30,Pass,"Batch within spec, no deviations."
+QA3447,B101966,2024-02-21,Pass,"Batch within spec, no deviations."
+QA3448,B102180,2025-03-24,Pass,All parameters nominal.
+QA3449,B101604,2024-08-25,Pass,"QA passed, standard fat content."
+QA3450,B101239,2023-09-07,Fail,Fill volume below tolerance.
+QA3451,B100465,2024-05-08,Pass,"Batch within spec, no deviations."
+QA3452,B101118,2023-07-28,Pass,"QA passed, standard fat content."
+QA3453,B100414,2024-02-10,Pass,"QA passed, standard fat content."
+QA3454,B101113,2025-04-29,Pass,All parameters nominal.
+QA3455,B100858,2023-06-06,Pass,All parameters nominal.
+QA3456,B102366,2023-10-22,Pass,All parameters nominal.
+QA3457,B102997,2024-11-28,Pass,"Batch within spec, no deviations."
+QA3458,B101504,2025-03-13,Watch,"Minor visual defect, within limit."
+QA3459,B100902,2024-09-03,Pass,All parameters nominal.
+QA3460,B100589,2023-06-13,Pass,"Batch within spec, no deviations."
+QA3461,B101467,2024-02-09,Pass,"Batch within spec, no deviations."
+QA3462,B102091,2024-10-19,Pass,"QA passed, standard fat content."
+QA3463,B102573,2025-02-01,Pass,"QA passed, standard fat content."
+QA3464,B100943,2023-08-02,Pass,All parameters nominal.
+QA3465,B100309,2024-10-11,Pass,All parameters nominal.
+QA3466,B101910,2024-09-08,Pass,"QA passed, standard fat content."
+QA3467,B100020,2024-04-09,Watch,"Minor visual defect, within limit."
+QA3468,B100546,2024-05-29,Pass,All parameters nominal.
+QA3469,B100263,2024-03-16,Pass,"Batch within spec, no deviations."
+QA3470,B101151,2024-02-27,Pass,"Batch within spec, no deviations."
+QA3471,B101743,2023-08-03,Pass,"Batch within spec, no deviations."
+QA3472,B102192,2025-03-03,Pass,All parameters nominal.
+QA3473,B101678,2024-11-14,Pass,"Batch within spec, no deviations."
+QA3474,B102136,2024-07-19,Pass,"QA passed, standard fat content."
+QA3475,B102130,2023-08-19,Pass,"QA passed, standard fat content."
+QA3476,B102556,2024-05-02,Pass,All parameters nominal.
+QA3477,B100975,2023-09-05,Pass,"Batch within spec, no deviations."
+QA3478,B101454,2025-03-09,Watch,"Borderline pH, passed with note."
+QA3479,B102792,2024-02-23,Pass,"QA passed, standard fat content."
+QA3480,B100783,2024-09-07,Pass,"QA passed, standard fat content."
+QA3481,B101916,2024-12-05,Pass,All parameters nominal.
+QA3482,B102415,2025-01-15,Pass,All parameters nominal.
+QA3483,B101803,2025-04-25,Watch,"Borderline pH, passed with note."
+QA3484,B102594,2024-06-18,Watch,"Minor visual defect, within limit."
+QA3485,B100960,2025-02-18,Pass,"QA passed, standard fat content."
+QA3486,B102568,2025-01-14,Pass,All parameters nominal.
+QA3487,B101803,2024-09-04,Watch,"Borderline pH, passed with note."
+QA3488,B100008,2024-02-07,Pass,All parameters nominal.
+QA3489,B101154,2025-03-22,Pass,"Batch within spec, no deviations."
+QA3490,B100678,2024-06-15,Fail,Fill volume below tolerance.
+QA3491,B100831,2025-01-01,Watch,"Borderline pH, passed with note."
+QA3492,B101086,2025-01-25,Fail,Microbial count exceeded limit.
+QA3493,B102680,2024-04-18,Pass,"QA passed, standard fat content."
+QA3494,B101272,2024-01-15,Watch,"Borderline pH, passed with note."
+QA3495,B102914,2023-12-16,Pass,All parameters nominal.
+QA3496,B102221,2023-08-25,Pass,"QA passed, standard fat content."
+QA3497,B101909,2024-07-06,Pass,"Batch within spec, no deviations."
+QA3498,B100086,2024-02-11,Pass,"Batch within spec, no deviations."
+QA3499,B100153,2024-06-04,Pass,"QA passed, standard fat content."
+QA3500,B100119,2025-03-19,Fail,Packaging seal defect detected.
+QA3501,B100732,2023-07-01,Pass,All parameters nominal.
+QA3502,B102574,2024-10-11,Watch,"Borderline pH, passed with note."
+QA3503,B100401,2023-08-21,Watch,"Borderline pH, passed with note."
+QA3504,B101447,2025-03-25,Pass,"QA passed, standard fat content."
+QA3505,B102586,2023-08-24,Pass,All parameters nominal.
+QA3506,B100741,2025-01-16,Pass,"Batch within spec, no deviations."
+QA3507,B101193,2024-06-16,Pass,"Batch within spec, no deviations."
+QA3508,B100552,2024-11-04,Pass,"QA passed, standard fat content."
+QA3509,B100635,2024-12-29,Pass,All parameters nominal.
+QA3510,B100727,2024-03-11,Watch,"Borderline pH, passed with note."
+QA3511,B101367,2023-10-21,Pass,"QA passed, standard fat content."
+QA3512,B100655,2025-03-11,Pass,All parameters nominal.
+QA3513,B101688,2025-03-26,Pass,All parameters nominal.
+QA3514,B100245,2023-09-10,Pass,"QA passed, standard fat content."
+QA3515,B100853,2024-10-15,Pass,"QA passed, standard fat content."
+QA3516,B101410,2024-06-18,Pass,"QA passed, standard fat content."
+QA3517,B102486,2023-07-31,Watch,"Borderline pH, passed with note."
+QA3518,B102055,2024-02-15,Pass,"Batch within spec, no deviations."
+QA3519,B101640,2024-04-23,Pass,All parameters nominal.
+QA3520,B100116,2024-09-16,Watch,"Slight temperature deviation, monitored."
+QA3521,B100562,2024-06-07,Pass,"QA passed, standard fat content."
+QA3522,B100401,2024-07-04,Fail,Packaging seal defect detected.
+QA3523,B102850,2023-12-28,Watch,"Minor visual defect, within limit."
+QA3524,B101621,2024-09-27,Pass,"QA passed, standard fat content."
+QA3525,B102115,2025-01-18,Pass,"QA passed, standard fat content."
+QA3526,B102958,2023-09-19,Pass,"QA passed, standard fat content."
+QA3527,B102714,2023-06-14,Pass,"QA passed, standard fat content."
+QA3528,B100994,2023-12-24,Pass,"QA passed, standard fat content."
+QA3529,B101241,2024-03-09,Watch,"Borderline pH, passed with note."
+QA3530,B101586,2023-09-27,Pass,"QA passed, standard fat content."
+QA3531,B101784,2024-11-13,Pass,"QA passed, standard fat content."
+QA3532,B101013,2025-03-01,Pass,"Batch within spec, no deviations."
+QA3533,B101326,2023-11-23,Pass,"QA passed, standard fat content."
+QA3534,B102227,2024-12-08,Pass,"QA passed, standard fat content."
+QA3535,B100048,2023-08-24,Pass,"QA passed, standard fat content."
+QA3536,B102887,2023-09-15,Pass,All parameters nominal.
+QA3537,B101012,2024-05-31,Pass,"Batch within spec, no deviations."
+QA3538,B101183,2024-05-12,Pass,"QA passed, standard fat content."
+QA3539,B101103,2023-07-14,Pass,"Batch within spec, no deviations."
+QA3540,B100828,2025-04-02,Fail,Fill volume below tolerance.
+QA3541,B101376,2024-12-30,Pass,"Batch within spec, no deviations."
+QA3542,B101822,2023-06-27,Pass,"Batch within spec, no deviations."
+QA3543,B101658,2024-06-08,Pass,"Batch within spec, no deviations."
+QA3544,B101289,2023-07-03,Pass,"QA passed, standard fat content."
+QA3545,B102744,2025-01-02,Pass,"QA passed, standard fat content."
+QA3546,B100251,2024-12-10,Pass,All parameters nominal.
+QA3547,B102248,2024-02-12,Pass,"QA passed, standard fat content."
+QA3548,B102282,2024-08-08,Watch,"Slight temperature deviation, monitored."
+QA3549,B102614,2023-12-09,Pass,"Batch within spec, no deviations."
+QA3550,B101937,2023-09-12,Pass,"Batch within spec, no deviations."
+QA3551,B101004,2025-04-27,Pass,"QA passed, standard fat content."
+QA3552,B101514,2023-07-20,Pass,"QA passed, standard fat content."
+QA3553,B101610,2025-02-01,Pass,All parameters nominal.
+QA3554,B101976,2023-08-05,Pass,"Batch within spec, no deviations."
+QA3555,B101445,2024-06-06,Pass,"QA passed, standard fat content."
+QA3556,B102283,2024-09-20,Pass,"Batch within spec, no deviations."
+QA3557,B101434,2024-11-19,Pass,"Batch within spec, no deviations."
+QA3558,B101051,2025-03-01,Pass,"Batch within spec, no deviations."
+QA3559,B101902,2025-02-08,Pass,"Batch within spec, no deviations."
+QA3560,B100701,2025-01-02,Pass,"Batch within spec, no deviations."
+QA3561,B100936,2024-08-04,Watch,"Slight temperature deviation, monitored."
+QA3562,B101827,2024-08-04,Fail,Microbial count exceeded limit.
+QA3563,B100610,2023-09-30,Pass,"QA passed, standard fat content."
+QA3564,B101838,2024-05-15,Pass,All parameters nominal.
+QA3565,B100437,2023-08-06,Pass,"Batch within spec, no deviations."
+QA3566,B100610,2024-01-22,Pass,"QA passed, standard fat content."
+QA3567,B100104,2024-11-02,Pass,"Batch within spec, no deviations."
+QA3568,B102560,2023-11-02,Pass,All parameters nominal.
+QA3569,B101785,2023-11-04,Pass,All parameters nominal.
+QA3570,B100335,2024-09-19,Pass,All parameters nominal.
+QA3571,B101689,2025-02-08,Pass,"QA passed, standard fat content."
+QA3572,B101099,2025-01-15,Pass,All parameters nominal.
+QA3573,B101902,2023-11-22,Pass,"Batch within spec, no deviations."
+QA3574,B100800,2024-12-13,Pass,"Batch within spec, no deviations."
+QA3575,B101854,2024-07-04,Pass,"QA passed, standard fat content."
+QA3576,B100525,2024-04-06,Pass,"QA passed, standard fat content."
+QA3577,B102093,2024-10-22,Pass,All parameters nominal.
+QA3578,B101765,2023-06-14,Watch,"Minor visual defect, within limit."
+QA3579,B101856,2024-04-20,Pass,"Batch within spec, no deviations."
+QA3580,B100164,2024-11-20,Pass,"Batch within spec, no deviations."
+QA3581,B100554,2024-03-28,Pass,"Batch within spec, no deviations."
+QA3582,B102227,2023-10-11,Watch,"Slight temperature deviation, monitored."
+QA3583,B100364,2024-11-08,Fail,Microbial count exceeded limit.
+QA3584,B102738,2024-08-01,Pass,"QA passed, standard fat content."
+QA3585,B101916,2025-03-15,Pass,"Batch within spec, no deviations."
+QA3586,B100540,2023-11-28,Pass,All parameters nominal.
+QA3587,B101739,2024-01-17,Pass,"Batch within spec, no deviations."
+QA3588,B100328,2023-10-09,Pass,"QA passed, standard fat content."
+QA3589,B102057,2025-01-03,Pass,"Batch within spec, no deviations."
+QA3590,B101491,2023-11-21,Pass,"Batch within spec, no deviations."
+QA3591,B100747,2023-08-11,Pass,"QA passed, standard fat content."
+QA3592,B100969,2025-01-25,Pass,"QA passed, standard fat content."
+QA3593,B100735,2023-11-23,Watch,"Slight temperature deviation, monitored."
+QA3594,B100522,2023-11-30,Pass,"Batch within spec, no deviations."
+QA3595,B102539,2023-06-09,Pass,All parameters nominal.
+QA3596,B102094,2024-06-29,Pass,"Batch within spec, no deviations."
+QA3597,B100185,2024-10-29,Pass,All parameters nominal.
+QA3598,B101059,2023-09-03,Pass,"QA passed, standard fat content."
+QA3599,B101508,2023-12-22,Pass,"Batch within spec, no deviations."
+QA3600,B101729,2024-01-06,Pass,"Batch within spec, no deviations."
+QA3601,B102023,2024-07-24,Pass,"QA passed, standard fat content."
+QA3602,B102085,2024-03-30,Pass,"QA passed, standard fat content."
+QA3603,B101432,2023-08-13,Pass,"QA passed, standard fat content."
+QA3604,B102249,2024-10-30,Pass,"QA passed, standard fat content."
+QA3605,B102528,2024-07-10,Watch,"Minor visual defect, within limit."
+QA3606,B101481,2024-06-25,Pass,"Batch within spec, no deviations."
+QA3607,B102490,2023-09-10,Pass,"QA passed, standard fat content."
+QA3608,B102351,2024-05-23,Fail,Microbial count exceeded limit.
+QA3609,B101216,2024-06-06,Watch,"Minor visual defect, within limit."
+QA3610,B102044,2024-03-28,Pass,"Batch within spec, no deviations."
+QA3611,B102565,2025-04-11,Pass,"Batch within spec, no deviations."
+QA3612,B100158,2023-11-19,Pass,All parameters nominal.
+QA3613,B101193,2024-09-30,Pass,"Batch within spec, no deviations."
+QA3614,B100767,2023-12-26,Pass,All parameters nominal.
+QA3615,B102024,2023-11-19,Pass,"Batch within spec, no deviations."
+QA3616,B102896,2024-09-29,Pass,"QA passed, standard fat content."
+QA3617,B102097,2024-09-05,Pass,"Batch within spec, no deviations."
+QA3618,B102474,2024-03-02,Pass,"QA passed, standard fat content."
+QA3619,B101424,2024-04-10,Pass,All parameters nominal.
+QA3620,B101701,2025-04-27,Pass,"Batch within spec, no deviations."
+QA3621,B102105,2023-12-05,Pass,All parameters nominal.
+QA3622,B101229,2025-01-08,Pass,All parameters nominal.
+QA3623,B102632,2024-07-08,Fail,Microbial count exceeded limit.
+QA3624,B100005,2025-01-21,Watch,"Borderline pH, passed with note."
+QA3625,B102132,2024-05-12,Pass,All parameters nominal.
+QA3626,B101360,2023-11-25,Pass,"QA passed, standard fat content."
+QA3627,B102956,2023-09-10,Fail,Packaging seal defect detected.
+QA3628,B100290,2025-01-20,Pass,All parameters nominal.
+QA3629,B100308,2024-04-16,Pass,"QA passed, standard fat content."
+QA3630,B100982,2024-01-24,Pass,"Batch within spec, no deviations."
+QA3631,B102290,2024-10-15,Pass,All parameters nominal.
+QA3632,B101363,2024-10-20,Fail,Packaging seal defect detected.
+QA3633,B102337,2024-11-08,Pass,"QA passed, standard fat content."
+QA3634,B102828,2024-05-16,Pass,"Batch within spec, no deviations."
+QA3635,B101607,2024-12-30,Pass,All parameters nominal.
+QA3636,B102401,2024-07-11,Pass,All parameters nominal.
+QA3637,B100879,2025-02-27,Pass,All parameters nominal.
+QA3638,B101557,2024-08-16,Pass,"QA passed, standard fat content."
+QA3639,B102274,2023-12-15,Pass,All parameters nominal.
+QA3640,B102969,2024-02-16,Pass,All parameters nominal.
+QA3641,B101256,2024-09-19,Pass,All parameters nominal.
+QA3642,B102489,2025-04-08,Pass,"Batch within spec, no deviations."
+QA3643,B100404,2024-10-13,Pass,"Batch within spec, no deviations."
+QA3644,B102599,2024-05-06,Pass,All parameters nominal.
+QA3645,B100532,2024-02-26,Pass,"QA passed, standard fat content."
+QA3646,B102317,2024-10-12,Pass,All parameters nominal.
+QA3647,B101133,2025-01-28,Pass,"QA passed, standard fat content."
+QA3648,B102174,2024-11-30,Watch,"Slight temperature deviation, monitored."
+QA3649,B100352,2025-01-22,Pass,All parameters nominal.
+QA3650,B101108,2024-05-18,Watch,"Minor visual defect, within limit."
+QA3651,B102906,2024-04-18,Pass,"QA passed, standard fat content."
+QA3652,B101591,2023-06-30,Pass,"QA passed, standard fat content."
+QA3653,B101480,2023-07-29,Pass,"QA passed, standard fat content."
+QA3654,B100934,2024-01-08,Pass,All parameters nominal.
+QA3655,B102909,2023-07-19,Pass,All parameters nominal.
+QA3656,B101439,2025-03-25,Pass,"QA passed, standard fat content."
+QA3657,B102171,2025-02-28,Watch,"Slight temperature deviation, monitored."
+QA3658,B101765,2024-10-08,Pass,"QA passed, standard fat content."
+QA3659,B102064,2023-07-29,Pass,"Batch within spec, no deviations."
+QA3660,B101529,2024-04-26,Pass,"QA passed, standard fat content."
+QA3661,B101465,2024-07-10,Pass,"Batch within spec, no deviations."
+QA3662,B100148,2025-03-26,Pass,"QA passed, standard fat content."
+QA3663,B102933,2023-12-28,Pass,All parameters nominal.
+QA3664,B100955,2023-08-04,Watch,"Borderline pH, passed with note."
+QA3665,B100189,2024-05-23,Pass,"Batch within spec, no deviations."
+QA3666,B101077,2025-02-28,Pass,"QA passed, standard fat content."
+QA3667,B101299,2023-06-04,Pass,All parameters nominal.
+QA3668,B100166,2024-09-11,Pass,"Batch within spec, no deviations."
+QA3669,B101821,2023-07-06,Pass,"QA passed, standard fat content."
+QA3670,B100499,2024-04-14,Watch,"Slight temperature deviation, monitored."
+QA3671,B100293,2025-01-30,Watch,"Slight temperature deviation, monitored."
+QA3672,B100988,2024-01-14,Pass,"Batch within spec, no deviations."
+QA3673,B102492,2023-11-02,Pass,All parameters nominal.
+QA3674,B102742,2023-07-06,Watch,"Borderline pH, passed with note."
+QA3675,B100415,2023-06-27,Pass,"QA passed, standard fat content."
+QA3676,B100157,2024-03-29,Pass,"QA passed, standard fat content."
+QA3677,B102703,2023-08-21,Pass,"QA passed, standard fat content."
+QA3678,B101282,2025-03-05,Pass,"QA passed, standard fat content."
+QA3679,B102364,2025-04-30,Fail,Microbial count exceeded limit.
+QA3680,B101899,2023-12-10,Pass,"QA passed, standard fat content."
+QA3681,B100766,2025-04-08,Pass,All parameters nominal.
+QA3682,B102305,2025-03-07,Pass,"QA passed, standard fat content."
+QA3683,B102563,2024-07-24,Pass,All parameters nominal.
+QA3684,B100425,2024-08-15,Pass,All parameters nominal.
+QA3685,B102294,2023-10-08,Pass,All parameters nominal.
+QA3686,B100393,2023-06-07,Pass,"Batch within spec, no deviations."
+QA3687,B101331,2023-11-17,Pass,"QA passed, standard fat content."
+QA3688,B100975,2024-06-07,Pass,All parameters nominal.
+QA3689,B100270,2023-11-29,Pass,"Batch within spec, no deviations."
+QA3690,B101814,2025-02-11,Pass,"Batch within spec, no deviations."
+QA3691,B100975,2023-08-21,Pass,"Batch within spec, no deviations."
+QA3692,B100313,2025-01-16,Pass,"Batch within spec, no deviations."
+QA3693,B101720,2023-10-07,Pass,All parameters nominal.
+QA3694,B101065,2023-11-14,Pass,"Batch within spec, no deviations."
+QA3695,B100180,2024-04-04,Pass,"QA passed, standard fat content."
+QA3696,B100573,2024-05-15,Pass,"QA passed, standard fat content."
+QA3697,B101199,2024-01-26,Fail,Packaging seal defect detected.
+QA3698,B102323,2024-03-23,Pass,"Batch within spec, no deviations."
+QA3699,B101219,2025-02-27,Pass,All parameters nominal.
+QA3700,B102662,2024-08-29,Pass,All parameters nominal.
+QA3701,B102020,2023-08-11,Watch,"Slight temperature deviation, monitored."
+QA3702,B101942,2024-05-27,Pass,"Batch within spec, no deviations."
+QA3703,B100115,2024-08-13,Pass,"QA passed, standard fat content."
+QA3704,B102081,2025-02-02,Pass,"QA passed, standard fat content."
+QA3705,B102823,2025-03-01,Pass,"Batch within spec, no deviations."
+QA3706,B102693,2024-03-10,Fail,Fill volume below tolerance.
+QA3707,B102256,2024-10-10,Pass,"QA passed, standard fat content."
+QA3708,B100953,2024-05-24,Pass,"QA passed, standard fat content."
+QA3709,B101041,2024-05-14,Watch,"Minor visual defect, within limit."
+QA3710,B100489,2023-08-13,Pass,"Batch within spec, no deviations."
+QA3711,B100449,2025-01-10,Pass,"Batch within spec, no deviations."
+QA3712,B101521,2024-09-20,Pass,"QA passed, standard fat content."
+QA3713,B102187,2024-08-22,Pass,"Batch within spec, no deviations."
+QA3714,B102257,2024-10-09,Pass,All parameters nominal.
+QA3715,B100182,2023-07-05,Pass,"Batch within spec, no deviations."
+QA3716,B100221,2025-02-23,Watch,"Minor visual defect, within limit."
+QA3717,B101876,2024-08-16,Pass,All parameters nominal.
+QA3718,B100648,2023-11-08,Pass,"Batch within spec, no deviations."
+QA3719,B100817,2024-12-28,Pass,All parameters nominal.
+QA3720,B101295,2024-06-08,Pass,"Batch within spec, no deviations."
+QA3721,B101234,2025-03-04,Pass,"Batch within spec, no deviations."
+QA3722,B100981,2025-03-24,Pass,All parameters nominal.
+QA3723,B100816,2024-05-04,Pass,"Batch within spec, no deviations."
+QA3724,B102795,2023-12-15,Watch,"Slight temperature deviation, monitored."
+QA3725,B100217,2023-08-01,Watch,"Minor visual defect, within limit."
+QA3726,B100198,2025-03-17,Pass,All parameters nominal.
+QA3727,B102803,2025-03-26,Pass,All parameters nominal.
+QA3728,B101359,2024-08-19,Pass,"QA passed, standard fat content."
+QA3729,B100836,2025-01-01,Pass,"QA passed, standard fat content."
+QA3730,B101787,2023-11-22,Pass,"QA passed, standard fat content."
+QA3731,B100837,2023-10-06,Watch,"Minor visual defect, within limit."
+QA3732,B100170,2023-07-16,Pass,All parameters nominal.
+QA3733,B100321,2024-02-11,Pass,"Batch within spec, no deviations."
+QA3734,B101544,2024-01-20,Pass,"QA passed, standard fat content."
+QA3735,B102709,2024-01-29,Pass,All parameters nominal.
+QA3736,B101354,2023-10-20,Pass,"QA passed, standard fat content."
+QA3737,B100988,2023-09-14,Pass,"QA passed, standard fat content."
+QA3738,B100049,2023-12-03,Pass,All parameters nominal.
+QA3739,B101621,2025-02-13,Pass,"QA passed, standard fat content."
+QA3740,B100268,2024-08-24,Watch,"Borderline pH, passed with note."
+QA3741,B100387,2024-07-27,Pass,All parameters nominal.
+QA3742,B100234,2024-08-08,Pass,All parameters nominal.
+QA3743,B100053,2025-02-05,Watch,"Slight temperature deviation, monitored."
+QA3744,B101493,2025-04-10,Fail,Fill volume below tolerance.
+QA3745,B101244,2024-05-02,Pass,"Batch within spec, no deviations."
+QA3746,B100085,2023-09-27,Pass,"Batch within spec, no deviations."
+QA3747,B101194,2023-09-06,Pass,"Batch within spec, no deviations."
+QA3748,B102783,2024-11-16,Pass,"Batch within spec, no deviations."
+QA3749,B102939,2023-06-15,Pass,"QA passed, standard fat content."
+QA3750,B100777,2024-09-19,Pass,All parameters nominal.
+QA3751,B100962,2025-02-15,Pass,"QA passed, standard fat content."
+QA3752,B102899,2024-07-15,Pass,"QA passed, standard fat content."
+QA3753,B102484,2024-08-18,Pass,"QA passed, standard fat content."
+QA3754,B102958,2025-02-21,Fail,Microbial count exceeded limit.
+QA3755,B102140,2023-09-06,Pass,"Batch within spec, no deviations."
+QA3756,B102931,2024-04-27,Pass,"Batch within spec, no deviations."
+QA3757,B101822,2024-06-19,Fail,Microbial count exceeded limit.
+QA3758,B102651,2023-10-11,Fail,Microbial count exceeded limit.
+QA3759,B100103,2024-01-14,Pass,All parameters nominal.
+QA3760,B100544,2024-06-16,Pass,All parameters nominal.
+QA3761,B100984,2024-05-21,Pass,"QA passed, standard fat content."
+QA3762,B101384,2025-03-23,Pass,All parameters nominal.
+QA3763,B100057,2024-09-18,Pass,All parameters nominal.
+QA3764,B100206,2024-07-20,Watch,"Slight temperature deviation, monitored."
+QA3765,B102092,2024-06-26,Pass,All parameters nominal.
+QA3766,B102159,2025-02-18,Watch,"Slight temperature deviation, monitored."
+QA3767,B101462,2025-02-08,Pass,All parameters nominal.
+QA3768,B101628,2024-09-17,Watch,"Borderline pH, passed with note."
+QA3769,B101760,2024-11-07,Pass,All parameters nominal.
+QA3770,B100182,2023-07-01,Pass,"QA passed, standard fat content."
+QA3771,B102732,2024-02-10,Pass,"Batch within spec, no deviations."
+QA3772,B102622,2023-06-18,Pass,All parameters nominal.
+QA3773,B100531,2023-09-16,Pass,All parameters nominal.
+QA3774,B102719,2023-09-28,Pass,"Batch within spec, no deviations."
+QA3775,B100247,2024-07-15,Pass,"QA passed, standard fat content."
+QA3776,B100435,2025-03-05,Pass,All parameters nominal.
+QA3777,B101862,2023-10-01,Pass,All parameters nominal.
+QA3778,B101323,2025-04-20,Pass,"Batch within spec, no deviations."
+QA3779,B102116,2024-02-04,Pass,"Batch within spec, no deviations."
+QA3780,B102065,2024-11-08,Pass,"Batch within spec, no deviations."
+QA3781,B102881,2024-06-18,Pass,"QA passed, standard fat content."
+QA3782,B100522,2025-03-17,Pass,All parameters nominal.
+QA3783,B102564,2025-04-08,Pass,All parameters nominal.
+QA3784,B100986,2024-07-02,Pass,"QA passed, standard fat content."
+QA3785,B100148,2023-12-07,Pass,"Batch within spec, no deviations."
+QA3786,B100902,2025-02-23,Watch,"Slight temperature deviation, monitored."
+QA3787,B102268,2024-08-16,Pass,"QA passed, standard fat content."
+QA3788,B101819,2024-05-07,Pass,All parameters nominal.
+QA3789,B100850,2023-10-04,Pass,"Batch within spec, no deviations."
+QA3790,B102832,2025-02-22,Pass,"Batch within spec, no deviations."
+QA3791,B100437,2025-04-19,Pass,All parameters nominal.
+QA3792,B102972,2023-09-21,Pass,"QA passed, standard fat content."
+QA3793,B101339,2024-12-21,Pass,"Batch within spec, no deviations."
+QA3794,B100121,2025-03-20,Pass,"Batch within spec, no deviations."
+QA3795,B101370,2025-04-17,Pass,All parameters nominal.
+QA3796,B102768,2024-05-12,Pass,"Batch within spec, no deviations."
+QA3797,B102557,2023-10-26,Pass,All parameters nominal.
+QA3798,B101093,2023-09-02,Pass,"QA passed, standard fat content."
+QA3799,B102513,2024-07-15,Pass,All parameters nominal.
+QA3800,B100564,2023-08-29,Pass,"Batch within spec, no deviations."
+QA3801,B101137,2024-10-03,Pass,All parameters nominal.
+QA3802,B102766,2023-07-29,Pass,"QA passed, standard fat content."
+QA3803,B100518,2023-09-16,Fail,Packaging seal defect detected.
+QA3804,B101323,2025-01-13,Pass,"Batch within spec, no deviations."
+QA3805,B100257,2024-05-18,Pass,All parameters nominal.
+QA3806,B100861,2024-05-26,Pass,All parameters nominal.
+QA3807,B100646,2024-05-15,Pass,"Batch within spec, no deviations."
+QA3808,B102290,2024-05-10,Pass,"QA passed, standard fat content."
+QA3809,B102639,2025-02-16,Pass,"Batch within spec, no deviations."
+QA3810,B101338,2023-11-14,Pass,"QA passed, standard fat content."
+QA3811,B101949,2025-02-20,Fail,Fill volume below tolerance.
+QA3812,B100533,2024-11-06,Pass,"Batch within spec, no deviations."
+QA3813,B102085,2025-04-28,Pass,"Batch within spec, no deviations."
+QA3814,B102302,2023-09-26,Pass,All parameters nominal.
+QA3815,B100090,2023-11-24,Pass,"Batch within spec, no deviations."
+QA3816,B100348,2024-09-23,Pass,All parameters nominal.
+QA3817,B100301,2024-04-20,Pass,"QA passed, standard fat content."
+QA3818,B100139,2024-10-16,Pass,"QA passed, standard fat content."
+QA3819,B100181,2024-04-06,Pass,All parameters nominal.
+QA3820,B102923,2024-06-10,Pass,All parameters nominal.
+QA3821,B102542,2024-04-27,Watch,"Borderline pH, passed with note."
+QA3822,B101443,2023-12-05,Pass,"Batch within spec, no deviations."
+QA3823,B102327,2025-03-15,Watch,"Borderline pH, passed with note."
+QA3824,B100046,2024-11-06,Pass,"Batch within spec, no deviations."
+QA3825,B100678,2024-12-01,Pass,"Batch within spec, no deviations."
+QA3826,B102634,2024-08-18,Watch,"Minor visual defect, within limit."
+QA3827,B100083,2023-06-27,Pass,"QA passed, standard fat content."
+QA3828,B102683,2024-07-13,Pass,All parameters nominal.
+QA3829,B102517,2023-06-20,Watch,"Borderline pH, passed with note."
+QA3830,B100251,2025-03-13,Watch,"Borderline pH, passed with note."
+QA3831,B102351,2025-04-30,Fail,Microbial count exceeded limit.
+QA3832,B100787,2024-07-18,Fail,Fill volume below tolerance.
+QA3833,B101318,2024-12-11,Pass,"QA passed, standard fat content."
+QA3834,B101191,2025-02-10,Pass,All parameters nominal.
+QA3835,B102430,2024-02-02,Pass,"Batch within spec, no deviations."
+QA3836,B102703,2024-12-01,Pass,"QA passed, standard fat content."
+QA3837,B101723,2023-09-14,Pass,"QA passed, standard fat content."
+QA3838,B102526,2025-01-03,Pass,All parameters nominal.
+QA3839,B100170,2025-01-17,Pass,All parameters nominal.
+QA3840,B101545,2023-10-29,Pass,All parameters nominal.
+QA3841,B102074,2024-03-12,Pass,"QA passed, standard fat content."
+QA3842,B102534,2024-06-14,Pass,"QA passed, standard fat content."
+QA3843,B101986,2025-04-22,Pass,"QA passed, standard fat content."
+QA3844,B100000,2024-09-21,Pass,"Batch within spec, no deviations."
+QA3845,B101041,2024-02-20,Pass,"Batch within spec, no deviations."
+QA3846,B101482,2024-06-29,Watch,"Slight temperature deviation, monitored."
+QA3847,B102063,2024-01-11,Pass,"QA passed, standard fat content."
+QA3848,B102372,2024-05-25,Pass,"Batch within spec, no deviations."
+QA3849,B100516,2024-06-02,Pass,All parameters nominal.
+QA3850,B100446,2023-11-03,Pass,"Batch within spec, no deviations."
+QA3851,B100386,2024-10-04,Pass,"Batch within spec, no deviations."
+QA3852,B101890,2024-12-07,Pass,"Batch within spec, no deviations."
+QA3853,B100885,2024-01-31,Pass,All parameters nominal.
+QA3854,B101106,2023-06-28,Pass,"QA passed, standard fat content."
+QA3855,B102647,2024-04-19,Watch,"Minor visual defect, within limit."
+QA3856,B102339,2024-09-16,Pass,"Batch within spec, no deviations."
+QA3857,B101870,2024-04-11,Pass,All parameters nominal.
+QA3858,B100290,2024-09-26,Pass,"Batch within spec, no deviations."
+QA3859,B102312,2023-09-07,Watch,"Borderline pH, passed with note."
+QA3860,B101252,2024-08-23,Fail,Fill volume below tolerance.
+QA3861,B102634,2024-04-17,Pass,All parameters nominal.
+QA3862,B100151,2024-05-10,Pass,"Batch within spec, no deviations."
+QA3863,B102921,2024-01-25,Pass,"Batch within spec, no deviations."
+QA3864,B102479,2025-01-12,Pass,All parameters nominal.
+QA3865,B102767,2025-04-27,Watch,"Borderline pH, passed with note."
+QA3866,B101767,2024-08-14,Pass,"QA passed, standard fat content."
+QA3867,B100894,2024-12-21,Pass,"Batch within spec, no deviations."
+QA3868,B102972,2024-09-26,Pass,"QA passed, standard fat content."
+QA3869,B100054,2023-10-17,Pass,All parameters nominal.
+QA3870,B101114,2024-09-22,Pass,All parameters nominal.
+QA3871,B100519,2023-07-05,Pass,"Batch within spec, no deviations."
+QA3872,B102592,2024-11-23,Pass,"Batch within spec, no deviations."
+QA3873,B100817,2023-08-27,Pass,All parameters nominal.
+QA3874,B102955,2024-03-22,Pass,"QA passed, standard fat content."
+QA3875,B101939,2025-03-26,Pass,"QA passed, standard fat content."
+QA3876,B100704,2024-06-26,Pass,"Batch within spec, no deviations."
+QA3877,B100365,2023-10-29,Pass,All parameters nominal.
+QA3878,B100787,2024-05-07,Pass,All parameters nominal.
+QA3879,B100683,2024-06-29,Pass,"Batch within spec, no deviations."
+QA3880,B102987,2023-07-29,Pass,"QA passed, standard fat content."
+QA3881,B102295,2025-03-29,Pass,All parameters nominal.
+QA3882,B102941,2023-10-20,Pass,"QA passed, standard fat content."
+QA3883,B100593,2023-10-25,Pass,All parameters nominal.
+QA3884,B102996,2024-03-02,Watch,"Minor visual defect, within limit."
+QA3885,B100951,2024-07-24,Pass,"QA passed, standard fat content."
+QA3886,B102843,2024-04-18,Pass,"QA passed, standard fat content."
+QA3887,B101542,2023-09-27,Pass,"Batch within spec, no deviations."
+QA3888,B100485,2024-01-13,Pass,"QA passed, standard fat content."
+QA3889,B100503,2023-06-27,Pass,All parameters nominal.
+QA3890,B101367,2024-05-06,Pass,"QA passed, standard fat content."
+QA3891,B101900,2023-10-15,Pass,All parameters nominal.
+QA3892,B100391,2025-03-31,Pass,"QA passed, standard fat content."
+QA3893,B102543,2024-09-08,Pass,All parameters nominal.
+QA3894,B100301,2025-02-25,Pass,"Batch within spec, no deviations."
+QA3895,B101541,2024-10-14,Pass,"QA passed, standard fat content."
+QA3896,B102686,2024-05-22,Watch,"Borderline pH, passed with note."
+QA3897,B101820,2024-11-05,Pass,"QA passed, standard fat content."
+QA3898,B102720,2024-12-29,Pass,"Batch within spec, no deviations."
+QA3899,B102227,2024-12-25,Watch,"Borderline pH, passed with note."
+QA3900,B101427,2023-09-11,Watch,"Minor visual defect, within limit."
+QA3901,B101998,2024-03-19,Pass,All parameters nominal.
+QA3902,B102129,2024-10-29,Pass,"QA passed, standard fat content."
+QA3903,B100250,2023-09-06,Pass,All parameters nominal.
+QA3904,B100192,2025-03-02,Pass,"Batch within spec, no deviations."
+QA3905,B102570,2025-01-14,Pass,"Batch within spec, no deviations."
+QA3906,B100057,2024-02-03,Fail,Microbial count exceeded limit.
+QA3907,B100475,2024-12-30,Pass,"QA passed, standard fat content."
+QA3908,B102803,2023-12-28,Pass,All parameters nominal.
+QA3909,B102082,2023-08-29,Pass,All parameters nominal.
+QA3910,B101515,2023-11-15,Pass,All parameters nominal.
+QA3911,B102862,2025-02-02,Pass,"QA passed, standard fat content."
+QA3912,B101331,2024-04-11,Pass,"Batch within spec, no deviations."
+QA3913,B101351,2024-01-20,Watch,"Slight temperature deviation, monitored."
+QA3914,B102612,2025-01-21,Pass,"Batch within spec, no deviations."
+QA3915,B100473,2025-01-26,Pass,All parameters nominal.
+QA3916,B101071,2023-10-30,Pass,"QA passed, standard fat content."
+QA3917,B102970,2024-11-30,Pass,"QA passed, standard fat content."
+QA3918,B102083,2024-08-19,Fail,Packaging seal defect detected.
+QA3919,B102720,2023-10-29,Pass,All parameters nominal.
+QA3920,B102103,2023-06-29,Fail,Fill volume below tolerance.
+QA3921,B100633,2024-06-30,Watch,"Borderline pH, passed with note."
+QA3922,B102810,2024-09-21,Pass,"Batch within spec, no deviations."
+QA3923,B100578,2025-02-27,Pass,All parameters nominal.
+QA3924,B101076,2023-07-01,Pass,All parameters nominal.
+QA3925,B100153,2024-10-13,Pass,"QA passed, standard fat content."
+QA3926,B102312,2024-02-14,Pass,All parameters nominal.
+QA3927,B102922,2024-06-19,Pass,All parameters nominal.
+QA3928,B100399,2023-12-24,Pass,"Batch within spec, no deviations."
+QA3929,B100787,2024-11-27,Pass,"QA passed, standard fat content."
+QA3930,B100962,2024-12-01,Pass,"Batch within spec, no deviations."
+QA3931,B102066,2024-04-03,Pass,"Batch within spec, no deviations."
+QA3932,B100195,2023-09-01,Pass,"QA passed, standard fat content."
+QA3933,B100046,2024-08-26,Fail,Packaging seal defect detected.
+QA3934,B100645,2024-11-30,Pass,All parameters nominal.
+QA3935,B102867,2024-01-17,Pass,All parameters nominal.
+QA3936,B102710,2024-09-11,Pass,"QA passed, standard fat content."
+QA3937,B101114,2023-10-21,Pass,All parameters nominal.
+QA3938,B100306,2025-01-05,Pass,"QA passed, standard fat content."
+QA3939,B101184,2023-08-12,Pass,"Batch within spec, no deviations."
+QA3940,B101957,2024-08-06,Pass,All parameters nominal.
+QA3941,B102236,2024-12-14,Pass,All parameters nominal.
+QA3942,B102455,2023-09-23,Pass,"Batch within spec, no deviations."
+QA3943,B102744,2023-07-18,Pass,"QA passed, standard fat content."
+QA3944,B102176,2023-09-28,Pass,"Batch within spec, no deviations."
+QA3945,B102435,2023-06-11,Fail,Microbial count exceeded limit.
+QA3946,B101637,2024-02-20,Pass,All parameters nominal.
+QA3947,B100316,2024-12-29,Pass,"QA passed, standard fat content."
+QA3948,B101624,2024-06-18,Pass,"Batch within spec, no deviations."
+QA3949,B100282,2024-10-11,Pass,All parameters nominal.
+QA3950,B101116,2025-02-01,Pass,"QA passed, standard fat content."
+QA3951,B102352,2024-06-24,Pass,"Batch within spec, no deviations."
+QA3952,B101027,2024-02-27,Pass,"QA passed, standard fat content."
+QA3953,B101875,2025-02-16,Pass,"Batch within spec, no deviations."
+QA3954,B102302,2024-09-28,Pass,All parameters nominal.
+QA3955,B102255,2024-10-19,Watch,"Minor visual defect, within limit."
+QA3956,B101998,2024-01-28,Pass,"Batch within spec, no deviations."
+QA3957,B100333,2024-09-06,Pass,"QA passed, standard fat content."
+QA3958,B100446,2023-07-24,Pass,All parameters nominal.
+QA3959,B100687,2024-09-13,Pass,All parameters nominal.
+QA3960,B101041,2024-02-26,Pass,"QA passed, standard fat content."
+QA3961,B102548,2024-03-31,Pass,All parameters nominal.
+QA3962,B100655,2024-12-21,Pass,"Batch within spec, no deviations."
+QA3963,B102891,2023-09-18,Watch,"Slight temperature deviation, monitored."
+QA3964,B102772,2023-11-04,Pass,"QA passed, standard fat content."
+QA3965,B102670,2024-11-01,Pass,"QA passed, standard fat content."
+QA3966,B102787,2024-01-25,Pass,"Batch within spec, no deviations."
+QA3967,B102290,2024-05-11,Pass,All parameters nominal.
+QA3968,B101627,2024-11-14,Pass,All parameters nominal.
+QA3969,B100638,2024-06-27,Pass,"Batch within spec, no deviations."
+QA3970,B100433,2025-03-03,Pass,"QA passed, standard fat content."
+QA3971,B100272,2024-07-24,Pass,"Batch within spec, no deviations."
+QA3972,B101608,2024-02-19,Pass,All parameters nominal.
+QA3973,B100773,2024-07-30,Pass,"QA passed, standard fat content."
+QA3974,B100254,2024-04-09,Pass,"Batch within spec, no deviations."
+QA3975,B101079,2024-09-21,Pass,"Batch within spec, no deviations."
+QA3976,B102374,2024-03-22,Pass,"Batch within spec, no deviations."
+QA3977,B101240,2024-03-29,Pass,All parameters nominal.
+QA3978,B101822,2023-12-12,Fail,Packaging seal defect detected.
+QA3979,B101071,2023-09-25,Pass,All parameters nominal.
+QA3980,B100339,2024-05-28,Pass,All parameters nominal.
+QA3981,B100554,2023-07-10,Pass,"Batch within spec, no deviations."
+QA3982,B100664,2024-03-15,Pass,"QA passed, standard fat content."
+QA3983,B102290,2025-01-06,Pass,"QA passed, standard fat content."
+QA3984,B102916,2024-05-25,Pass,"QA passed, standard fat content."
+QA3985,B101455,2024-01-31,Watch,"Borderline pH, passed with note."
+QA3986,B100439,2024-01-07,Pass,"Batch within spec, no deviations."
+QA3987,B102331,2025-04-03,Pass,"Batch within spec, no deviations."
+QA3988,B102680,2024-11-07,Pass,"Batch within spec, no deviations."
+QA3989,B102015,2024-03-17,Pass,"Batch within spec, no deviations."
+QA3990,B100856,2024-10-02,Pass,"Batch within spec, no deviations."
+QA3991,B101601,2024-11-05,Pass,All parameters nominal.
+QA3992,B102116,2025-03-22,Pass,"QA passed, standard fat content."
+QA3993,B101248,2023-12-19,Pass,"QA passed, standard fat content."
+QA3994,B102543,2024-07-21,Pass,"QA passed, standard fat content."
+QA3995,B102777,2024-05-24,Pass,"Batch within spec, no deviations."
+QA3996,B102903,2024-12-03,Pass,"Batch within spec, no deviations."
+QA3997,B101223,2023-07-13,Pass,"QA passed, standard fat content."
+QA3998,B102608,2025-04-08,Pass,"QA passed, standard fat content."
+QA3999,B101800,2025-02-13,Pass,"Batch within spec, no deviations."
+QA4000,B101820,2023-09-06,Fail,Fill volume below tolerance.
+QA4001,B102157,2023-12-03,Pass,"QA passed, standard fat content."
+QA4002,B100932,2024-01-09,Pass,"Batch within spec, no deviations."
+QA4003,B100535,2024-10-03,Pass,All parameters nominal.
+QA4004,B102800,2024-08-12,Pass,All parameters nominal.
+QA4005,B100337,2024-09-30,Pass,"QA passed, standard fat content."
+QA4006,B100458,2023-10-12,Pass,"Batch within spec, no deviations."
+QA4007,B101102,2024-12-21,Pass,"QA passed, standard fat content."
+QA4008,B101234,2025-03-02,Pass,All parameters nominal.
+QA4009,B102912,2024-04-18,Pass,All parameters nominal.
+QA4010,B102582,2023-06-19,Pass,"QA passed, standard fat content."
+QA4011,B101371,2025-03-08,Pass,"Batch within spec, no deviations."
+QA4012,B100885,2025-02-19,Pass,"QA passed, standard fat content."
+QA4013,B100054,2024-10-12,Fail,Microbial count exceeded limit.
+QA4014,B100995,2024-11-09,Pass,"Batch within spec, no deviations."
+QA4015,B101580,2023-12-02,Watch,"Borderline pH, passed with note."
+QA4016,B102865,2024-11-21,Fail,Microbial count exceeded limit.
+QA4017,B100815,2023-10-08,Pass,"QA passed, standard fat content."
+QA4018,B101065,2025-04-27,Pass,All parameters nominal.
+QA4019,B102168,2024-03-24,Pass,All parameters nominal.
+QA4020,B101931,2024-03-17,Pass,"Batch within spec, no deviations."
+QA4021,B102225,2023-12-25,Pass,"QA passed, standard fat content."
+QA4022,B100078,2023-11-22,Fail,Packaging seal defect detected.
+QA4023,B102187,2025-03-25,Pass,"Batch within spec, no deviations."
+QA4024,B100080,2023-09-20,Pass,"Batch within spec, no deviations."
+QA4025,B102360,2024-04-03,Pass,All parameters nominal.
+QA4026,B100492,2023-06-09,Watch,"Minor visual defect, within limit."
+QA4027,B102627,2024-06-11,Pass,"Batch within spec, no deviations."
+QA4028,B100238,2024-12-26,Pass,All parameters nominal.
+QA4029,B101104,2024-10-15,Pass,All parameters nominal.
+QA4030,B100881,2025-02-02,Pass,All parameters nominal.
+QA4031,B102473,2023-06-26,Watch,"Slight temperature deviation, monitored."
+QA4032,B101696,2024-04-02,Pass,"Batch within spec, no deviations."
+QA4033,B101224,2023-10-19,Pass,"Batch within spec, no deviations."
+QA4034,B100813,2024-02-01,Fail,Packaging seal defect detected.
+QA4035,B102741,2024-03-27,Watch,"Slight temperature deviation, monitored."
+QA4036,B101840,2024-07-16,Pass,"QA passed, standard fat content."
+QA4037,B102951,2024-06-17,Fail,Microbial count exceeded limit.
+QA4038,B100869,2023-06-12,Pass,"Batch within spec, no deviations."
+QA4039,B101243,2025-01-06,Pass,"QA passed, standard fat content."
+QA4040,B101984,2024-03-01,Pass,All parameters nominal.
+QA4041,B102553,2023-12-03,Pass,All parameters nominal.
+QA4042,B100612,2023-10-28,Pass,All parameters nominal.
+QA4043,B102607,2024-03-10,Pass,"QA passed, standard fat content."
+QA4044,B102294,2023-12-13,Pass,"Batch within spec, no deviations."
+QA4045,B102495,2023-08-11,Pass,"Batch within spec, no deviations."
+QA4046,B102015,2024-11-18,Pass,All parameters nominal.
+QA4047,B102750,2023-06-16,Pass,All parameters nominal.
+QA4048,B100178,2023-07-13,Watch,"Slight temperature deviation, monitored."
+QA4049,B100278,2023-06-03,Pass,"QA passed, standard fat content."
+QA4050,B100939,2024-08-14,Pass,All parameters nominal.
+QA4051,B102868,2023-07-13,Watch,"Borderline pH, passed with note."
+QA4052,B100035,2024-03-22,Pass,All parameters nominal.
+QA4053,B100937,2023-06-01,Pass,"QA passed, standard fat content."
+QA4054,B101891,2025-04-30,Pass,All parameters nominal.
+QA4055,B100494,2023-06-14,Pass,"QA passed, standard fat content."
+QA4056,B100851,2024-07-24,Pass,"Batch within spec, no deviations."
+QA4057,B100920,2025-03-30,Watch,"Minor visual defect, within limit."
+QA4058,B100419,2023-10-09,Pass,All parameters nominal.
+QA4059,B101465,2024-12-19,Pass,"Batch within spec, no deviations."
+QA4060,B102869,2024-08-10,Pass,"Batch within spec, no deviations."
+QA4061,B100283,2023-06-29,Pass,"QA passed, standard fat content."
+QA4062,B101167,2024-12-31,Pass,All parameters nominal.
+QA4063,B101735,2023-08-09,Pass,"QA passed, standard fat content."
+QA4064,B100347,2023-06-11,Pass,"Batch within spec, no deviations."
+QA4065,B100869,2024-09-07,Pass,"QA passed, standard fat content."
+QA4066,B101394,2025-04-27,Pass,"QA passed, standard fat content."
+QA4067,B102165,2024-12-01,Pass,"QA passed, standard fat content."
+QA4068,B101889,2024-02-23,Pass,"Batch within spec, no deviations."
+QA4069,B101914,2025-03-27,Pass,"QA passed, standard fat content."
+QA4070,B102342,2024-03-01,Pass,"QA passed, standard fat content."
+QA4071,B100131,2024-04-10,Pass,"QA passed, standard fat content."
+QA4072,B102775,2025-02-20,Pass,All parameters nominal.
+QA4073,B102662,2023-10-02,Pass,"Batch within spec, no deviations."
+QA4074,B101047,2023-11-22,Pass,"QA passed, standard fat content."
+QA4075,B102108,2023-12-14,Watch,"Minor visual defect, within limit."
+QA4076,B102253,2024-05-21,Pass,All parameters nominal.
+QA4077,B100164,2024-02-05,Pass,"Batch within spec, no deviations."
+QA4078,B100630,2023-07-30,Pass,All parameters nominal.
+QA4079,B101820,2024-01-16,Pass,"QA passed, standard fat content."
+QA4080,B100877,2023-06-21,Pass,"Batch within spec, no deviations."
+QA4081,B101795,2024-03-05,Pass,"Batch within spec, no deviations."
+QA4082,B100687,2024-10-19,Pass,"QA passed, standard fat content."
+QA4083,B100384,2023-10-31,Pass,"QA passed, standard fat content."
+QA4084,B101705,2023-08-28,Pass,"Batch within spec, no deviations."
+QA4085,B102070,2024-05-01,Pass,All parameters nominal.
+QA4086,B100587,2023-10-14,Pass,All parameters nominal.
+QA4087,B101408,2023-09-23,Watch,"Minor visual defect, within limit."
+QA4088,B100206,2024-08-15,Pass,All parameters nominal.
+QA4089,B101277,2025-02-08,Pass,"QA passed, standard fat content."
+QA4090,B100962,2024-08-16,Pass,"Batch within spec, no deviations."
+QA4091,B100545,2023-07-31,Pass,"QA passed, standard fat content."
+QA4092,B100052,2024-10-09,Fail,Microbial count exceeded limit.
+QA4093,B100335,2025-03-01,Pass,"QA passed, standard fat content."
+QA4094,B100299,2023-09-26,Pass,"QA passed, standard fat content."
+QA4095,B101427,2023-11-06,Pass,"QA passed, standard fat content."
+QA4096,B102796,2024-08-26,Pass,"Batch within spec, no deviations."
+QA4097,B102228,2024-05-26,Watch,"Slight temperature deviation, monitored."
+QA4098,B101683,2025-02-07,Pass,All parameters nominal.
+QA4099,B102577,2024-02-05,Pass,All parameters nominal.
+QA4100,B100231,2024-08-06,Pass,All parameters nominal.
+QA4101,B101421,2023-09-21,Fail,Packaging seal defect detected.
+QA4102,B101408,2025-04-26,Watch,"Slight temperature deviation, monitored."
+QA4103,B101250,2023-08-19,Pass,"Batch within spec, no deviations."
+QA4104,B101159,2023-10-22,Pass,"QA passed, standard fat content."
+QA4105,B100606,2024-04-15,Pass,"QA passed, standard fat content."
+QA4106,B102446,2024-08-31,Watch,"Minor visual defect, within limit."
+QA4107,B101726,2023-08-12,Watch,"Minor visual defect, within limit."
+QA4108,B102504,2025-02-04,Pass,"QA passed, standard fat content."
+QA4109,B101628,2024-06-18,Pass,All parameters nominal.
+QA4110,B100370,2024-07-21,Pass,"QA passed, standard fat content."
+QA4111,B102724,2024-04-25,Pass,All parameters nominal.
+QA4112,B102525,2024-12-23,Pass,"QA passed, standard fat content."
+QA4113,B100473,2024-07-28,Pass,"Batch within spec, no deviations."
+QA4114,B102264,2024-05-22,Pass,"Batch within spec, no deviations."
+QA4115,B102215,2024-04-24,Pass,"QA passed, standard fat content."
+QA4116,B100635,2024-12-20,Pass,All parameters nominal.
+QA4117,B102749,2023-12-12,Pass,"Batch within spec, no deviations."
+QA4118,B100868,2024-03-03,Pass,"QA passed, standard fat content."
+QA4119,B102110,2024-04-08,Pass,"QA passed, standard fat content."
+QA4120,B100494,2024-05-17,Pass,"QA passed, standard fat content."
+QA4121,B101672,2025-03-28,Pass,"QA passed, standard fat content."
+QA4122,B100137,2024-04-17,Pass,"QA passed, standard fat content."
+QA4123,B100840,2024-04-24,Pass,"Batch within spec, no deviations."
+QA4124,B100090,2025-03-12,Pass,All parameters nominal.
+QA4125,B102987,2025-01-06,Pass,All parameters nominal.
+QA4126,B102464,2025-02-06,Pass,"Batch within spec, no deviations."
+QA4127,B100276,2024-11-24,Watch,"Slight temperature deviation, monitored."
+QA4128,B102320,2023-08-28,Watch,"Minor visual defect, within limit."
+QA4129,B101374,2024-02-18,Pass,All parameters nominal.
+QA4130,B100284,2023-12-18,Pass,All parameters nominal.
+QA4131,B101459,2024-07-07,Pass,"Batch within spec, no deviations."
+QA4132,B101811,2023-11-06,Pass,"Batch within spec, no deviations."
+QA4133,B100539,2023-10-08,Pass,"QA passed, standard fat content."
+QA4134,B102343,2025-02-08,Pass,All parameters nominal.
+QA4135,B101882,2024-12-30,Fail,Packaging seal defect detected.
+QA4136,B101641,2023-08-16,Pass,All parameters nominal.
+QA4137,B101809,2024-06-06,Pass,All parameters nominal.
+QA4138,B100095,2024-10-10,Pass,All parameters nominal.
+QA4139,B100348,2025-01-06,Pass,All parameters nominal.
+QA4140,B100357,2023-11-03,Pass,"QA passed, standard fat content."
+QA4141,B101033,2025-03-04,Pass,"Batch within spec, no deviations."
+QA4142,B102147,2023-06-17,Pass,All parameters nominal.
+QA4143,B100748,2024-02-16,Pass,"Batch within spec, no deviations."
+QA4144,B101176,2025-01-26,Pass,"QA passed, standard fat content."
+QA4145,B101249,2025-02-08,Watch,"Minor visual defect, within limit."
+QA4146,B100168,2023-11-23,Watch,"Minor visual defect, within limit."
+QA4147,B101593,2023-09-04,Pass,All parameters nominal.
+QA4148,B101495,2023-11-11,Pass,"Batch within spec, no deviations."
+QA4149,B102936,2024-10-01,Pass,"QA passed, standard fat content."
+QA4150,B102179,2023-09-22,Pass,All parameters nominal.
+QA4151,B101445,2024-10-01,Pass,"Batch within spec, no deviations."
+QA4152,B101662,2023-06-14,Watch,"Minor visual defect, within limit."
+QA4153,B102990,2023-07-04,Pass,"QA passed, standard fat content."
+QA4154,B101042,2023-12-27,Pass,"Batch within spec, no deviations."
+QA4155,B102406,2024-06-04,Fail,Microbial count exceeded limit.
+QA4156,B100679,2025-04-07,Pass,"Batch within spec, no deviations."
+QA4157,B102604,2024-10-18,Pass,All parameters nominal.
+QA4158,B101198,2023-10-23,Pass,"QA passed, standard fat content."
+QA4159,B102472,2024-12-29,Pass,All parameters nominal.
+QA4160,B101529,2025-03-18,Watch,"Minor visual defect, within limit."
+QA4161,B101996,2023-11-18,Pass,"QA passed, standard fat content."
+QA4162,B102506,2024-01-23,Pass,"Batch within spec, no deviations."
+QA4163,B102876,2024-10-07,Pass,"Batch within spec, no deviations."
+QA4164,B101168,2023-10-06,Pass,"QA passed, standard fat content."
+QA4165,B101180,2024-06-18,Pass,"QA passed, standard fat content."
+QA4166,B101380,2024-06-13,Pass,"QA passed, standard fat content."
+QA4167,B101209,2023-07-15,Pass,"QA passed, standard fat content."
+QA4168,B102967,2024-04-18,Pass,All parameters nominal.
+QA4169,B102575,2024-08-20,Pass,All parameters nominal.
+QA4170,B101441,2024-12-21,Pass,All parameters nominal.
+QA4171,B100104,2025-01-21,Pass,"QA passed, standard fat content."
+QA4172,B100380,2025-02-05,Pass,"QA passed, standard fat content."
+QA4173,B101229,2024-08-27,Pass,All parameters nominal.
+QA4174,B101790,2023-07-30,Pass,All parameters nominal.
+QA4175,B102530,2023-11-19,Pass,"QA passed, standard fat content."
+QA4176,B100219,2024-01-09,Pass,"Batch within spec, no deviations."
+QA4177,B101087,2023-08-21,Pass,"Batch within spec, no deviations."
+QA4178,B100068,2024-09-28,Pass,"QA passed, standard fat content."
+QA4179,B100034,2024-11-12,Pass,"QA passed, standard fat content."
+QA4180,B101092,2024-12-19,Pass,"Batch within spec, no deviations."
+QA4181,B101419,2023-11-03,Pass,"Batch within spec, no deviations."
+QA4182,B101583,2023-06-08,Pass,"QA passed, standard fat content."
+QA4183,B102091,2024-12-21,Pass,"Batch within spec, no deviations."
+QA4184,B102062,2025-03-03,Pass,"QA passed, standard fat content."
+QA4185,B101688,2024-07-30,Pass,All parameters nominal.
+QA4186,B100210,2024-12-09,Pass,"Batch within spec, no deviations."
+QA4187,B102823,2025-03-14,Pass,"Batch within spec, no deviations."
+QA4188,B100254,2024-05-05,Pass,"Batch within spec, no deviations."
+QA4189,B100124,2024-01-25,Pass,"Batch within spec, no deviations."
+QA4190,B102807,2024-05-22,Pass,"Batch within spec, no deviations."
+QA4191,B101323,2023-06-04,Pass,All parameters nominal.
+QA4192,B100194,2025-04-23,Pass,"QA passed, standard fat content."
+QA4193,B101845,2023-11-21,Pass,"Batch within spec, no deviations."
+QA4194,B102970,2024-05-26,Pass,All parameters nominal.
+QA4195,B100290,2024-11-06,Pass,"QA passed, standard fat content."
+QA4196,B101258,2023-08-19,Pass,All parameters nominal.
+QA4197,B102311,2024-05-19,Pass,"Batch within spec, no deviations."
+QA4198,B101922,2024-04-04,Watch,"Minor visual defect, within limit."
+QA4199,B101518,2023-12-05,Watch,"Borderline pH, passed with note."
+QA4200,B102892,2023-07-02,Pass,"Batch within spec, no deviations."
+QA4201,B101380,2025-03-14,Pass,"Batch within spec, no deviations."
+QA4202,B102727,2024-10-23,Pass,All parameters nominal.
+QA4203,B100579,2023-06-18,Pass,"Batch within spec, no deviations."
+QA4204,B101832,2025-03-17,Pass,"Batch within spec, no deviations."
+QA4205,B102736,2024-11-08,Pass,All parameters nominal.
+QA4206,B102099,2024-11-21,Pass,"QA passed, standard fat content."
+QA4207,B102038,2024-07-27,Pass,"QA passed, standard fat content."
+QA4208,B101755,2025-03-29,Watch,"Slight temperature deviation, monitored."
+QA4209,B100573,2024-04-24,Pass,All parameters nominal.
+QA4210,B100760,2023-10-01,Pass,All parameters nominal.
+QA4211,B101863,2023-09-27,Pass,All parameters nominal.
+QA4212,B101386,2025-02-27,Fail,Microbial count exceeded limit.
+QA4213,B102639,2024-09-16,Watch,"Borderline pH, passed with note."
+QA4214,B102213,2024-05-25,Pass,"QA passed, standard fat content."
+QA4215,B101859,2024-05-02,Pass,"QA passed, standard fat content."
+QA4216,B102408,2025-04-17,Watch,"Slight temperature deviation, monitored."
+QA4217,B100665,2024-01-08,Watch,"Slight temperature deviation, monitored."
+QA4218,B102066,2024-02-21,Watch,"Borderline pH, passed with note."
+QA4219,B102747,2023-10-11,Pass,"QA passed, standard fat content."
+QA4220,B101125,2024-07-03,Pass,"QA passed, standard fat content."
+QA4221,B101134,2023-08-04,Pass,"Batch within spec, no deviations."
+QA4222,B102090,2024-07-02,Pass,"Batch within spec, no deviations."
+QA4223,B100477,2024-12-16,Pass,"Batch within spec, no deviations."
+QA4224,B100410,2024-01-16,Pass,All parameters nominal.
+QA4225,B101838,2023-07-29,Watch,"Minor visual defect, within limit."
+QA4226,B102028,2023-08-15,Pass,"QA passed, standard fat content."
+QA4227,B102490,2023-11-27,Watch,"Borderline pH, passed with note."
+QA4228,B102594,2025-01-29,Watch,"Slight temperature deviation, monitored."
+QA4229,B100612,2023-11-17,Pass,"Batch within spec, no deviations."
+QA4230,B101089,2023-06-23,Pass,"Batch within spec, no deviations."
+QA4231,B100049,2023-10-03,Pass,"QA passed, standard fat content."
+QA4232,B102290,2023-06-17,Pass,"QA passed, standard fat content."
+QA4233,B102560,2024-05-16,Fail,Packaging seal defect detected.
+QA4234,B102264,2025-01-03,Pass,"QA passed, standard fat content."
+QA4235,B100465,2023-06-12,Pass,All parameters nominal.
+QA4236,B101613,2023-08-21,Pass,All parameters nominal.
+QA4237,B101672,2024-10-14,Fail,Microbial count exceeded limit.
+QA4238,B100250,2023-10-12,Pass,All parameters nominal.
+QA4239,B100006,2025-01-20,Pass,All parameters nominal.
+QA4240,B102691,2025-04-07,Pass,"QA passed, standard fat content."
+QA4241,B100508,2024-07-09,Pass,"QA passed, standard fat content."
+QA4242,B101426,2024-02-18,Pass,"QA passed, standard fat content."
+QA4243,B101038,2023-07-31,Pass,All parameters nominal.
+QA4244,B101235,2023-08-20,Pass,"Batch within spec, no deviations."
+QA4245,B102884,2024-12-18,Fail,Fill volume below tolerance.
+QA4246,B102069,2024-04-24,Pass,All parameters nominal.
+QA4247,B101277,2024-04-23,Fail,Microbial count exceeded limit.
+QA4248,B100445,2025-02-17,Fail,Microbial count exceeded limit.
+QA4249,B102447,2025-04-05,Pass,"Batch within spec, no deviations."
+QA4250,B101769,2023-07-17,Pass,"Batch within spec, no deviations."
+QA4251,B102472,2023-09-21,Pass,"QA passed, standard fat content."
+QA4252,B100504,2024-01-08,Fail,Microbial count exceeded limit.
+QA4253,B101789,2023-08-07,Pass,All parameters nominal.
+QA4254,B100363,2024-02-11,Pass,All parameters nominal.
+QA4255,B102835,2024-10-31,Pass,"QA passed, standard fat content."
+QA4256,B101927,2023-07-06,Pass,"QA passed, standard fat content."
+QA4257,B102844,2024-11-11,Watch,"Minor visual defect, within limit."
+QA4258,B101180,2024-02-01,Pass,"Batch within spec, no deviations."
+QA4259,B100119,2025-02-04,Watch,"Borderline pH, passed with note."
+QA4260,B101344,2024-01-13,Pass,"Batch within spec, no deviations."
+QA4261,B101446,2024-02-20,Pass,"QA passed, standard fat content."
+QA4262,B100229,2024-04-16,Pass,"QA passed, standard fat content."
+QA4263,B102118,2023-07-05,Watch,"Borderline pH, passed with note."
+QA4264,B100560,2025-03-31,Pass,"QA passed, standard fat content."
+QA4265,B101931,2024-07-24,Fail,Fill volume below tolerance.
+QA4266,B100855,2023-12-04,Pass,All parameters nominal.
+QA4267,B101132,2024-07-25,Pass,All parameters nominal.
+QA4268,B100480,2024-07-12,Pass,All parameters nominal.
+QA4269,B100505,2024-06-24,Watch,"Slight temperature deviation, monitored."
+QA4270,B101642,2024-08-21,Pass,All parameters nominal.
+QA4271,B102637,2025-03-23,Pass,All parameters nominal.
+QA4272,B100835,2024-04-09,Pass,"Batch within spec, no deviations."
+QA4273,B100429,2024-07-27,Pass,"Batch within spec, no deviations."
+QA4274,B100985,2024-12-19,Pass,"Batch within spec, no deviations."
+QA4275,B101886,2023-12-12,Pass,"Batch within spec, no deviations."
+QA4276,B101799,2023-07-03,Pass,"QA passed, standard fat content."
+QA4277,B100414,2024-10-31,Fail,Packaging seal defect detected.
+QA4278,B100967,2024-04-12,Pass,All parameters nominal.
+QA4279,B102284,2024-05-22,Watch,"Minor visual defect, within limit."
+QA4280,B100916,2024-06-20,Pass,"Batch within spec, no deviations."
+QA4281,B102994,2023-06-01,Pass,"QA passed, standard fat content."
+QA4282,B101193,2024-12-15,Pass,"Batch within spec, no deviations."
+QA4283,B102483,2025-03-09,Pass,"QA passed, standard fat content."
+QA4284,B100335,2024-06-06,Pass,"Batch within spec, no deviations."
+QA4285,B100411,2024-05-11,Pass,"QA passed, standard fat content."
+QA4286,B100605,2024-05-06,Pass,"Batch within spec, no deviations."
+QA4287,B102705,2024-10-17,Pass,"QA passed, standard fat content."
+QA4288,B100545,2024-03-18,Pass,"QA passed, standard fat content."
+QA4289,B100475,2024-07-12,Watch,"Borderline pH, passed with note."
+QA4290,B100107,2024-09-13,Watch,"Slight temperature deviation, monitored."
+QA4291,B102908,2024-01-20,Pass,"QA passed, standard fat content."
+QA4292,B102614,2024-02-26,Pass,All parameters nominal.
+QA4293,B100229,2024-05-08,Pass,"QA passed, standard fat content."
+QA4294,B101438,2023-08-24,Pass,"QA passed, standard fat content."
+QA4295,B100857,2024-01-26,Pass,"Batch within spec, no deviations."
+QA4296,B100043,2024-02-15,Pass,"Batch within spec, no deviations."
+QA4297,B100026,2024-05-09,Fail,Fill volume below tolerance.
+QA4298,B101028,2023-10-01,Pass,"QA passed, standard fat content."
+QA4299,B101240,2023-09-23,Pass,All parameters nominal.
+QA4300,B100392,2025-03-19,Pass,All parameters nominal.
+QA4301,B102105,2024-11-05,Pass,All parameters nominal.
+QA4302,B102593,2024-04-20,Pass,"Batch within spec, no deviations."
+QA4303,B101787,2023-08-13,Pass,"QA passed, standard fat content."
+QA4304,B101532,2024-01-27,Pass,"QA passed, standard fat content."
+QA4305,B102516,2024-11-09,Pass,"Batch within spec, no deviations."
+QA4306,B102752,2024-06-15,Pass,"QA passed, standard fat content."
+QA4307,B102868,2023-08-30,Pass,"Batch within spec, no deviations."
+QA4308,B101779,2023-12-21,Pass,All parameters nominal.
+QA4309,B101386,2024-05-02,Pass,"Batch within spec, no deviations."
+QA4310,B102875,2023-08-25,Pass,"Batch within spec, no deviations."
+QA4311,B100890,2025-04-09,Watch,"Minor visual defect, within limit."
+QA4312,B100990,2024-11-22,Pass,"QA passed, standard fat content."
+QA4313,B101055,2024-12-27,Pass,All parameters nominal.
+QA4314,B101753,2023-06-13,Pass,"Batch within spec, no deviations."
+QA4315,B101850,2024-04-27,Fail,Fill volume below tolerance.
+QA4316,B101361,2023-11-18,Pass,"Batch within spec, no deviations."
+QA4317,B100838,2024-08-05,Pass,"Batch within spec, no deviations."
+QA4318,B102178,2024-05-31,Pass,All parameters nominal.
+QA4319,B100964,2024-01-27,Pass,"Batch within spec, no deviations."
+QA4320,B100268,2024-07-29,Pass,"QA passed, standard fat content."
+QA4321,B101723,2025-02-26,Fail,Packaging seal defect detected.
+QA4322,B101640,2024-09-04,Pass,"QA passed, standard fat content."
+QA4323,B102529,2024-10-31,Pass,"Batch within spec, no deviations."
+QA4324,B100107,2023-08-17,Pass,"QA passed, standard fat content."
+QA4325,B100800,2023-12-24,Pass,"QA passed, standard fat content."
+QA4326,B100741,2023-06-20,Pass,"Batch within spec, no deviations."
+QA4327,B102282,2023-06-07,Pass,"Batch within spec, no deviations."
+QA4328,B102903,2023-10-15,Pass,"Batch within spec, no deviations."
+QA4329,B100515,2023-08-31,Watch,"Slight temperature deviation, monitored."
+QA4330,B102732,2024-05-10,Pass,"QA passed, standard fat content."
+QA4331,B100645,2024-01-02,Pass,"Batch within spec, no deviations."
+QA4332,B102896,2024-04-08,Pass,"QA passed, standard fat content."
+QA4333,B102438,2024-05-06,Pass,"QA passed, standard fat content."
+QA4334,B102435,2024-01-16,Pass,"Batch within spec, no deviations."
+QA4335,B100495,2024-11-04,Pass,"Batch within spec, no deviations."
+QA4336,B101255,2024-11-18,Watch,"Slight temperature deviation, monitored."
+QA4337,B102849,2024-05-12,Pass,All parameters nominal.
+QA4338,B101211,2023-06-02,Pass,All parameters nominal.
+QA4339,B102276,2024-10-06,Pass,"QA passed, standard fat content."
+QA4340,B102892,2024-09-03,Watch,"Borderline pH, passed with note."
+QA4341,B101376,2024-06-03,Pass,"Batch within spec, no deviations."
+QA4342,B101037,2024-02-19,Pass,"QA passed, standard fat content."
+QA4343,B102232,2025-02-08,Watch,"Minor visual defect, within limit."
+QA4344,B101153,2023-11-16,Watch,"Slight temperature deviation, monitored."
+QA4345,B101197,2024-12-10,Pass,All parameters nominal.
+QA4346,B101759,2023-10-01,Watch,"Minor visual defect, within limit."
+QA4347,B101131,2023-12-08,Pass,"Batch within spec, no deviations."
+QA4348,B100429,2024-05-29,Pass,All parameters nominal.
+QA4349,B100162,2025-02-15,Pass,"Batch within spec, no deviations."
+QA4350,B102471,2024-12-26,Pass,"QA passed, standard fat content."
+QA4351,B100693,2023-11-06,Watch,"Minor visual defect, within limit."
+QA4352,B100491,2024-12-16,Pass,All parameters nominal.
+QA4353,B102898,2024-04-20,Pass,All parameters nominal.
+QA4354,B102891,2023-11-21,Pass,All parameters nominal.
+QA4355,B102095,2024-05-06,Pass,"QA passed, standard fat content."
+QA4356,B100342,2024-11-29,Pass,All parameters nominal.
+QA4357,B100404,2024-03-01,Fail,Fill volume below tolerance.
+QA4358,B101993,2025-03-24,Pass,"QA passed, standard fat content."
+QA4359,B101637,2024-03-04,Watch,"Slight temperature deviation, monitored."
+QA4360,B100179,2024-09-14,Pass,"Batch within spec, no deviations."
+QA4361,B100826,2024-07-20,Watch,"Slight temperature deviation, monitored."
+QA4362,B100557,2024-05-25,Pass,"Batch within spec, no deviations."
+QA4363,B100721,2024-05-02,Pass,All parameters nominal.
+QA4364,B101809,2024-04-03,Pass,All parameters nominal.
+QA4365,B100894,2024-03-31,Pass,All parameters nominal.
+QA4366,B102276,2023-09-22,Fail,Packaging seal defect detected.
+QA4367,B100627,2024-05-04,Pass,All parameters nominal.
+QA4368,B100505,2024-02-03,Pass,All parameters nominal.
+QA4369,B101640,2023-08-11,Pass,"Batch within spec, no deviations."
+QA4370,B100621,2025-03-06,Watch,"Borderline pH, passed with note."
+QA4371,B101538,2024-07-19,Pass,All parameters nominal.
+QA4372,B101615,2024-04-01,Pass,All parameters nominal.
+QA4373,B102464,2024-05-22,Pass,All parameters nominal.
+QA4374,B102962,2024-09-17,Pass,"QA passed, standard fat content."
+QA4375,B102445,2024-02-09,Fail,Packaging seal defect detected.
+QA4376,B100418,2024-02-04,Pass,"QA passed, standard fat content."
+QA4377,B100836,2024-08-09,Pass,"Batch within spec, no deviations."
+QA4378,B101533,2025-03-21,Watch,"Borderline pH, passed with note."
+QA4379,B101476,2023-09-20,Fail,Fill volume below tolerance.
+QA4380,B102853,2025-01-14,Pass,"Batch within spec, no deviations."
+QA4381,B102104,2024-07-29,Pass,"Batch within spec, no deviations."
+QA4382,B102087,2025-02-24,Pass,All parameters nominal.
+QA4383,B102145,2023-12-16,Pass,All parameters nominal.
+QA4384,B102353,2024-04-18,Pass,All parameters nominal.
+QA4385,B102584,2024-02-13,Watch,"Slight temperature deviation, monitored."
+QA4386,B101786,2024-10-22,Fail,Fill volume below tolerance.
+QA4387,B100909,2023-09-11,Pass,"QA passed, standard fat content."
+QA4388,B100848,2024-11-12,Watch,"Slight temperature deviation, monitored."
+QA4389,B102810,2023-08-29,Pass,All parameters nominal.
+QA4390,B100610,2023-10-06,Pass,"QA passed, standard fat content."
+QA4391,B101145,2023-06-26,Pass,"QA passed, standard fat content."
+QA4392,B100877,2024-01-03,Watch,"Minor visual defect, within limit."
+QA4393,B101596,2024-10-12,Pass,"Batch within spec, no deviations."
+QA4394,B102442,2024-04-14,Pass,All parameters nominal.
+QA4395,B100182,2025-04-23,Pass,"Batch within spec, no deviations."
+QA4396,B101442,2023-09-09,Pass,"Batch within spec, no deviations."
+QA4397,B102130,2024-02-01,Fail,Packaging seal defect detected.
+QA4398,B100306,2024-09-08,Fail,Fill volume below tolerance.
+QA4399,B101945,2024-10-08,Pass,"QA passed, standard fat content."
+QA4400,B100713,2023-07-16,Pass,All parameters nominal.
+QA4401,B100275,2024-07-03,Pass,All parameters nominal.
+QA4402,B100032,2023-07-16,Watch,"Minor visual defect, within limit."
+QA4403,B102731,2023-11-08,Pass,All parameters nominal.
+QA4404,B102731,2024-11-13,Pass,"Batch within spec, no deviations."
+QA4405,B101861,2023-11-30,Pass,"QA passed, standard fat content."
+QA4406,B101349,2024-12-08,Watch,"Borderline pH, passed with note."
+QA4407,B102158,2024-08-09,Pass,"Batch within spec, no deviations."
+QA4408,B100800,2024-12-15,Pass,"QA passed, standard fat content."
+QA4409,B102938,2024-02-24,Pass,"Batch within spec, no deviations."
+QA4410,B102376,2023-10-28,Pass,"QA passed, standard fat content."
+QA4411,B102530,2024-04-15,Pass,"Batch within spec, no deviations."
+QA4412,B101320,2024-10-30,Pass,All parameters nominal.
+QA4413,B102312,2024-08-06,Pass,"Batch within spec, no deviations."
+QA4414,B102946,2024-06-23,Fail,Fill volume below tolerance.
+QA4415,B100023,2025-03-04,Pass,All parameters nominal.
+QA4416,B101451,2023-07-27,Pass,All parameters nominal.
+QA4417,B101324,2024-04-11,Pass,"Batch within spec, no deviations."
+QA4418,B100998,2023-08-22,Pass,"QA passed, standard fat content."
+QA4419,B101369,2024-09-02,Pass,"QA passed, standard fat content."
+QA4420,B101259,2025-01-22,Pass,"Batch within spec, no deviations."
+QA4421,B100033,2024-10-20,Pass,"Batch within spec, no deviations."
+QA4422,B100305,2024-12-25,Pass,"Batch within spec, no deviations."
+QA4423,B100569,2025-04-15,Pass,"QA passed, standard fat content."
+QA4424,B101570,2023-08-23,Pass,"QA passed, standard fat content."
+QA4425,B101973,2024-08-18,Watch,"Minor visual defect, within limit."
+QA4426,B100205,2023-10-26,Pass,"Batch within spec, no deviations."
+QA4427,B100129,2024-12-14,Fail,Fill volume below tolerance.
+QA4428,B101301,2024-08-24,Pass,All parameters nominal.
+QA4429,B102240,2024-11-25,Watch,"Minor visual defect, within limit."
+QA4430,B101942,2024-05-25,Watch,"Minor visual defect, within limit."
+QA4431,B101343,2024-12-30,Pass,"QA passed, standard fat content."
+QA4432,B101151,2024-08-02,Watch,"Minor visual defect, within limit."
+QA4433,B100606,2024-06-21,Pass,"QA passed, standard fat content."
+QA4434,B102764,2023-09-24,Pass,"Batch within spec, no deviations."
+QA4435,B101428,2024-10-08,Watch,"Borderline pH, passed with note."
+QA4436,B100357,2023-11-19,Watch,"Slight temperature deviation, monitored."
+QA4437,B101992,2024-04-12,Pass,"Batch within spec, no deviations."
+QA4438,B101479,2024-08-21,Watch,"Minor visual defect, within limit."
+QA4439,B102806,2024-12-01,Fail,Fill volume below tolerance.
+QA4440,B101495,2024-01-30,Pass,"Batch within spec, no deviations."
+QA4441,B102230,2023-10-01,Pass,"QA passed, standard fat content."
+QA4442,B101729,2025-01-18,Pass,All parameters nominal.
+QA4443,B101474,2023-11-05,Pass,All parameters nominal.
+QA4444,B100460,2024-11-29,Pass,"QA passed, standard fat content."
+QA4445,B101711,2023-07-03,Pass,All parameters nominal.
+QA4446,B101944,2023-10-20,Pass,All parameters nominal.
+QA4447,B100618,2024-10-05,Pass,"QA passed, standard fat content."
+QA4448,B101020,2025-01-28,Pass,"Batch within spec, no deviations."
+QA4449,B101479,2023-12-19,Watch,"Minor visual defect, within limit."
+QA4450,B100856,2024-08-02,Pass,All parameters nominal.
+QA4451,B100891,2023-08-25,Watch,"Minor visual defect, within limit."
+QA4452,B100744,2024-05-26,Pass,"QA passed, standard fat content."
+QA4453,B100763,2023-11-09,Pass,All parameters nominal.
+QA4454,B102678,2025-01-07,Pass,All parameters nominal.
+QA4455,B100436,2023-12-30,Pass,"Batch within spec, no deviations."
+QA4456,B100590,2023-10-28,Pass,"Batch within spec, no deviations."
+QA4457,B102366,2024-06-19,Pass,"QA passed, standard fat content."
+QA4458,B100545,2023-08-10,Pass,"QA passed, standard fat content."
+QA4459,B102835,2023-11-24,Watch,"Borderline pH, passed with note."
+QA4460,B102983,2023-08-18,Pass,All parameters nominal.
+QA4461,B101160,2024-11-22,Pass,All parameters nominal.
+QA4462,B102837,2024-03-19,Fail,Fill volume below tolerance.
+QA4463,B102171,2023-09-16,Pass,"Batch within spec, no deviations."
+QA4464,B100143,2023-12-07,Watch,"Minor visual defect, within limit."
+QA4465,B102797,2024-06-27,Pass,All parameters nominal.
+QA4466,B100186,2024-10-22,Watch,"Minor visual defect, within limit."
+QA4467,B102382,2024-04-26,Pass,"Batch within spec, no deviations."
+QA4468,B101486,2024-09-27,Fail,Fill volume below tolerance.
+QA4469,B101598,2025-01-04,Pass,All parameters nominal.
+QA4470,B100070,2023-07-21,Pass,All parameters nominal.
+QA4471,B102205,2024-05-26,Pass,"QA passed, standard fat content."
+QA4472,B102863,2024-01-26,Pass,"QA passed, standard fat content."
+QA4473,B100712,2024-03-11,Pass,"Batch within spec, no deviations."
+QA4474,B101075,2024-07-25,Pass,"Batch within spec, no deviations."
+QA4475,B101047,2024-10-27,Watch,"Slight temperature deviation, monitored."
+QA4476,B101372,2025-03-08,Pass,All parameters nominal.
+QA4477,B102495,2025-02-19,Pass,All parameters nominal.
+QA4478,B102346,2024-08-21,Pass,"QA passed, standard fat content."
+QA4479,B102676,2024-03-16,Pass,"Batch within spec, no deviations."
+QA4480,B101165,2024-08-04,Watch,"Minor visual defect, within limit."
+QA4481,B100279,2024-01-26,Pass,"Batch within spec, no deviations."
+QA4482,B102978,2025-04-20,Pass,All parameters nominal.
+QA4483,B102229,2025-02-24,Pass,"QA passed, standard fat content."
+QA4484,B100601,2025-02-02,Pass,"Batch within spec, no deviations."
+QA4485,B102401,2024-10-29,Pass,"QA passed, standard fat content."
+QA4486,B100843,2024-03-27,Watch,"Minor visual defect, within limit."
+QA4487,B100437,2023-11-25,Pass,"Batch within spec, no deviations."
+QA4488,B102185,2023-09-01,Fail,Microbial count exceeded limit.
+QA4489,B102634,2023-11-04,Pass,All parameters nominal.
+QA4490,B100641,2023-09-14,Pass,"Batch within spec, no deviations."
+QA4491,B102353,2024-09-20,Pass,"QA passed, standard fat content."
+QA4492,B101920,2025-03-24,Watch,"Minor visual defect, within limit."
+QA4493,B101994,2023-09-14,Pass,All parameters nominal.
+QA4494,B101711,2023-09-10,Pass,"QA passed, standard fat content."
+QA4495,B102069,2023-07-12,Pass,"Batch within spec, no deviations."
+QA4496,B102106,2024-01-29,Pass,All parameters nominal.
+QA4497,B102955,2024-09-26,Watch,"Borderline pH, passed with note."
+QA4498,B102386,2023-07-09,Watch,"Slight temperature deviation, monitored."
+QA4499,B101603,2024-10-09,Pass,"Batch within spec, no deviations."

@@ -1,0 +1,5 @@
+numpy>=1.24
+pandas>=2.0
+azure-eventhub>=5.11.0
+azure-storage-file-datalake>=12.14.0
+azure-identity>=1.15.0

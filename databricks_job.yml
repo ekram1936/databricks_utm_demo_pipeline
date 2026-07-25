@@ -1,0 +1,17 @@
+# Databricks Jobs YAML - deploy with: databricks bundle deploy (or Jobs UI import)
+resources:
+  jobs:
+    muller_medallion_pipeline:
+      name: muller_medallion_pipeline
+      tasks:
+        - task_key: bronze_ingest
+          notebook_task:
+            notebook_path: /Workspace/Repos/muller_ai_pipeline/notebooks/run_pipeline
+          new_cluster:
+            spark_version: "15.4.x-scala2.12"
+            node_type_id: "Standard_DS3_v2"
+            num_workers: 0
+            data_security_mode: "SINGLE_USER"
+      schedule:
+        quartz_cron_expression: "0 0 * * * ?"   # hourly, adjust as needed
+        timezone_id: "Europe/Berlin"

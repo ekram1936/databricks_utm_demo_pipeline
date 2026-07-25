@@ -1,0 +1,5 @@
+plant_id,plant_name,country,capacity_liters_day,opened_year
+P01,Freising,Germany,450000,1972
+P02,Leppersdorf,Germany,600000,1990
+P03,Aretsried,Germany,380000,1985
+P04,Droitwich Spa,UK,300000,2005

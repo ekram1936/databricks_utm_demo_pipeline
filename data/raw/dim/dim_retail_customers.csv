@@ -1,0 +1,26 @@
+customer_id,customer_name,country,account_tier,contract_start
+RC100,Rewe,Czech Republic,Key Account,2022-05-29
+RC101,Netto,Germany,Regional,2018-07-17
+RC102,dm,Germany,Regional,2023-03-28
+RC103,Lidl,Germany,Local,2021-12-07
+RC104,Lidl,Germany,Local,2022-05-06
+RC105,Real,Czech Republic,Regional,2021-11-14
+RC106,Rewe,Poland,Local,2021-10-15
+RC107,dm,Czech Republic,Local,2018-08-15
+RC108,Aldi Sud,Germany,Regional,2021-10-30
+RC109,Rewe,Italy,Key Account,2023-06-11
+RC110,Kaufland,UK,Regional,2020-01-30
+RC111,Globus,Czech Republic,Key Account,2022-02-16
+RC112,Netto,Germany,Key Account,2018-03-19
+RC113,Netto,Germany,Key Account,2020-05-18
+RC114,Netto,Germany,Local,2020-12-27
+RC115,Netto,Germany,Regional,2024-09-22
+RC116,Kaufland,Poland,Local,2019-06-21
+RC117,Edeka,Poland,Local,2019-11-23
+RC118,Real,Italy,Regional,2020-10-18
+RC119,Lidl,Germany,Regional,2024-10-17
+RC120,Kaufland,Germany,Key Account,2023-11-04
+RC121,Aldi Nord,Germany,Key Account,2018-03-28
+RC122,Edeka,Germany,Regional,2019-08-08
+RC123,Globus,Germany,Regional,2023-08-17
+RC124,Netto,Germany,Regional,2018-05-26
