@@ -17,7 +17,7 @@ logger = get_logger(__name__)
 
 
 def run(spark):
-    from pyspark.sql.functions import sum as _sum, avg, count, when, col, round as spark_round
+    from pyspark.sql.functions import sum as _sum, avg, count, when, col, round as spark_round, max as _max, min as _min
 
     silver = azure_settings.SILVER_SCHEMA
     gold = azure_settings.GOLD_SCHEMA
@@ -42,7 +42,7 @@ def run(spark):
         .join(plants.select("plant_id", "plant_name", "country"), "plant_id") \
         .join(lines.select("line_id", "line_type", "line_name"), "line_id")
 
-    d_production_summary.write.mode("overwrite").saveAsTable(f"{gold}.d_production_summary")
+    d_production_summary.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{gold}.d_production_summary")
 
     logger.info("Building gold.d_retailer_360 ...")
     shipments = spark.table(f"{silver}.fact_shipments")
@@ -59,7 +59,7 @@ def run(spark):
         .withColumn("on_time_rate_pct", spark_round(col("delivered_count") / col("total_shipments") * 100, 2)) \
         .join(customers, "customer_id")
 
-    d_retailer_360.write.mode("overwrite").saveAsTable(f"{gold}.d_retailer_360")
+    d_retailer_360.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{gold}.d_retailer_360")
 
     logger.info("Building gold.d_quality_audit_summary ...")
     audits = spark.table(f"{silver}.fact_quality_audits")
@@ -70,6 +70,25 @@ def run(spark):
         .groupBy("plant_id", "plant_name", "audit_outcome") \
         .agg(count("audit_id").alias("audit_count"))
 
-    d_quality_audit_summary.write.mode("overwrite").saveAsTable(f"{gold}.d_quality_audit_summary")
+    d_quality_audit_summary.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{gold}.d_quality_audit_summary")
 
-    logger.info("Gold layer aggregation complete. 3 tables written.")
+    logger.info("Building gold.d_sensor_health_summary ...")
+    sensor_readings = spark.table(f"{silver}.fact_sensor_readings")
+
+    d_sensor_health_summary = sensor_readings.groupBy("line_id", "data_source") \
+        .agg(
+            count("reading_id").alias("total_readings"),
+            _sum(col("anomaly_flag")).alias("anomaly_count"),
+            avg("temperature_c").alias("avg_temperature_c"),
+            _max("temperature_c").alias("max_temperature_c"),
+            avg("pressure_bar").alias("avg_pressure_bar"),
+            avg("vibration_mm_s").alias("avg_vibration_mm_s"),
+            _max("vibration_mm_s").alias("max_vibration_mm_s"),
+            _max("event_timestamp").alias("latest_reading_ts")
+        ) \
+        .withColumn("anomaly_rate_pct", spark_round(col("anomaly_count") / col("total_readings") * 100, 2)) \
+        .join(lines.select("line_id", "line_name", "line_type"), "line_id")
+
+    d_sensor_health_summary.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{gold}.d_sensor_health_summary")
+
+    logger.info("Gold layer aggregation complete. 4 tables written.")

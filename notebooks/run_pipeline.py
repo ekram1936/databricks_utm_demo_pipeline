@@ -3,8 +3,9 @@
 # [tool.databricks.environment]
 # environment_version = "5"
 # ///
+# DBTITLE 1,Path setup and imports
 import sys
-sys.path.append("/Workspace/Repos/databricks_utm_demo_pipeline")  # adjust to your repo path
+sys.path.append("/Workspace/Users/md-ekram.hossain@stud.uni-bamberg.de/databricks_utm_demo_pipeline")  # adjust to your repo path
 
 from src.pipeline import bronze_ingest, silver_transform, gold_aggregate, sentiment_analysis
 from src.utils.logger import get_logger

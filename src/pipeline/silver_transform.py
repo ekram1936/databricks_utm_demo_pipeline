@@ -17,7 +17,7 @@ logger = get_logger(__name__)
 
 
 def run(spark):
-    from pyspark.sql.functions import col, round as spark_round
+    from pyspark.sql.functions import col, round as spark_round, lit
 
     bronze = azure_settings.BRONZE_SCHEMA
     silver = azure_settings.SILVER_SCHEMA
@@ -62,12 +62,40 @@ def run(spark):
     spark.table(f"{bronze}.historical_quality_audit_logs").dropDuplicates(["audit_id"]) \
         .write.mode("overwrite").saveAsTable(f"{silver}.fact_quality_audits")
 
-    logger.info("Transforming silver.fact_sensor_readings ...")
-    spark.table(f"{bronze}.sensor_readings") \
-        .withColumn("temperature_c", col("temperature_c").cast("double")) \
-        .withColumn("pressure_bar", col("pressure_bar").cast("double")) \
-        .withColumn("anomaly_flag", col("anomaly_flag").cast("int")) \
-        .dropDuplicates(["reading_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.fact_sensor_readings")
+    logger.info("Transforming silver.fact_sensor_readings (union of batch + streaming Bronze sources) ...")
+
+    sensor_cols = [
+        "reading_id", "line_id", "event_timestamp", "temperature_c",
+        "pressure_bar", "fill_volume_ml", "vibration_mm_s",
+        "machine_status", "anomaly_flag"
+    ]
+
+    def prep_sensor_df(df):
+        return (
+            df.withColumn("event_timestamp", col("event_timestamp").cast("timestamp"))
+              .withColumn("temperature_c", col("temperature_c").cast("double"))
+              .withColumn("pressure_bar", col("pressure_bar").cast("double"))
+              .withColumn("fill_volume_ml", col("fill_volume_ml").cast("double"))
+              .withColumn("vibration_mm_s", col("vibration_mm_s").cast("double"))
+              .withColumn("anomaly_flag", col("anomaly_flag").cast("int"))
+              .select(*sensor_cols)
+        )
+
+    batch_sensor_df = prep_sensor_df(spark.table(f"{bronze}.sensor_readings")) \
+        .withColumn("data_source", lit("batch_file"))
+
+    stream_table_exists = spark.catalog.tableExists(f"{bronze}.sensor_readings_stream")
+
+    if stream_table_exists:
+        stream_sensor_df = prep_sensor_df(spark.table(f"{bronze}.sensor_readings_stream")) \
+            .withColumn("data_source", lit("event_hub_stream"))
+        combined_sensor_df = batch_sensor_df.unionByName(stream_sensor_df)
+        logger.info("Unioned batch (bronze.sensor_readings) + streaming (bronze.sensor_readings_stream).")
+    else:
+        combined_sensor_df = batch_sensor_df
+        logger.info("bronze.sensor_readings_stream not found yet, using batch source only.")
+
+    combined_sensor_df.dropDuplicates(["reading_id"]) \
+        .write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{silver}.fact_sensor_readings")
 
     logger.info("Silver layer transformation complete. 8 tables written.")
