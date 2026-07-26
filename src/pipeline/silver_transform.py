@@ -1,101 +1,92 @@
-"""
-Silver layer transformations: cleans, deduplicates, and enriches Bronze tables
-into Unity Catalog (utm_demo_catalog.silver).
-
-Run this from a Databricks notebook or job:
-    from src.pipeline import silver_transform
-    silver_transform.run(spark)
-"""
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from config import azure_settings
-from src.utils.logger import get_logger
-
-logger = get_logger(__name__)
+from pyspark import pipelines as dp
+from pyspark.sql.functions import col, round as spark_round, lit
 
 
-def run(spark):
-    from pyspark.sql.functions import col, round as spark_round, lit
+@dp.materialized_view(name="silver_dim_plants")
+def silver_dim_plants():
+    return (
+        spark.read.table("dim_plants")
+        .withColumn("capacity_liters_day", col("capacity_liters_day").cast("int"))
+        .withColumn("opened_year", col("opened_year").cast("int"))
+        .dropDuplicates(["plant_id"])
+    )
 
-    bronze = azure_settings.BRONZE_SCHEMA
-    silver = azure_settings.SILVER_SCHEMA
 
-    spark.sql(f"CREATE SCHEMA IF NOT EXISTS {silver}")
+@dp.materialized_view(name="silver_dim_lines")
+def silver_dim_lines():
+    return spark.read.table("dim_lines").dropDuplicates(["line_id"])
 
-    logger.info("Transforming silver.dim_plants ...")
-    spark.table(f"{bronze}.dim_plants") \
-        .withColumn("capacity_liters_day", col("capacity_liters_day").cast("int")) \
-        .withColumn("opened_year", col("opened_year").cast("int")) \
-        .dropDuplicates(["plant_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.dim_plants")
 
-    logger.info("Transforming silver.dim_lines ...")
-    spark.table(f"{bronze}.dim_lines").dropDuplicates(["line_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.dim_lines")
+@dp.materialized_view(name="silver_dim_sku_catalog")
+def silver_dim_sku_catalog():
+    return spark.read.table("dim_sku_catalog").dropDuplicates(["sku_id"])
 
-    logger.info("Transforming silver.dim_sku_catalog ...")
-    spark.table(f"{bronze}.dim_sku_catalog").dropDuplicates(["sku_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.dim_sku_catalog")
 
-    logger.info("Transforming silver.dim_retail_customers ...")
-    spark.table(f"{bronze}.dim_retail_customers").dropDuplicates(["customer_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.dim_retail_customers")
+@dp.materialized_view(name="silver_dim_retail_customers")
+def silver_dim_retail_customers():
+    return spark.read.table("dim_retail_customers").dropDuplicates(["customer_id"])
 
-    logger.info("Transforming silver.fact_production_batches ...")
-    spark.table(f"{bronze}.historical_production_batches") \
-        .withColumn("planned_qty_units", col("planned_qty_units").cast("int")) \
-        .withColumn("actual_qty_units", col("actual_qty_units").cast("int")) \
-        .withColumn("defect_units", col("defect_units").cast("int")) \
-        .withColumn("yield_pct", spark_round((col("actual_qty_units") - col("defect_units")) / col("actual_qty_units") * 100, 2)) \
-        .dropDuplicates(["batch_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.fact_production_batches")
 
-    logger.info("Transforming silver.fact_shipments ...")
-    spark.table(f"{bronze}.historical_shipments") \
-        .withColumn("qty_units", col("qty_units").cast("int")) \
-        .dropDuplicates(["shipment_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.fact_shipments")
+@dp.materialized_view(name="fact_production_batches")
+def fact_production_batches():
+    return (
+        spark.read.table("historical_production_batches")
+        .withColumn("planned_qty_units", col("planned_qty_units").cast("int"))
+        .withColumn("actual_qty_units", col("actual_qty_units").cast("int"))
+        .withColumn("defect_units", col("defect_units").cast("int"))
+        .withColumn("yield_pct", spark_round(
+            (col("actual_qty_units") - col("defect_units")) / col("actual_qty_units") * 100, 2))
+        .dropDuplicates(["batch_id"])
+    )
 
-    logger.info("Transforming silver.fact_quality_audits ...")
-    spark.table(f"{bronze}.historical_quality_audit_logs").dropDuplicates(["audit_id"]) \
-        .write.mode("overwrite").saveAsTable(f"{silver}.fact_quality_audits")
 
-    logger.info("Transforming silver.fact_sensor_readings (union of batch + streaming Bronze sources) ...")
+@dp.materialized_view(name="fact_shipments")
+def fact_shipments():
+    return (
+        spark.read.table("historical_shipments")
+        .withColumn("qty_units", col("qty_units").cast("int"))
+        .dropDuplicates(["shipment_id"])
+    )
 
-    sensor_cols = [
-        "reading_id", "line_id", "event_timestamp", "temperature_c",
-        "pressure_bar", "fill_volume_ml", "vibration_mm_s",
-        "machine_status", "anomaly_flag"
-    ]
 
-    def prep_sensor_df(df):
-        return (
-            df.withColumn("event_timestamp", col("event_timestamp").cast("timestamp"))
-              .withColumn("temperature_c", col("temperature_c").cast("double"))
-              .withColumn("pressure_bar", col("pressure_bar").cast("double"))
-              .withColumn("fill_volume_ml", col("fill_volume_ml").cast("double"))
-              .withColumn("vibration_mm_s", col("vibration_mm_s").cast("double"))
-              .withColumn("anomaly_flag", col("anomaly_flag").cast("int"))
-              .select(*sensor_cols)
-        )
+@dp.materialized_view(name="fact_quality_audits")
+def fact_quality_audits():
+    return spark.read.table("historical_quality_audit_logs").dropDuplicates(["audit_id"])
 
-    batch_sensor_df = prep_sensor_df(spark.table(f"{bronze}.sensor_readings")) \
-        .withColumn("data_source", lit("batch_file"))
 
-    stream_table_exists = spark.catalog.tableExists(f"{bronze}.sensor_readings_stream")
+# --- fact_sensor_readings: streaming target, union of live + batch, keyed on reading_id ---
+SENSOR_COLS = [
+    "reading_id", "line_id", "event_timestamp", "temperature_c",
+    "pressure_bar", "fill_volume_ml", "vibration_mm_s",
+    "machine_status", "anomaly_flag", "data_source"
+]
 
-    if stream_table_exists:
-        stream_sensor_df = prep_sensor_df(spark.table(f"{bronze}.sensor_readings_stream")) \
-            .withColumn("data_source", lit("event_hub_stream"))
-        combined_sensor_df = batch_sensor_df.unionByName(stream_sensor_df)
-        logger.info("Unioned batch (bronze.sensor_readings) + streaming (bronze.sensor_readings_stream).")
-    else:
-        combined_sensor_df = batch_sensor_df
-        logger.info("bronze.sensor_readings_stream not found yet, using batch source only.")
 
-    combined_sensor_df.dropDuplicates(["reading_id"]) \
-        .write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(f"{silver}.fact_sensor_readings")
+def _prep(df, source_tag):
+    return (
+        df.withColumn("event_timestamp", col(
+            "event_timestamp").cast("timestamp"))
+          .withColumn("temperature_c", col("temperature_c").cast("double"))
+          .withColumn("pressure_bar", col("pressure_bar").cast("double"))
+          .withColumn("fill_volume_ml", col("fill_volume_ml").cast("double"))
+          .withColumn("vibration_mm_s", col("vibration_mm_s").cast("double"))
+          .withColumn("anomaly_flag", col("anomaly_flag").cast("int"))
+          .withColumn("data_source", lit(source_tag))
+          .select(*SENSOR_COLS)
+    )
 
-    logger.info("Silver layer transformation complete. 8 tables written.")
+
+dp.create_streaming_table(name="fact_sensor_readings")
+
+dp.create_auto_cdc_flow(
+    target="fact_sensor_readings",
+    source="sensor_readings_stream",
+    keys=["reading_id"],
+    sequence_by=col("event_timestamp"),
+    stored_as_scd_type=1
+)
+
+
+@dp.append_flow(target="fact_sensor_readings")
+def batch_sensor_flow():
+    return _prep(spark.read.table("sensor_readings"), "batch_file")

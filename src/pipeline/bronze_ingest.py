@@ -1,64 +1,104 @@
-"""
-Bronze layer ingestion: reads raw files from ADLS Gen2 and writes them as
-managed Delta tables in Unity Catalog (utm_demo_catalog.bronze).
-
-Run this from a Databricks notebook or job:
-    from src.pipeline import bronze_ingest
-    bronze_ingest.run(spark)
-"""
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from pyspark import pipelines as dp
+from pyspark.sql.functions import col, from_json, to_timestamp
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType
 from config import azure_settings
-from src.utils.logger import get_logger
 
-logger = get_logger(__name__)
-
-CSV_TABLES = {
-    "dim_plants": "dim/dim_plants.csv",
-    "dim_lines": "dim/dim_lines.csv",
-    "dim_sku_catalog": "dim/dim_sku_catalog.csv",
-    "dim_retail_customers": "dim/dim_retail_customers.csv",
-    "historical_production_batches": "historical/historical_production_batches.csv",
-    "historical_shipments": "historical/historical_shipments.csv",
-    "historical_quality_audit_logs": "historical/historical_quality_audit_logs.csv",
-}
-
-JSON_TABLES = {
-    "sensor_readings": "streaming/",
-}
+# --- 4 dimension tables ---
 
 
-def ingest_csv_table(spark, table_name: str, relative_path: str):
-    path = azure_settings.abfss_path(relative_path)
-    logger.info(f"Reading CSV for bronze.{table_name} from {path}")
-    df = spark.read.option("header", "true").csv(path)
-    target = f"{azure_settings.BRONZE_SCHEMA}.{table_name}"
-    df.write.mode("overwrite").saveAsTable(target)
-    logger.info(f"Wrote {df.count()} rows to {target}")
-    return df.count()
+@dp.materialized_view(name="dim_plants")
+@dp.expect("valid_plant_id", "plant_id IS NOT NULL")
+def dim_plants():
+    return spark.read.option("header", "true").csv(azure_settings.abfss_path("dim/dim_plants.csv"))
 
 
-def ingest_json_table(spark, table_name: str, relative_path: str):
-    path = azure_settings.abfss_path(relative_path)
-    logger.info(f"Reading JSON for bronze.{table_name} from {path}")
-    df = spark.read.json(path)
-    target = f"{azure_settings.BRONZE_SCHEMA}.{table_name}"
-    df.write.mode("overwrite").saveAsTable(target)
-    logger.info(f"Wrote {df.count()} rows to {target}")
-    return df.count()
+@dp.materialized_view(name="dim_lines")
+def dim_lines():
+    return spark.read.option("header", "true").csv(azure_settings.abfss_path("dim/dim_lines.csv"))
 
 
-def run(spark):
-    spark.sql(f"CREATE SCHEMA IF NOT EXISTS {azure_settings.BRONZE_SCHEMA}")
+@dp.materialized_view(name="dim_sku_catalog")
+def dim_sku_catalog():
+    return spark.read.option("header", "true").csv(azure_settings.abfss_path("dim/dim_sku_catalog.csv"))
 
-    total_rows = 0
-    for table_name, rel_path in CSV_TABLES.items():
-        total_rows += ingest_csv_table(spark, table_name, rel_path)
 
-    for table_name, rel_path in JSON_TABLES.items():
-        total_rows += ingest_json_table(spark, table_name, rel_path)
+@dp.materialized_view(name="dim_retail_customers")
+def dim_retail_customers():
+    return spark.read.option("header", "true").csv(azure_settings.abfss_path("dim/dim_retail_customers.csv"))
 
-    logger.info(f"Bronze ingestion complete. Total rows across all tables: {total_rows}")
-    return total_rows
+# --- 3 historical fact tables ---
+
+
+@dp.materialized_view(name="historical_production_batches")
+@dp.expect("valid_batch_id", "batch_id IS NOT NULL")
+def historical_production_batches():
+    return spark.read.option("header", "true").csv(
+        azure_settings.abfss_path(
+            "historical/historical_production_batches.csv")
+    )
+
+
+@dp.materialized_view(name="historical_shipments")
+def historical_shipments():
+    return spark.read.option("header", "true").csv(
+        azure_settings.abfss_path("historical/historical_shipments.csv")
+    )
+
+
+@dp.materialized_view(name="historical_quality_audit_logs")
+def historical_quality_audit_logs():
+    return spark.read.option("header", "true").csv(
+        azure_settings.abfss_path(
+            "historical/historical_quality_audit_logs.csv")
+    )
+
+# --- sensor_readings: batch JSON snapshot ---
+
+
+@dp.materialized_view(name="sensor_readings")
+def sensor_readings():
+    return spark.read.json(azure_settings.abfss_path("streaming/"))
+
+
+# --- sensor_readings_stream: LIVE via Event Hubs Kafka endpoint ---
+SENSOR_SCHEMA = StructType([
+    StructField("reading_id", StringType()),
+    StructField("line_id", StringType()),
+    StructField("event_timestamp", StringType()),
+    StructField("temperature_c", DoubleType()),
+    StructField("pressure_bar", DoubleType()),
+    StructField("fill_volume_ml", DoubleType()),
+    StructField("vibration_mm_s", DoubleType()),
+    StructField("machine_status", StringType()),
+    StructField("anomaly_flag", IntegerType()),
+])
+
+
+@dp.table(name="sensor_readings_stream")
+@dp.expect("valid_reading_id", "reading_id IS NOT NULL")
+@dp.expect_or_drop("plausible_temperature", "temperature_c BETWEEN -20 AND 150")
+def sensor_readings_stream():
+    conn_str = dbutils.secrets.get(
+        scope="eventhub-secrets", key="connection-string")
+    kafka_bootstrap = f"{azure_settings.EVENT_HUB_NAMESPACE}.servicebus.windows.net:9093"
+    sasl_config = (
+        f'kafkashaded.org.apache.kafka.common.security.plain.PlainLoginModule required '
+        f'username="$ConnectionString" password="{conn_str}";'
+    )
+    raw_stream = (
+        spark.readStream.format("kafka")
+        .option("kafka.bootstrap.servers", kafka_bootstrap)
+        .option("subscribe", azure_settings.EVENT_HUB_NAME)
+        .option("kafka.sasl.mechanism", "PLAIN")
+        .option("kafka.security.protocol", "SASL_SSL")
+        .option("kafka.sasl.jaas.config", sasl_config)
+        .option("startingOffsets", "earliest")
+        .option("failOnDataLoss", "false")
+        .load()
+    )
+    return (
+        raw_stream.select(from_json(col("value").cast(
+            "string"), SENSOR_SCHEMA).alias("data"))
+        .select("data.*")
+        .withColumn("event_timestamp", to_timestamp(col("event_timestamp")))
+    )

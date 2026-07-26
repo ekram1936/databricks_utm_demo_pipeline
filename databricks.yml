@@ -1,0 +1,30 @@
+# Databricks Asset Bundle definition for manufacturing-etl
+# NOTE: Tailored for Databricks Free Edition (serverless-only, single workspace)
+bundle:
+  name: manufacturing-etl
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog_name:
+    description: "Unity Catalog catalog used by this bundle"
+    default: "workspace"
+  schema_name:
+    description: "Schema for manufacturing tables"
+    default: "manufacturing_etl"
+  eventhub_namespace:
+    description: "Azure Event Hub namespace (may be blocked on Free Edition outbound network)"
+    default: "manufacturing-eventhub-dev"
+  storage_account:
+    description: "ADLS storage account (may be blocked on Free Edition outbound network)"
+    default: "manufacturingdls"
+
+workspace:
+  root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+
+targets:
+  dev:
+    mode: development
+    default: true
+    # Free Edition = single workspace only, no host override needed if using default profile

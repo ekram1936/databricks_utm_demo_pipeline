@@ -1,15 +1,21 @@
 """
 Uploads local raw data (data/raw/) to Azure Data Lake Storage Gen2.
+Runs LOCALLY (not on Databricks) -- Databricks later reads this same data
+via the Unity Catalog External Location already configured against this
+storage account, so no dbutils/pyspark needed here.
+
 Requires: pip install azure-storage-file-datalake azure-identity
-Auth: uses DefaultAzureCredential (az login) or a connection string via env var AZURE_STORAGE_CONNECTION_STRING.
+Auth: uses DefaultAzureCredential, which automatically falls back to your
+`az login` session locally. Just run `az login` once before executing this.
 """
+from src.utils.logger import get_logger
+from config import settings, azure_settings
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))))
 
-from config import settings, azure_settings
-from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -54,7 +60,8 @@ def upload_folder(local_folder: str, remote_subpath: str, file_system):
 def run():
     logger.info("Starting ADLS sync of data/raw/ ...")
     service_client = get_service_client()
-    file_system = service_client.get_file_system_client(azure_settings.RAW_CONTAINER)
+    file_system = service_client.get_file_system_client(
+        azure_settings.RAW_CONTAINER)
 
     mapping = {
         settings.RAW_DIM_DIR: "dim",

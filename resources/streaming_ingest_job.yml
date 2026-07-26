@@ -1,0 +1,42 @@
+# Serverless streaming job - Free Edition
+# WARNING: eventhub_producer.py needs outbound access to Azure Event Hub,
+# which is likely restricted on Free Edition's trusted-domain-only network.
+# Recommended: run this task locally or point to a mock/sample data generator instead.
+resources:
+  jobs:
+    manufacturing_streaming_ingest_job:
+      name: "manufacturing-streaming-ingest-${bundle.target}"
+      tags:
+        project: manufacturing-etl
+        layer: streaming
+
+      tasks:
+        - task_key: eventhub_producer
+          spark_python_task:
+            python_file: ../src/azure_sync/eventhub_producer.py
+            parameters:
+              - "--namespace"
+              - "${var.eventhub_namespace}"
+          environment_key: default
+
+        - task_key: stream_bronze_ingest
+          depends_on:
+            - task_key: eventhub_producer
+          spark_python_task:
+            python_file: ../src/pipeline/stream_bronze_ingest.py
+            parameters:
+              - "--catalog"
+              - "${var.catalog_name}"
+              - "--schema"
+              - "${var.schema_name}"
+          environment_key: default
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
+            dependencies:
+              - -r ../requirements.txt
+
+      queue:
+        enabled: true

@@ -1,0 +1,47 @@
+# Serverless job - orchestrates the Lakeflow Declarative Pipeline + downstream tasks
+# bronze_ingest / silver_transform / gold_aggregate run INSIDE the pipeline
+# (see resources/manufacturing_etl.pipeline.yml), not as standalone job tasks.
+#
+# NOTE: local-to-ADLS sync is handled separately, before this job runs, via
+# check_and_upload.py (run locally / via cron), which uploads changed files
+# and then triggers this job through `databricks bundle run`. No in-job
+# Azure sync task is needed here.
+resources:
+  jobs:
+    manufacturing_main_pipeline_job:
+      name: "manufacturing-main-pipeline-${bundle.target}"
+      tags:
+        project: manufacturing-etl
+        owner: ekram.hossain
+
+      tasks:
+        - task_key: run_medallion_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.manufacturing_etl_pipeline.id}
+
+        - task_key: sentiment_analysis
+          depends_on:
+            - task_key: run_medallion_pipeline
+          spark_python_task:
+            python_file: ../src/pipeline/sentiment_analysis.py
+            parameters:
+              - "--catalog"
+              - "${var.catalog_name}"
+              - "--schema"
+              - "${var.schema_name}"
+          environment_key: default
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
+            dependencies:
+              - -r ../requirements.txt
+
+      schedule:
+        quartz_cron_expression: "0 0 3 * * ?"
+        timezone_id: "Europe/Berlin"
+        pause_status: PAUSED
+
+      queue:
+        enabled: true
