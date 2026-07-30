@@ -10,21 +10,18 @@ resources:
         - task_key: bronze_ingest
           pipeline_task:
             pipeline_id: ${resources.pipelines.manufacturing_bronze_pipeline.id}
-          max_retries: 0
 
         - task_key: silver_transform
           depends_on:
             - task_key: bronze_ingest
           pipeline_task:
             pipeline_id: ${resources.pipelines.manufacturing_silver_pipeline.id}
-          max_retries: 0
 
         - task_key: gold_aggregate
           depends_on:
             - task_key: silver_transform
           pipeline_task:
             pipeline_id: ${resources.pipelines.manufacturing_gold_pipeline.id}
-          max_retries: 0
 
         - task_key: sentiment_analysis
           depends_on:
