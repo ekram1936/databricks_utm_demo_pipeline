@@ -4,3 +4,5 @@ azure-eventhub>=5.11.0
 azure-storage-file-datalake>=12.14.0
 azure-identity>=1.15.0
 pyarrow>=14,<18
+pyspark==3.5.1
+pytest==8.2.0

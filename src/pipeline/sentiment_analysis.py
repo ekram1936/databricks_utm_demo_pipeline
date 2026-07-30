@@ -1,6 +1,11 @@
 """
 LLM-based sentiment/root-cause analysis on quality audit notes.
 Uses Databricks ai_query() with a foundation model endpoint.
+
+Incremental logic: on first run, creates the Gold table by scoring all
+audit records. On subsequent runs, only scores audit_ids that don't
+already exist in the Gold table (LEFT ANTI JOIN), avoiding repeated
+LLM calls on already-analyzed records.
 """
 
 import sys
@@ -16,30 +21,38 @@ from src.utils.logger import get_logger
 logger = get_logger(__name__)
 MODEL_ENDPOINT = "databricks-meta-llama-3-3-70b-instruct"
 
+PROMPT_TEXT = (
+    "Classify the sentiment of this quality audit note as Positive, "
+    "Neutral, or Negative, and give a one-word root cause category "
+    "if negative. Note: "
+)
+
+
+def _ai_query_expr(note_column):
+    return "ai_query('" + MODEL_ENDPOINT + "', CONCAT('" + PROMPT_TEXT + "', " + note_column + ")) AS llm_analysis"
+
 
 def run(spark):
     silver = azure_settings.SILVER_SCHEMA
     gold = azure_settings.GOLD_SCHEMA
+    target_table = gold + ".d_audit_sentiment"
+    source_table = silver + ".fact_quality_audits"
 
-    query = f"""
-    CREATE OR REPLACE TABLE {gold}.d_audit_sentiment AS
-    SELECT
-      audit_id,
-      batch_id,
-      audit_outcome,
-      audit_notes,
-      ai_query(
-        '{MODEL_ENDPOINT}',
-        CONCAT(
-          'Classify the sentiment of this quality audit note as Positive, Neutral, or Negative, and give a one-word root cause category if negative. Note: ',
-          audit_notes
-        )
-      ) AS llm_analysis
-    FROM {silver}.fact_quality_audits
-    """
-    logger.info(f"Running LLM sentiment analysis via {MODEL_ENDPOINT} ...")
-    spark.sql(query)
-    logger.info(f"Wrote results to {gold}.d_audit_sentiment")
+    table_exists = spark.catalog.tableExists(target_table)
+
+    if not table_exists:
+        select_clause = "audit_id, batch_id, audit_outcome, audit_notes, " + _ai_query_expr("audit_notes")
+        query = "CREATE TABLE " + target_table + " AS SELECT " + select_clause + " FROM " + source_table
+        logger.info("Creating " + target_table + " and scoring all audits via " + MODEL_ENDPOINT + " ...")
+        spark.sql(query)
+        logger.info("Initial load complete for " + target_table)
+    else:
+        select_clause = "s.audit_id, s.batch_id, s.audit_outcome, s.audit_notes, " + _ai_query_expr("s.audit_notes")
+        join_clause = " FROM " + source_table + " s LEFT ANTI JOIN " + target_table + " g ON s.audit_id = g.audit_id"
+        query = "INSERT INTO " + target_table + " SELECT " + select_clause + join_clause
+        logger.info("Incrementally scoring new audit_ids via " + MODEL_ENDPOINT + " ...")
+        spark.sql(query)
+        logger.info("Incremental update complete for " + target_table)
 
 
 def main():
