@@ -12,137 +12,111 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 
-class TestSentimentFirstRunCreatesTable:
-    """Validates the CREATE TABLE branch runs when the Gold table doesn't exist yet."""
-
-    def test_create_table_used_when_table_missing(self):
+class TestSentimentIdempotentFlow:
+    def test_run_creates_table_if_missing_and_then_inserts_new_rows(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = False
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert "CREATE TABLE" in executed_query
-        assert "INSERT INTO" not in executed_query
+        calls = [c.args[0] for c in mock_spark.sql.call_args_list]
+        assert len(calls) == 2
+        assert "CREATE TABLE IF NOT EXISTS" in calls[0]
+        assert "INSERT INTO" in calls[1]
+        assert "LEFT ANTI JOIN" in calls[1]
 
-    def test_first_run_scores_all_rows_no_anti_join(self):
+    def test_create_query_defines_expected_schema(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = False
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert "LEFT ANTI JOIN" not in executed_query
+        create_query = mock_spark.sql.call_args_list[0].args[0]
+        for col in [
+            "audit_id STRING",
+            "batch_id STRING",
+            "audit_outcome STRING",
+            "audit_notes STRING",
+            "llm_analysis STRING",
+        ]:
+            assert col in create_query
 
-    def test_spark_sql_called_exactly_once_on_first_run(self):
+    def test_insert_query_uses_audit_id_deduplication(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = False
         run(mock_spark)
-        mock_spark.sql.assert_called_once()
-
-
-class TestSentimentIncrementalRunSkipsExisting:
-    """Validates the INSERT + LEFT ANTI JOIN branch runs on subsequent runs."""
-
-    def test_insert_into_used_when_table_exists(self):
-        from src.pipeline.sentiment_analysis import run
-        mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = True
-        run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert "INSERT INTO" in executed_query
-        assert "CREATE TABLE" not in executed_query
-
-    def test_incremental_run_uses_left_anti_join_on_audit_id(self):
-        from src.pipeline.sentiment_analysis import run
-        mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = True
-        run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert "LEFT ANTI JOIN" in executed_query
-        assert "s.audit_id = g.audit_id" in executed_query
-
-    def test_incremental_run_checks_table_exists_before_deciding(self):
-        from src.pipeline.sentiment_analysis import run
-        mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = True
-        run(mock_spark)
-        mock_spark.catalog.tableExists.assert_called_once()
+        insert_query = mock_spark.sql.call_args_list[1].args[0]
+        assert "LEFT ANTI JOIN" in insert_query
+        assert "s.audit_id = g.audit_id" in insert_query
 
 
 class TestSentimentQueryContent:
-    """Validates the generated SQL references correct schemas, tables, columns, model."""
-
-    @pytest.mark.parametrize("table_exists", [True, False])
-    def test_query_references_correct_model_endpoint(self, table_exists):
+    def test_query_references_correct_model_endpoint(self):
         from src.pipeline.sentiment_analysis import run, MODEL_ENDPOINT
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = table_exists
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert MODEL_ENDPOINT in executed_query
+        calls = [c.args[0] for c in mock_spark.sql.call_args_list]
+        assert any(MODEL_ENDPOINT in q for q in calls)
 
-    @pytest.mark.parametrize("table_exists", [True, False])
-    def test_query_targets_gold_audit_sentiment_table(self, table_exists):
+    def test_query_targets_gold_audit_sentiment_table(self):
         from src.pipeline.sentiment_analysis import run
         from config import azure_settings
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = table_exists
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert f"{azure_settings.GOLD_SCHEMA}.d_audit_sentiment" in executed_query
+        calls = [c.args[0] for c in mock_spark.sql.call_args_list]
+        assert any(azure_settings.GOLD_SCHEMA + ".d_audit_sentiment" in q for q in calls)
 
-    @pytest.mark.parametrize("table_exists", [True, False])
-    def test_query_reads_from_silver_quality_audits(self, table_exists):
+    def test_query_reads_from_silver_quality_audits(self):
         from src.pipeline.sentiment_analysis import run
         from config import azure_settings
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = table_exists
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert f"{azure_settings.SILVER_SCHEMA}.fact_quality_audits" in executed_query
+        calls = [c.args[0] for c in mock_spark.sql.call_args_list]
+        assert any(azure_settings.SILVER_SCHEMA + ".fact_quality_audits" in q for q in calls)
 
-    @pytest.mark.parametrize("table_exists", [True, False])
-    def test_query_uses_ai_query_function(self, table_exists):
+    def test_query_uses_ai_query_function(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = table_exists
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
-        assert "ai_query(" in executed_query
+        calls = [c.args[0] for c in mock_spark.sql.call_args_list]
+        assert any("ai_query(" in q for q in calls)
 
-    @pytest.mark.parametrize("table_exists", [True, False])
-    def test_query_selects_required_audit_columns(self, table_exists):
+    def test_query_selects_required_audit_columns(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = table_exists
         run(mock_spark)
-        executed_query = mock_spark.sql.call_args[0][0]
+        combined = " ".join(c.args[0] for c in mock_spark.sql.call_args_list)
         for col in ["audit_id", "batch_id", "audit_outcome", "audit_notes"]:
-            assert col in executed_query
+            assert col in combined
 
 
 class TestSentimentRunResilience:
-    """Confirms run() propagates spark.sql errors rather than silently swallowing them."""
-
-    def test_run_raises_if_spark_sql_fails(self):
+    def test_run_raises_if_create_step_fails(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.return_value = True
-        mock_spark.sql.side_effect = Exception("Model endpoint unavailable")
-        with pytest.raises(Exception, match="Model endpoint unavailable"):
+
+        def side_effect(query):
+            if query.startswith("CREATE TABLE IF NOT EXISTS"):
+                raise Exception("Create failed")
+            return MagicMock()
+
+        mock_spark.sql.side_effect = side_effect
+
+        with pytest.raises(Exception, match="Create failed"):
             run(mock_spark)
 
-    def test_run_raises_if_table_exists_check_fails(self):
+    def test_run_raises_if_insert_step_fails(self):
         from src.pipeline.sentiment_analysis import run
         mock_spark = MagicMock()
-        mock_spark.catalog.tableExists.side_effect = Exception("Catalog unreachable")
-        with pytest.raises(Exception, match="Catalog unreachable"):
+
+        def side_effect(query):
+            if query.startswith("INSERT INTO"):
+                raise Exception("Insert failed")
+            return MagicMock()
+
+        mock_spark.sql.side_effect = side_effect
+
+        with pytest.raises(Exception, match="Insert failed"):
             run(mock_spark)
 
 
 class TestSentimentMainEntrypoint:
-    """Validates main() correctly obtains or creates a SparkSession before calling run()."""
-
     @patch("src.pipeline.sentiment_analysis.run")
     @patch("src.pipeline.sentiment_analysis.SparkSession")
     def test_main_uses_active_session_if_available(self, mock_session_cls, mock_run):
