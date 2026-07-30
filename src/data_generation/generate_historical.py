@@ -29,7 +29,7 @@ logger = get_logger(__name__)
 
 def generate_production_batches(plant_ids, line_ids, sku_ids) -> pd.DataFrame:
     logger.info("Generating historical_production_batches...")
-    rng = np.random.default_rng(settings.RANDOM_SEED)
+    rng = np.random.default_rng()
     n = settings.VOLUMES["n_production_batches"]
     batch_start = datetime.strptime(settings.HIST_START_DATE, "%Y-%m-%d")
 
@@ -51,7 +51,7 @@ def generate_production_batches(plant_ids, line_ids, sku_ids) -> pd.DataFrame:
 
 def generate_shipments(batch_ids, customer_ids) -> pd.DataFrame:
     logger.info("Generating historical_shipments...")
-    rng = np.random.default_rng(settings.RANDOM_SEED + 1)
+    rng = np.random.default_rng()
     n = settings.VOLUMES["n_shipments"]
     batch_start = datetime.strptime(settings.HIST_START_DATE, "%Y-%m-%d")
 
@@ -69,7 +69,7 @@ def generate_shipments(batch_ids, customer_ids) -> pd.DataFrame:
 
 def generate_quality_audit_logs(batch_ids) -> pd.DataFrame:
     logger.info("Generating historical_quality_audit_logs...")
-    rng = np.random.default_rng(settings.RANDOM_SEED + 2)
+    rng = np.random.default_rng()
     n = settings.VOLUMES["n_quality_audits"]
 
     qa_texts_pass = ["Batch within spec, no deviations.", "QA passed, standard fat content.", "All parameters nominal."]

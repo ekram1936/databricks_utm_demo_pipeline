@@ -34,7 +34,7 @@ def generate_dim_plants() -> pd.DataFrame:
 
 def generate_dim_lines() -> pd.DataFrame:
     logger.info("Generating dim_lines...")
-    rng = np.random.default_rng(settings.RANDOM_SEED)
+    rng = np.random.default_rng()
     rows = []
     lid = 1
     plant_ids = [p["plant_id"] for p in settings.PLANTS]
@@ -56,7 +56,7 @@ def generate_dim_lines() -> pd.DataFrame:
 
 def generate_dim_sku_catalog() -> pd.DataFrame:
     logger.info("Generating dim_sku_catalog...")
-    rng = np.random.default_rng(settings.RANDOM_SEED)
+    rng = np.random.default_rng()
     n = settings.VOLUMES["n_skus"]
     df = pd.DataFrame({
         "sku_id": [f"SKU{500+i}" for i in range(n)],
@@ -71,7 +71,7 @@ def generate_dim_sku_catalog() -> pd.DataFrame:
 
 def generate_dim_retail_customers() -> pd.DataFrame:
     logger.info("Generating dim_retail_customers...")
-    rng = np.random.default_rng(settings.RANDOM_SEED)
+    rng = np.random.default_rng()
     n = settings.VOLUMES["n_retail_customers"]
     df = pd.DataFrame({
         "customer_id": [f"RC{100+i}" for i in range(n)],

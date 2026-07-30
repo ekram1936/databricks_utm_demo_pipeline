@@ -1,138 +1,129 @@
 # Muller Manufacturing Data Platform
 
-An end-to-end data engineering project built on Azure and Databricks that combines
-batch historical data with live IoT sensor streaming to power analytics and an
-AI-assisted management dashboard for a simulated dairy/manufacturing operation.
+An end-to-end data and AI project built on Azure and Databricks. It combines
+historical business data with live IoT sensor streaming, and adds a small
+LLM-based sentiment step on top, all wired into a simple CI/CD pipeline.
 
 ---
 
-## 1. Problem Statement
+## 1. What This Project Does
 
-Manufacturing plants generate two very different kinds of data that are traditionally
-hard to unify:
+This project simulates a dairy / manufacturing operation and answers a few
+practical questions in one place:
 
-1. **Historical/operational records** — production batches, shipments, quality audit
-   logs, and master data (plants, lines, SKUs, customers) — usually sitting in files
-   or business systems, updated periodically.
-2. **Live equipment telemetry** — temperature, pressure, vibration, fill volume, and
-   machine status readings streaming continuously off the factory floor.
+- Which plants and lines have higher defect and scrap rates?
+- Which customers have late or returned shipments?
+- What does live sensor data say about equipment health?
+- What do quality audit notes say beyond structured outcome labels?
 
-Without a unified pipeline, plant managers can't answer basic operational questions
-in one place:
-- Which plant has the highest defect rate?
-- Which retail customers are at risk of missed deliveries?
-- Are any production lines showing abnormal equipment behavior right now?
-- What do our quality audit notes actually say, in aggregate?
+To do that, it:
 
-This project builds a single pipeline and dashboard that answers all of the above,
-combining **batch** and **real-time streaming** data sources into one governed,
-queryable platform — plus a natural-language "ask a question" interface for
-non-technical managers.
+- Generates synthetic data for plants, lines, SKUs, customers, batches,
+  shipments, and audit logs.
+- Uploads historical business data to Azure Data Lake Storage Gen2.
+- Reads sensor data in two forms: a stored JSON snapshot and a live Event Hubs stream.
+- Ingests everything into Databricks using a Bronze → Silver → Gold layout.
+- Adds a small LLM step to classify audit notes as positive, neutral, or negative.
+- Shows the results in a Databricks dashboard and through Genie.
 
 ---
 
-## 2. Solution Overview
+## 2. Architecture
 
-A **Medallion Architecture** (Bronze → Silver → Gold) built on Databricks and Unity
-Catalog, fed by two parallel ingestion paths:
+The platform follows a simple Medallion-style layout on Databricks with Unity
+Catalog:
 
+- **Bronze**: raw tables loaded from files and live streaming input.
+- **Silver**: cleaned, typed, deduplicated tables.
+- **Gold**: business summary tables plus one sentiment table from the LLM step.
+
+There are two main ingestion paths:
+
+- Historical business files from Azure Data Lake Storage Gen2.
+- Live sensor events from Azure Event Hubs.
+
+Sensor data is handled in two forms:
+
+- `sensor_readings`: a batch JSON snapshot read from storage
+- `sensor_readings_stream`: live sensor events read from Azure Event Hubs
+
+Both use the same sensor schema and are later combined in Silver into
+`fact_sensor_readings`, with a `data_source` column showing whether the row came
+from the batch snapshot or the live stream.
+
+```text
+Historical files → ADLS → bronze_ingest.py → BRONZE
+                                         │
+                                         ▼
+                               silver_transform.py → SILVER
+                                         │
+                                         ▼
+                               gold_aggregate.py → GOLD metrics
+                                         │
+                                         ▼
+                             sentiment_analysis.py → GOLD sentiment
+
+Sensor snapshot → ADLS JSON → sensor_readings → BRONZE
+Live sensor events → Event Hubs → stream_bronze_ingest.py → sensor_readings_stream → BRONZE
 ```
-                     ┌─────────────────────────┐
-                     │   Synthetic Data Gen     │
-                     │ (plants, lines, SKUs,    │
-                     │  customers, historical   │
-                     │  batches/shipments/audits)│
-                     └───────────┬──────────────┘
-                                 │  CSV / JSONL
-                                 ▼
-                     ┌─────────────────────────┐
-                     │   Azure Data Lake (ADLS  │
-                     │   Gen2) — raw file store │
-                     └───────────┬──────────────┘
-                                 │
-   ┌─────────────────┐          │           ┌──────────────────────┐
-   │  Local Producer  │          │           │  bronze_ingest.py     │
-   │ (eventhub_producer│          │          │  (batch file reader)  │
-   │  .py) — simulates │          │          └───────────┬──────────┘
-   │  live sensors     │          │                      │
-   └────────┬──────────┘          │                      │
-            │ sends events        │                      │
-            ▼                     │                      ▼
-   ┌──────────────────┐           │           ┌──────────────────────┐
-   │  Azure Event Hubs │           │           │   BRONZE LAYER        │
-   │ (Kafka-compatible)│──────────┼──────────▶│  (Unity Catalog)      │
-   └────────┬──────────┘  reads via           │  9 raw tables         │
-            │             Kafka protocol       └───────────┬──────────┘
-            ▼                                               │
-   ┌──────────────────────┐                                 ▼
-   │ stream_bronze_ingest  │                    ┌──────────────────────┐
-   │ .py (Structured       │───────────────────▶│   SILVER LAYER        │
-   │  Streaming job)       │                    │  cleaned, deduped,    │
-   └───────────────────────┘                    │  unioned (batch +     │
-                                                 │  streaming sensors)  │
-                                                 └───────────┬──────────┘
-                                                              │
-                                                              ▼
-                                                 ┌──────────────────────┐
-                                                 │   GOLD LAYER          │
-                                                 │  business-ready       │
-                                                 │  aggregates + LLM     │
-                                                 │  sentiment analysis   │
-                                                 └───────────┬──────────┘
-                                                              │
-                                                              ▼
-                                                 ┌──────────────────────┐
-                                                 │  Databricks AI/BI     │
-                                                 │  Dashboard + Genie    │
-                                                 │  (natural language Q&A)│
-                                                 └──────────────────────┘
-```
+
+This design makes it easy to compare stored sensor data and live sensor data in
+one reporting model.
 
 ---
 
 ## 3. Tech Stack
 
-| Layer | Technology |
+| Part | Tool |
 |---|---|
-| Cloud platform | Microsoft Azure |
-| Data lake | Azure Data Lake Storage Gen2 (ADLS) |
-| Real-time messaging | Azure Event Hubs (Kafka-compatible endpoint) |
-| Compute & orchestration | Databricks (Serverless compute, Jobs) |
-| Table format & governance | Delta Lake + Unity Catalog |
-| Streaming engine | Spark Structured Streaming |
-| Batch processing | PySpark |
-| Secrets management | Databricks Secret Scopes |
-| BI / visualization | Databricks AI/BI Dashboards |
-| Natural language analytics | Databricks Genie (Genie Code + Genie Spaces) |
-| Language | Python 3.10 |
+| Cloud | Azure |
+| Storage | Azure Data Lake Storage Gen2 |
+| Streaming | Azure Event Hubs |
+| Compute | Databricks serverless |
+| Table format | Delta Lake |
+| Catalog | Unity Catalog |
+| Processing | PySpark + Spark Structured Streaming |
+| LLM call | Databricks `ai_query()` |
+| Dashboards | Databricks AI/BI + Genie |
+| CI/CD | GitHub Actions + Databricks Asset Bundles |
+| Tests | pytest |
 
 ---
 
-## 4. Project Structure
+## 4. Repository Layout
 
-```
+```text
 databricks_utm_demo_pipeline/
 ├── config/
-│   └── azure_settings.py          # central config: paths, schema names, secrets
+│   └── azure_settings.py          # catalog, schema names, paths, secrets
 ├── src/
 │   ├── data_generation/
-│   │   ├── generate_dimensions.py     # plants, lines, SKUs, customers
-│   │   ├── generate_historical.py     # production batches, shipments, audits
-│   │   └── generate_streaming.py      # synthetic sensor readings (batch snapshot)
+│   │   ├── generate_dimensions.py  # plants, lines, SKUs, customers
+│   │   ├── generate_historical.py  # batches, shipments, audits
+│   │   └── generate_streaming.py   # sensor snapshot data
 │   ├── azure_sync/
-│   │   ├── upload_to_adls.py          # pushes generated files to ADLS Gen2
-│   │   └── eventhub_producer.py       # simulates live sensor stream → Event Hubs
+│   │   ├── upload_to_adls.py       # upload local files to ADLS
+│   │   └── eventhub_producer.py    # send sensor events into Event Hubs
 │   ├── pipeline/
-│   │   ├── bronze_ingest.py           # ADLS files → Bronze tables
-│   │   ├── stream_bronze_ingest.py    # Event Hubs → Bronze streaming table
-│   │   ├── silver_transform.py        # Bronze → Silver (clean, dedupe, union)
-│   │   ├── gold_aggregate.py          # Silver → Gold (business aggregates)
-│   │   └── sentiment_analysis.py      # LLM sentiment on quality audit notes
+│   │   ├── bronze_ingest.py        # ADLS → Bronze tables
+│   │   ├── stream_bronze_ingest.py # Event Hubs → Bronze stream table
+│   │   ├── silver_transform.py     # Bronze → Silver
+│   │   ├── gold_aggregate.py       # Silver → Gold metrics
+│   │   └── sentiment_analysis.py   # Silver audits → Gold sentiment
 │   └── utils/
-│       └── logger.py
+│       └── logger.py               # logging helper
 ├── notebooks/
-│   ├── run_pipeline                   # orchestrates Bronze→Silver→Gold→Sentiment
-│   └── run_streaming                  # runs stream_bronze_ingest on a schedule
+│   ├── run_pipeline                # runs Bronze→Silver→Gold→sentiment
+│   └── run_streaming               # runs streaming ingestion
+├── tests/
+│   ├── test_bronze_ingest.py
+│   ├── test_silver_transform.py
+│   ├── test_gold_aggregate.py
+│   ├── test_sentiment_analysis.py
+│   └── test_upload_to_adls.py
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 └── requirements.txt
 ```
 
@@ -140,124 +131,149 @@ databricks_utm_demo_pipeline/
 
 ## 5. Data Model
 
-### Bronze Layer (`utm_demo_catalog.bronze`) — raw, minimally processed
+### 5.1 Bronze (`utm_demo_catalog.bronze`)
 
-| Table | Source | Description |
-|---|---|---|
-| `dim_plants` | ADLS file | Plant master data (name, country, capacity) |
-| `dim_lines` | ADLS file | Production line master data |
-| `dim_sku_catalog` | ADLS file | Product SKU catalog |
-| `dim_retail_customers` | ADLS file | Retail customer master data |
-| `historical_production_batches` | ADLS file | Batch-level production records |
-| `historical_shipments` | ADLS file | Shipment records to customers |
-| `historical_quality_audit_logs` | ADLS file | Free-text quality audit notes |
-| `sensor_readings` | ADLS file | Synthetic batch snapshot of sensor data |
-| `sensor_readings_stream` | **Event Hubs (live)** | Real-time sensor telemetry via Kafka |
+Bronze tables are close to the raw input.
 
-### Silver Layer (`utm_demo_catalog.silver`) — cleaned & unified
-
-| Table | Transformation |
+| Table | What it holds |
 |---|---|
-| `dim_plants`, `dim_lines`, `dim_sku_catalog`, `dim_retail_customers` | Type casting, deduplication |
-| `fact_production_batches` | Casting, yield_pct calculation, dedup by batch_id |
-| `fact_shipments` | Casting, dedup by shipment_id |
-| `fact_quality_audits` | Dedup by audit_id |
-| `fact_sensor_readings` | **Unions `bronze.sensor_readings` (batch) + `bronze.sensor_readings_stream` (live)**, tagged with a `data_source` column (`batch_file` / `event_hub_stream`), deduped by reading_id |
+| `dim_plants` | plant info |
+| `dim_lines` | production line info |
+| `dim_sku_catalog` | SKU info |
+| `dim_retail_customers` | customer info |
+| `historical_production_batches` | batch records |
+| `historical_shipments` | shipment records |
+| `historical_quality_audit_logs` | audit text and outcomes |
+| `sensor_readings` | sensor batch snapshot |
+| `sensor_readings_stream` | live sensor events from Event Hubs |
 
-### Gold Layer (`utm_demo_catalog.gold`) — business-ready aggregates
+### 5.2 Silver (`utm_demo_catalog.silver`)
 
-| Table | Purpose |
+Silver applies data cleaning and builds fact tables.
+
+| Table | Notes |
 |---|---|
-| `d_production_summary` | Yield %, defect rate %, scrap counts by plant + line |
-| `d_retailer_360` | On-time delivery rate, delayed/returned shipment counts by customer |
-| `d_quality_audit_summary` | Audit outcome counts by plant |
-| `d_audit_sentiment` | LLM-generated sentiment classification of audit notes |
-| `d_sensor_health_summary` | Anomaly rate %, avg/max temperature & vibration by line, **split by data_source** so live vs. historical equipment health can be compared directly |
+| `dim_plants`, `dim_lines`, `dim_sku_catalog`, `dim_retail_customers` | cleaned dimensions |
+| `fact_production_batches` | batches with yield and defect info |
+| `fact_shipments` | shipments with delivery status |
+| `fact_quality_audits` | audits with one row per `audit_id` |
+| `fact_sensor_readings` | combined sensor table from batch snapshot + live stream, tagged with `data_source` |
+
+### 5.3 Gold (`utm_demo_catalog.gold`)
+
+Gold tables are used by the dashboard and Genie.
+
+| Table | Notes |
+|---|---|
+| `d_production_summary` | yield and defect KPIs by plant and line |
+| `d_retailer_360` | delivery and return metrics by customer |
+| `d_quality_audit_summary` | audit outcome counts by plant |
+| `d_audit_sentiment` | sentiment and root-cause info for audit notes |
+| `d_sensor_health_summary` | anomaly and health metrics by line and `data_source` |
 
 ---
 
-## 6. How the Pipeline Runs
+## 6. Sentiment Step
 
-### Two independent Databricks Jobs
+The AI part of this project is small and focused.
 
-**Job 1 — `muller_medallion_pipeline`** (the "main" pipeline)
-- Runs on a schedule (e.g., hourly/daily)
-- Tasks: `bronze_ingest` → `silver_transform` → `gold_aggregate` → `sentiment_analysis`
-- Reads static files from ADLS, rebuilds all Silver and Gold tables
+- Input: `silver.fact_quality_audits`
+- Tool: Databricks `ai_query()`
+- Output: `gold.d_audit_sentiment`
 
-**Job 2 — `sensor_streaming_ingest`** (live telemetry ingestion)
-- Runs on a tight schedule (every ~5 minutes)
-- Uses `trigger(availableNow=True)` — Databricks serverless compute does not support
-  always-on `processingTime` triggers, so instead this job wakes up, drains
-  whatever new events are sitting in Event Hubs, writes them to
-  `bronze.sensor_readings_stream`, and exits
-- Depends on the local `eventhub_producer.py` script actively sending events
+For each audit note, the pipeline:
 
-### Why two jobs instead of one continuous stream
+- assigns a sentiment label: **Positive**, **Neutral**, or **Negative**
+- adds a one-word root cause for negative cases
+- writes the result to a Gold table
 
-Databricks serverless compute only supports `AvailableNow`/`Once` triggers, not
-infinite `processingTime` streaming (`INFINITE_STREAMING_TRIGGER_NOT_SUPPORTED`).
-The architecture was adapted to a **frequent micro-batch pattern** instead — this
-is also more cost-effective for a project running on Azure student credits than
-paying for a permanently-running cluster.
+The logic is designed so that:
 
-### End-to-end refresh flow
+- the target table is created if it does not already exist
+- only new audits are sent for scoring, based on `audit_id`
 
+This keeps the LLM step simple and avoids processing the same audit more than once.
+
+---
+
+## 7. Jobs and Scheduling
+
+There are two Databricks jobs:
+
+**Job 1 — `muller_medallion_pipeline`**
+
+- runs Bronze, Silver, Gold, and sentiment steps in order
+- runs on a wider schedule, such as hourly or daily
+
+**Job 2 — `sensor_streaming_ingest`**
+
+- reads live events from Event Hubs
+- writes them into `sensor_readings_stream`
+- uses `trigger(availableNow=True)`
+- runs more often, for example every few minutes
+
+This setup works well on serverless compute without needing an always-running stream.
+
+---
+
+## 8. Dashboard
+
+The Databricks AI/BI dashboard has four main views:
+
+1. **Executive** — high-level KPIs like yield, defects, delivery, and sentiment
+2. **Production & Quality** — plant and line performance, audit outcomes, and sentiment
+3. **Customer** — customer delivery and return metrics
+4. **Equipment Health** — sensor anomaly and health metrics, split by stored vs live data
+
+Genie is enabled on top of the Gold tables so users can ask simple questions
+without writing SQL.
+
+---
+
+## 9. Tests and CI/CD
+
+### 9.1 Tests
+
+The `tests/` folder contains pytest tests for:
+
+- Bronze ingestion
+- Silver transformations
+- Gold aggregates
+- sentiment logic
+- ADLS upload logic
+
+### 9.2 GitHub Actions
+
+`.github/workflows/deploy.yml` defines a simple pipeline:
+
+```text
+test → validate → deploy
 ```
-Producer (continuous) → Event Hubs → [every 5 min] Streaming Job → Bronze
-                                                                       │
-                          [on its own schedule] Main Pipeline Job ────┘
-                                    │
-                                    ▼
-                          Silver (union) → Gold
-                                    │
-                                    ▼
-                     Dashboard (auto-refreshes, re-queries Gold)
+
+- `test`: install dependencies and run tests
+- `validate`: run `databricks bundle validate -t dev`
+- `deploy`: deploy the bundle and trigger the main job
+
+If tests fail, deployment does not continue.
+
+---
+
+## 10. How to Run
+
+### 10.1 Prerequisites
+
+- Azure subscription with ADLS, Event Hubs, and Databricks
+- Python 3.10
+- Databricks CLI configured
+- Databricks secret scope for the Event Hubs connection string
+
+```bash
+databricks secrets create-scope eventhub-secrets
+databricks secrets put-secret eventhub-secrets connection-string
 ```
 
-**Important:** the dashboard is only ever as fresh as the *last main pipeline run* —
-its own auto-refresh just re-runs SQL against Gold tables, it doesn't trigger new
-transformations. For demos, manually clicking "Run now" on the main pipeline job
-guarantees the freshest possible numbers on demand.
+### 10.2 Local setup
 
----
-
-## 7. Dashboard & Genie
-
-Built as a Databricks AI/BI Dashboard on top of the four Gold tables, organized into
-management-relevant pages:
-
-1. **Executive Summary** — KPI cards (yield %, defect rate, on-time delivery,
-   scrapped batches, sensor anomalies, audit sentiment) with red/amber/green
-   status coloring
-2. **Production & Quality** — yield and defect rate by plant/line, audit sentiment
-   breakdown
-3. **Customer & Delivery** — on-time delivery rate by customer, delayed/returned
-   shipment counts
-4. **Equipment Health Monitoring** — anomaly rate comparison between live
-   (`event_hub_stream`) and historical (`batch_file`) sensor data, temperature and
-   vibration trends by line
-
-A companion **Genie Space** is enabled on the dashboard, letting non-technical
-users type plain-English questions (e.g., *"which plant has the worst defect
-rate?"*) and get grounded, SQL-backed answers directly on the page — no
-Databricks or SQL knowledge required.
-
----
-
-## 8. How to Run This Project
-
-### Prerequisites
-- Azure subscription with an ADLS Gen2 storage account, Event Hubs namespace, and
-  Databricks workspace (Unity Catalog enabled)
-- Python 3.10, virtualenv
-- Databricks secret scope configured with your Event Hubs connection string:
-  ```bash
-  databricks secrets create-scope eventhub-secrets
-  databricks secrets put-secret eventhub-secrets connection-string
-  ```
-
-### Local setup
 ```bash
 git clone <repo-url>
 cd databricks_utm_demo_pipeline
@@ -269,7 +285,8 @@ export EVENT_HUB_CONNECTION_STR='<your-event-hubs-connection-string>'
 export EVENT_HUB_NAME='sensor-telemetry'
 ```
 
-### Generate & upload synthetic data (one-time)
+### 10.3 Generate and upload data
+
 ```bash
 python -m src.data_generation.generate_dimensions
 python -m src.data_generation.generate_historical
@@ -277,56 +294,20 @@ python -m src.data_generation.generate_streaming
 python -m src.azure_sync.upload_to_adls
 ```
 
-### Start the live sensor simulator
+### 10.4 Start the sensor producer
+
 ```bash
 python -m src.azure_sync.eventhub_producer --mode continuous
 ```
 
-### In Databricks
-```python
-# Run once to backfill Bronze/Silver/Gold from files
-from src.pipeline import bronze_ingest, silver_transform, gold_aggregate
-bronze_ingest.run(spark)
-silver_transform.run(spark)
-gold_aggregate.run(spark)
-
-# Pull in live streaming data
-from src.pipeline import stream_bronze_ingest
-stream_bronze_ingest.run(spark, dbutils)
-```
-
-Or, for production use, deploy `notebooks/run_pipeline` and `notebooks/run_streaming`
-as two separate scheduled Databricks Jobs as described in Section 6.
-
 ---
 
-## 9. Key Engineering Decisions & Lessons Learned
+## 11. Next Steps
 
-- **Batch + streaming unification**: rather than treating live sensor data as a
-  replacement for historical data, both sources are unioned in Silver with a
-  `data_source` tag — preserving full history while still surfacing real-time
-  signals.
-- **Serverless streaming constraints**: discovered that Databricks serverless
-  compute doesn't support infinite `processingTime` triggers, and adapted the
-  architecture to a scheduled `AvailableNow` micro-batch pattern instead of an
-  always-on cluster — a more cost-effective design for this project's scale.
-- **Schema evolution**: Delta tables enforce schema by default; any structural
-  change to a table requires `option("overwriteSchema", "true")` on write, which
-  became a recurring fix throughout development as the sensor schema evolved.
-- **Separation of concerns**: two independent Databricks Jobs (main pipeline vs.
-  streaming ingestion) allow each to be scheduled, scaled, and paused
-  independently based on actual freshness needs and cost constraints.
+Possible improvements:
 
----
-
-## 10. Future Enhancements
-
-- Add a monthly/time-series trend table (`d_production_monthly_trend`) to support
-  natural-language trend questions like "worst defect trend this month"
-  through Genie
-- Move `eventhub_producer.py` off a local machine onto a small always-on Azure
-  Function or container for a fully cloud-native demo
-- Add data quality checks (e.g., Great Expectations or Delta Live Tables
-  expectations) between Bronze and Silver
-- Add alerting (email/Slack) on the streaming job for anomaly spikes detected in
-  `d_sensor_health_summary`
+- Add a Gold table for time-series trends
+- Move the sensor producer to Azure Functions or a container
+- Add more data quality checks between Bronze and Silver
+- Add alerts for anomaly spikes or negative audit sentiment
+- Add a small evaluation notebook for sentiment results
