@@ -1,13 +1,3 @@
-"""
-LLM-based sentiment/root-cause analysis on quality audit notes.
-Uses Databricks ai_query() with a foundation model endpoint.
-
-Incremental logic: on first run, creates the Gold table by scoring all
-audit records. On subsequent runs, only scores audit_ids that don't
-already exist in the Gold table (LEFT ANTI JOIN), avoiding repeated
-LLM calls on already-analyzed records.
-"""
-
 import sys
 from pyspark.sql import SparkSession
 
@@ -32,13 +22,21 @@ def _ai_query_expr(note_column):
     return "ai_query('" + MODEL_ENDPOINT + "', CONCAT('" + PROMPT_TEXT + "', " + note_column + ")) AS llm_analysis"
 
 
+def _table_exists(spark, schema, table):
+    try:
+        rows = spark.sql("SHOW TABLES IN " + schema + " LIKE '" + table + "'").collect()
+        return len(rows) > 0
+    except Exception:
+        return False
+
+
 def run(spark):
     silver = azure_settings.SILVER_SCHEMA
     gold = azure_settings.GOLD_SCHEMA
     target_table = gold + ".d_audit_sentiment"
     source_table = silver + ".fact_quality_audits"
 
-    table_exists = spark.catalog.tableExists(target_table)
+    table_exists = _table_exists(spark, gold, "d_audit_sentiment")
 
     if not table_exists:
         select_clause = "audit_id, batch_id, audit_outcome, audit_notes, " + _ai_query_expr("audit_notes")
