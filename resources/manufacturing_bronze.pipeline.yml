@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    manufacturing_bronze_pipeline:
+      name: "manufacturing-bronze-${bundle.target}"
+      catalog: ${var.catalog_name}
+      schema: bronze
+      serverless: true
+      configuration:
+        bundle.sourcePath: "${workspace.file_path}"
+      libraries:
+        - file:
+            path: ../src/pipeline/bronze_ingest.py

@@ -9,16 +9,16 @@ include:
 variables:
   catalog_name:
     description: "Unity Catalog catalog used by this bundle"
-    default: "workspace"
+    default: "utm_demo_catalog"
   schema_name:
     description: "Schema for manufacturing tables"
     default: "manufacturing_etl"
   eventhub_namespace:
-    description: "Azure Event Hub namespace (may be blocked on Free Edition outbound network)"
+    description: "Azure Event Hub namespace"
     default: "manufacturing-eventhub-dev"
   storage_account:
-    description: "ADLS storage account (may be blocked on Free Edition outbound network)"
-    default: "manufacturingdls"
+    description: "ADLS storage account"
+    default: "utmdemo26"
 
 workspace:
   root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}

@@ -5,7 +5,11 @@ import os
 
 RANDOM_SEED = 42
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+try:
+    PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+except NameError:
+    PROJECT_ROOT = os.getcwd()
+
 DATA_ROOT = os.path.join(PROJECT_ROOT, "data")
 
 RAW_DIM_DIR = os.path.join(DATA_ROOT, "raw", "dim")
@@ -27,10 +31,14 @@ VOLUMES = {
 }
 
 PLANTS = [
-    {"plant_id": "P01", "plant_name": "Freising", "country": "Germany", "capacity_liters_day": 450000, "opened_year": 1972},
-    {"plant_id": "P02", "plant_name": "Leppersdorf", "country": "Germany", "capacity_liters_day": 600000, "opened_year": 1990},
-    {"plant_id": "P03", "plant_name": "Aretsried", "country": "Germany", "capacity_liters_day": 380000, "opened_year": 1985},
-    {"plant_id": "P04", "plant_name": "Droitwich Spa", "country": "UK", "capacity_liters_day": 300000, "opened_year": 2005},
+    {"plant_id": "P01", "plant_name": "Freising", "country": "Germany",
+        "capacity_liters_day": 450000, "opened_year": 1972},
+    {"plant_id": "P02", "plant_name": "Leppersdorf", "country": "Germany",
+        "capacity_liters_day": 600000, "opened_year": 1990},
+    {"plant_id": "P03", "plant_name": "Aretsried", "country": "Germany",
+        "capacity_liters_day": 380000, "opened_year": 1985},
+    {"plant_id": "P04", "plant_name": "Droitwich Spa", "country": "UK",
+        "capacity_liters_day": 300000, "opened_year": 2005},
 ]
 
 LINE_TYPES = ["Pasteurizer", "Homogenizer", "Filling-Line", "Packaging-Line"]
@@ -41,7 +49,8 @@ SKU_NAMES = [
     "Mozzarella 250g", "Fresh Milk 1L", "Yogurt Vanilla 150g", "Sour Cream 200g", "Milk Drink 250ml"
 ]
 
-RETAILERS = ["Rewe", "Edeka", "Aldi Sud", "Aldi Nord", "Lidl", "Kaufland", "dm", "Netto", "Real", "Globus"]
+RETAILERS = ["Rewe", "Edeka", "Aldi Sud", "Aldi Nord",
+             "Lidl", "Kaufland", "dm", "Netto", "Real", "Globus"]
 
 HIST_START_DATE = "2023-01-01"
 HIST_DAYS_RANGE = 900

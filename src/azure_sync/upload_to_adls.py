@@ -1,3 +1,14 @@
+import sys
+import os
+
+_current = os.path.dirname(os.path.abspath(__file__))
+for _ in range(6):
+    if os.path.isdir(os.path.join(_current, "config")):
+        if _current not in sys.path:
+            sys.path.insert(0, _current)
+        break
+    _current = os.path.dirname(_current)
+
 """
 Uploads local raw data (data/raw/) to Azure Data Lake Storage Gen2.
 Runs LOCALLY (not on Databricks) -- Databricks later reads this same data

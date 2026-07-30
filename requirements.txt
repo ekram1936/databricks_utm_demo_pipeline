@@ -1,5 +1,6 @@
-numpy>=1.24
+numpy==1.26.4
 pandas>=2.0
 azure-eventhub>=5.11.0
 azure-storage-file-datalake>=12.14.0
 azure-identity>=1.15.0
+pyarrow>=14,<18

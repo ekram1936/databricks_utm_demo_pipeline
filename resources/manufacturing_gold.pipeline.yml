@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    manufacturing_gold_pipeline:
+      name: "manufacturing-gold-${bundle.target}"
+      catalog: ${var.catalog_name}
+      schema: gold
+      serverless: true
+      configuration:
+        bundle.sourcePath: "${workspace.file_path}"
+      libraries:
+        - file:
+            path: ../src/pipeline/gold_aggregate.py

@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    manufacturing_silver_pipeline:
+      name: "manufacturing-silver-${bundle.target}"
+      catalog: ${var.catalog_name}
+      schema: silver
+      serverless: true
+      configuration:
+        bundle.sourcePath: "${workspace.file_path}"
+      libraries:
+        - file:
+            path: ../src/pipeline/silver_transform.py
