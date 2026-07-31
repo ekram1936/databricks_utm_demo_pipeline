@@ -1,15 +1,12 @@
 # Muller Manufacturing Data Platform
 
-An end-to-end data and AI project built on Azure and Databricks. It combines
-historical business data with live IoT sensor streaming, and adds a small
-LLM-based sentiment step on top, all wired into a simple CI/CD pipeline.
+An end-to-end data and AI project built on Azure and Databricks. It combines historical business data with live IoT sensor streaming, adds a small LLM-based sentiment step, and uses GitHub Actions plus Databricks Asset Bundles for deployment.
 
 ---
 
 ## 1. What This Project Does
 
-This project simulates a dairy / manufacturing operation and answers a few
-practical questions in one place:
+This project simulates a dairy / manufacturing operation and answers a few practical questions in one place:
 
 - Which plants and lines have higher defect and scrap rates?
 - Which customers have late or returned shipments?
@@ -18,8 +15,7 @@ practical questions in one place:
 
 To do that, it:
 
-- Generates synthetic data for plants, lines, SKUs, customers, batches,
-  shipments, and audit logs.
+- Generates synthetic data for plants, lines, SKUs, customers, batches, shipments, and audit logs.
 - Uploads historical business data to Azure Data Lake Storage Gen2.
 - Reads sensor data in two forms: a stored JSON snapshot and a live Event Hubs stream.
 - Ingests everything into Databricks using a Bronze → Silver → Gold layout.
@@ -30,8 +26,7 @@ To do that, it:
 
 ## 2. Architecture
 
-The platform follows a simple Medallion-style layout on Databricks with Unity
-Catalog:
+The platform follows a simple Medallion-style layout on Databricks with Unity Catalog:
 
 - **Bronze**: raw tables loaded from files and live streaming input.
 - **Silver**: cleaned, typed, deduplicated tables.
@@ -47,9 +42,7 @@ Sensor data is handled in two forms:
 - `sensor_readings`: a batch JSON snapshot read from storage
 - `sensor_readings_stream`: live sensor events read from Azure Event Hubs
 
-Both use the same sensor schema and are later combined in Silver into
-`fact_sensor_readings`, with a `data_source` column showing whether the row came
-from the batch snapshot or the live stream.
+Both use the same sensor schema and are later combined in Silver into `fact_sensor_readings`, with a `data_source` column showing whether the row came from the batch snapshot or the live stream.
 
 ```text
 Historical files → ADLS → bronze_ingest.py → BRONZE
@@ -64,11 +57,10 @@ Historical files → ADLS → bronze_ingest.py → BRONZE
                              sentiment_analysis.py → GOLD sentiment
 
 Sensor snapshot → ADLS JSON → sensor_readings → BRONZE
-Live sensor events → Event Hubs → stream_bronze_ingest.py → sensor_readings_stream → BRONZE
+Live sensor events → Event Hubs → streaming ingestion workflow → sensor_readings_stream → BRONZE
 ```
 
-This design makes it easy to compare stored sensor data and live sensor data in
-one reporting model.
+This design makes it easy to compare stored sensor data and live sensor data in one reporting model.
 
 ---
 
@@ -95,36 +87,60 @@ one reporting model.
 ```text
 databricks_utm_demo_pipeline/
 ├── config/
-│   └── azure_settings.py          # catalog, schema names, paths, secrets
+│   ├── __init__.py
+│   ├── azure_settings.py          # Azure, catalog, schema, and environment settings
+│   └── settings.py                # local and project configuration
+├── conftest.py                    # pytest shared fixtures/config
+├── data/
+│   └── raw/
+│       ├── dim/
+│       │   ├── dim_lines.csv
+│       │   ├── dim_plants.csv
+│       │   ├── dim_retail_customers.csv
+│       │   └── dim_sku_catalog.csv
+│       ├── historical/
+│       │   ├── historical_production_batches.csv
+│       │   ├── historical_quality_audit_logs.csv
+│       │   └── historical_shipments.csv
+│       └── streaming/
+│           └── sensor_readings_*.jsonl
+├── databricks.yml                 # Databricks Asset Bundle configuration
+├── LICENSE
+├── main.py                        # local entry point for generating synthetic raw data
+├── README.md
+├── requirements.txt
+├── resources/
+│   ├── main_pipeline_job.yml              # Databricks job definition
+│   ├── manufacturing_bronze.pipeline.yml  # Bronze pipeline resource
+│   ├── manufacturing_gold.pipeline.yml    # Gold pipeline resource
+│   └── manufacturing_silver.pipeline.yml  # Silver pipeline resource
 ├── src/
-│   ├── data_generation/
-│   │   ├── generate_dimensions.py  # plants, lines, SKUs, customers
-│   │   ├── generate_historical.py  # batches, shipments, audits
-│   │   └── generate_streaming.py   # sensor snapshot data
+│   ├── __init__.py
 │   ├── azure_sync/
-│   │   ├── upload_to_adls.py       # upload local files to ADLS
-│   │   └── eventhub_producer.py    # send sensor events into Event Hubs
+│   │   ├── __init__.py
+│   │   ├── eventhub_producer.py    # send live sensor events to Event Hubs
+│   │   └── upload_to_adls.py       # upload generated data to ADLS
+│   ├── data_generation/
+│   │   ├── __init__.py
+│   │   ├── generate_dimensions.py  # plants, lines, SKUs, customers
+│   │   ├── generate_historical.py  # batches, shipments, audit logs
+│   │   └── generate_streaming.py   # sensor snapshot / stream seed data
 │   ├── pipeline/
-│   │   ├── bronze_ingest.py        # ADLS → Bronze tables
-│   │   ├── stream_bronze_ingest.py # Event Hubs → Bronze stream table
-│   │   ├── silver_transform.py     # Bronze → Silver
-│   │   ├── gold_aggregate.py       # Silver → Gold metrics
-│   │   └── sentiment_analysis.py   # Silver audits → Gold sentiment
+│   │   ├── __init__.py
+│   │   ├── bronze_ingest.py        # ADLS / raw input → Bronze
+│   │   ├── gold_aggregate.py       # Silver → Gold business summaries
+│   │   ├── sentiment_analysis.py   # audit-note sentiment enrichment
+│   │   └── silver_transform.py     # Bronze → Silver cleaning and modeling
 │   └── utils/
+│       ├── __init__.py
 │       └── logger.py               # logging helper
-├── notebooks/
-│   ├── run_pipeline                # runs Bronze→Silver→Gold→sentiment
-│   └── run_streaming               # runs streaming ingestion
-├── tests/
-│   ├── test_bronze_ingest.py
-│   ├── test_silver_transform.py
-│   ├── test_gold_aggregate.py
-│   ├── test_sentiment_analysis.py
-│   └── test_upload_to_adls.py
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-└── requirements.txt
+└── tests/
+    ├── __init__.py
+    ├── test_bronze_ingest.py
+    ├── test_gold_aggregate.py
+    ├── test_sentiment_analysis.py
+    ├── test_silver_transform.py
+    └── test_upload_to_adls.py
 ```
 
 ---
@@ -198,21 +214,21 @@ This keeps the LLM step simple and avoids processing the same audit more than on
 
 ## 7. Jobs and Scheduling
 
-There are two Databricks jobs:
+The core pipeline is deployed and orchestrated through Databricks Asset Bundles:
 
-**Job 1 — `muller_medallion_pipeline`**
+**Job — `muller_medallion_pipeline`**
 
-- runs Bronze, Silver, Gold, and sentiment steps in order
-- runs on a wider schedule, such as hourly or daily
+- orchestrates the Bronze, Silver, Gold, and sentiment steps in order
+- is defined in `resources/main_pipeline_job.yml` and deployed via `databricks.yml`
+- can be scheduled in Databricks to run on a cadence such as hourly or daily
 
-**Job 2 — `sensor_streaming_ingest`**
+For streaming, this project uses a lightweight producer and a serverless pipeline:
 
-- reads live events from Event Hubs
-- writes them into `sensor_readings_stream`
-- uses `trigger(availableNow=True)`
-- runs more often, for example every few minutes
+- `src.azure_sync.eventhub_producer` sends sensor events into Azure Event Hubs
+- a serverless Lakeflow / pipeline definition ingests events into `sensor_readings_stream`
+- the pipeline can be triggered on demand or on a schedule without requiring an always-on cluster
 
-This setup works well on serverless compute without needing an always-running stream.
+This setup is designed for serverless compute, so both batch and streaming paths can run without long-lived clusters.
 
 ---
 
@@ -225,8 +241,7 @@ The Databricks AI/BI dashboard has four main views:
 3. **Customer** — customer delivery and return metrics
 4. **Equipment Health** — sensor anomaly and health metrics, split by stored vs live data
 
-Genie is enabled on top of the Gold tables so users can ask simple questions
-without writing SQL.
+Genie is enabled on top of the Gold tables so users can ask simple questions without writing SQL.
 
 ---
 
@@ -285,12 +300,10 @@ export EVENT_HUB_CONNECTION_STR='<your-event-hubs-connection-string>'
 export EVENT_HUB_NAME='sensor-telemetry'
 ```
 
-### 10.3 Generate and upload data
+### 10.3 Generate synthetic data and upload to ADLS
 
 ```bash
-python -m src.data_generation.generate_dimensions
-python -m src.data_generation.generate_historical
-python -m src.data_generation.generate_streaming
+python main.py
 python -m src.azure_sync.upload_to_adls
 ```
 
@@ -302,7 +315,48 @@ python -m src.azure_sync.eventhub_producer --mode continuous
 
 ---
 
-## 11. Next Steps
+## 11. Development Cost
+
+This project was developed on Azure for Students using Azure Databricks serverless resources and GitHub Actions for CI/CD. During development, the main cost came from Databricks serverless compute, while GitHub Actions usage remained within the included free tier.
+
+### 11.1 Azure / Databricks cost breakdown
+
+| Component | Cost | Description |
+|---|---:|---|
+| Premium Automated Serverless Compute DBU | €19.15 | Bronze, Silver, and Gold pipeline/job execution on serverless compute |
+| Premium Interactive Serverless Compute DBU | €12.19 | Notebook-based development and debugging |
+| Premium Serverless SQL DBU | €12.13 | SQL validation, exploration, and dashboard checks |
+| Premium Serverless Realtime Inferencing DBU | €5.48 | Inference and AI-related serving usage |
+| Premium Databricks Storage Unit DSU | €0.06 | Databricks-managed storage overhead |
+| NAT Gateway | €0.02 | Minor network processing cost |
+| Bandwidth | €0.00 | No meaningful bandwidth cost |
+
+These costs were driven mainly by compute usage time rather than data size, since Databricks charges by DBU consumption for active resources.
+
+### 11.2 GitHub Actions cost
+
+GitHub Actions usage for the repository in July 2026:
+
+| Metric | Value |
+|---|---:|
+| Total minutes | 61 |
+| Workflow runs | 13 |
+| Job runs | 22 |
+| Workflow | `deploy.yml` |
+| Runner type | GitHub-hosted |
+| Runtime OS | Linux |
+| Gross amount | $0.37 |
+| Billed amount | $0.00 |
+
+GitHub-hosted Linux runners are priced at $0.006 per minute, which matches the observed gross cost. The billed amount remained $0 because usage stayed within the included free allowance.
+
+### 11.3 Summary
+
+The major development expense for this project was Azure Databricks serverless compute. GitHub Actions CI/CD cost was effectively negligible for the month measured.
+
+---
+
+## 12. Next Steps
 
 Possible improvements:
 

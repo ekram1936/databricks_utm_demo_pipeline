@@ -1,9 +1,0 @@
-/Users/ekram/anaconda/anaconda3/lib/python3.10/site-packages/_pytest/config/__init__.py:331: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.
-Plugin: helpconfig, Hook: pytest_cmdline_parse
-ConftestImportFailure: ModuleNotFoundError: No module named 'pyspark' (from /Users/ekram/Downloads/databricks_utm_demo_pipeline-main/conftest.py)
-For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
-  config = pluginmanager.hook.pytest_cmdline_parse(
-ImportError while loading conftest '/Users/ekram/Downloads/databricks_utm_demo_pipeline-main/conftest.py'.
-conftest.py:6: in <module>
-    from pyspark.sql import SparkSession
-E   ModuleNotFoundError: No module named 'pyspark'
