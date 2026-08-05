@@ -230,16 +230,33 @@ For streaming, this project uses a lightweight producer and a serverless pipelin
 
 This setup is designed for serverless compute, so both batch and streaming paths can run without long-lived clusters.
 
+### 7.1 Pipeline Execution
+
+The job runs four tasks in sequence — `bronze_ingest`, `silver_transform`, `gold_aggregate`, and `sentiment_analysis` — tracked as a Databricks Job with per-run duration and status history:
+
+![Pipeline execution history](docs/images/job_pipeline_execution.png)
+
 ---
 
 ## 8. Dashboard
 
 The Databricks AI/BI dashboard has four main views:
 
-1. **Executive** — high-level KPIs like yield, defects, delivery, and sentiment
-2. **Production & Quality** — plant and line performance, audit outcomes, and sentiment
-3. **Customer** — customer delivery and return metrics
-4. **Equipment Health** — sensor anomaly and health metrics, split by stored vs live data
+1. **Executive Summary** — high-level KPIs like yield, defects, delivery, and sentiment, plus plant ranking by average yield
+
+![Executive Summary dashboard](docs/images/dashboard_executive_summary.png)
+
+2. **Production & Quality** — plant and line performance, defect and scrap rates, audit outcomes, and sentiment
+
+![Production and Quality dashboard](docs/images/dashboard_production_quality.png)
+
+3. **Customer & Delivery** — customer on-time delivery rate, delayed/returned counts, and retailer performance
+
+![Customer and Delivery dashboard](docs/images/dashboard_customer_delivery.png)
+
+4. **Equipment Health Monitoring** — sensor anomaly rate, temperature, and vibration metrics, split by stored vs live data source
+
+![Equipment Health Monitoring dashboard](docs/images/dashboard_equipment_health.png)
 
 Genie is enabled on top of the Gold tables so users can ask simple questions without writing SQL.
 

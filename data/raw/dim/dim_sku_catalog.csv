@@ -1,16 +1,16 @@
 sku_id,sku_name,product_family,unit_weight_g,shelf_life_days
-SKU500,Yogurt Natural 500g,Fresh Dairy,250,45
-SKU501,Yogurt Strawberry 150g,Beverage,1000,14
-SKU502,Fresh Milk 1.5L,Cheese,250,21
-SKU503,Quark 500g,Beverage,400,30
-SKU504,Butter 250g,Cheese,400,30
-SKU505,Cream Cheese 200g,Cheese,500,21
-SKU506,Skyr 400g,Fresh Dairy,250,30
+SKU500,Yogurt Natural 500g,Fresh Dairy,150,45
+SKU501,Yogurt Strawberry 150g,Yogurt,400,45
+SKU502,Fresh Milk 1.5L,Fresh Dairy,400,14
+SKU503,Quark 500g,Fresh Dairy,1000,45
+SKU504,Butter 250g,Yogurt,150,14
+SKU505,Cream Cheese 200g,Fresh Dairy,1000,30
+SKU506,Skyr 400g,Cheese,200,30
 SKU507,Buttermilk 1L,Fresh Dairy,200,45
-SKU508,Whipping Cream 200ml,Fresh Dairy,400,30
-SKU509,Kefir 500ml,Fresh Dairy,150,45
-SKU510,Mozzarella 250g,Fresh Dairy,1500,14
-SKU511,Fresh Milk 1L,Cheese,400,14
-SKU512,Yogurt Vanilla 150g,Yogurt,150,30
-SKU513,Sour Cream 200g,Cheese,150,30
-SKU514,Milk Drink 250ml,Fresh Dairy,400,45
+SKU508,Whipping Cream 200ml,Fresh Dairy,250,10
+SKU509,Kefir 500ml,Yogurt,1000,45
+SKU510,Mozzarella 250g,Cheese,400,30
+SKU511,Fresh Milk 1L,Yogurt,150,30
+SKU512,Yogurt Vanilla 150g,Beverage,200,30
+SKU513,Sour Cream 200g,Yogurt,200,45
+SKU514,Milk Drink 250ml,Beverage,1000,14
